@@ -117,7 +117,7 @@
         <span class="example-subtitle">{subtitle}</span>
         <div class="example-code-bg"> 
             <div bind:this={example_code} class="example-code"> 
-                <pre>hello</pre>
+                <pre></pre>
             </div>
         </div>
     </div>
