@@ -1,0 +1,6 @@
+/* 'Latin Modern Math' */
+
+@font-face{
+    font-family: 'Latin Modern Math';
+    src: url('./lm-math/opentype/latinmodern-math.otf');
+}
