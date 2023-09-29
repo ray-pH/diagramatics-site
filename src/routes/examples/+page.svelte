@@ -18,16 +18,27 @@
     import Header from '../Header.svelte'
     import Diagramatics from '../Diagramatics.svelte'
     import 'diagramatics/css/diagramatics.css'
+    var margin_right = 0;
+    var width = 350;
+    var height = 300;
 </script>
 <style>
     hr{
         width: 95%;
         border-top: 1px dashed rgba(0,0,0,0.3);
     }
+    .container {
+        font-family: Ubuntu, sans-serif;
+        padding: 10px;
+    }
 </style>
 
 <Header />
-<Diagramatics title="Simple Squares">
+
+<div class="container">
+<h1>Examples</h1>
+
+<Diagramatics title="Simple Squares" {margin_right} {width} {height}>
     {`
     let big_rect   = square(150).fill('lightblue').stroke('none');
     let small_rect = square(20).fill('blue').rotate(Math.PI/4);
@@ -40,7 +51,7 @@
 </Diagramatics>
 <hr>
 
-<Diagramatics title="Interactive Slider">
+<Diagramatics title="Interactive Slider" {margin_right} {width} {height}>
     {`
     int.draw_function = (inp) => {
         let x = inp['x'];
@@ -56,7 +67,7 @@
 </Diagramatics>
 <hr>
 
-<Diagramatics title="Plotting Function">
+<Diagramatics title="Plotting Function" {margin_right} {width} {height}>
     {`
     let opt = {
         xrange : [-1.5, 4],
@@ -73,7 +84,7 @@
 <hr>
 
 
-<Diagramatics title="Area Under Curve">
+<Diagramatics title="Area Under Curve" {margin_right} {width} {height}>
     {`
     let opt = {
         xrange : [-2, 2],
@@ -106,7 +117,7 @@
 <hr>
 
 
-<Diagramatics title="Sierpiński triangle">
+<Diagramatics title="Sierpiński triangle" {margin_right} {width} {height}>
     {`
     int.draw_function = (inp) => {
         let n = inp['n'];
@@ -133,7 +144,7 @@
 <hr>
 
 
-<Diagramatics title="Free Body Diagram">
+<Diagramatics title="Free Body Diagram" {margin_right} {width} {height}>
     {`
     default_diagram_style['stroke-width'] = 2;
     default_textdata['font-size'] = 21;
@@ -170,7 +181,7 @@
 <hr>
 
 
-<Diagramatics title="Spring Oscillation">
+<Diagramatics title="Spring Oscillation" {margin_right} {width} {height}>
     {`
     let x0 = 50;
     let amplitude = 25;
@@ -199,7 +210,7 @@
 <hr>
 
 
-<Diagramatics title="Diagramatics Logo">
+<Diagramatics title="Diagramatics Logo" {margin_right} {width} {height}>
     {`
     // base
     let base0 = circle(50);
@@ -257,3 +268,4 @@
 <!--     `} -->
 <!-- </Diagramatics> -->
 <!-- <hr> -->
+</div>
