@@ -1,10 +1,9 @@
 <svelte:head>
-    <title>Example : Diagramatics</title>
+    <title>Examples : Diagramatics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!---->
-    <!-- <link href="../assets/fonts/ubuntu.css" rel="stylesheet"> -->
-    <!-- <link href="../assets/fonts/lm-math.css" rel="stylesheet"> -->
+    <link href="/fonts/ubuntu.css" rel="stylesheet">
+    <link href="/fonts/lm-math.css" rel="stylesheet">
     <!---->
     <!-- <link href="./style.css" rel="stylesheet"> -->
     <!-- <link href="../style.css" rel="stylesheet"> -->

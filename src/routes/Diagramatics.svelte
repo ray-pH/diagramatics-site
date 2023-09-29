@@ -30,8 +30,9 @@
 
     hljs.registerLanguage('javascript', javascript);
 
-    export let width  : number = 400;
+    export let width  : number = 300;
     export let height : number = 300;
+    export let margin_right : number = 20;
     export let title  : string = "";
     export let subtitle : string = "";
 
@@ -95,11 +96,11 @@
         }
         // reset default styles
         for (let s in default_diagram_style) 
-            default_diagram_style[s] = _init_default_diagram_style[s];
+            (default_diagram_style as any)[s] = (_init_default_diagram_style as any)[s];
         for (let s in default_text_diagram_style)
-            default_text_diagram_style[s] = _init_default_text_diagram_style[s];
+            (default_text_diagram_style as any)[s] = (_init_default_text_diagram_style as any)[s];
         for (let s in default_textdata)
-            default_textdata[s] = _init_default_textdata[s];
+            (default_textdata as any)[s] = (_init_default_textdata as any)[s];
 
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
@@ -109,14 +110,14 @@
 <div class="example">
     <div class="example-diagram">
         <svg bind:this={diagram_svg} class="svg-diagram" 
-            style="width: {width}; height: {height};"></svg>
+                 style="width: {width}px; height: {height}px; margin-right: {margin_right}px"></svg>
         <div bind:this={control_container} class="control-container"> </div>
     </div>
     <div class="example-code-container"> 
         <span class="example-title">{title}</span>
         <span class="example-subtitle">{subtitle}</span>
         <div class="example-code-bg"> 
-            <div bind:this={example_code} class="example-code"> 
+            <div bind:this={example_code} class="example-code" style="color: #444"> 
                 <pre></pre>
             </div>
         </div>
@@ -138,17 +139,20 @@ pre{
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 1em;
+    margin: 1em 0;
 }
 .control-container {
-    margin-left: 60px;
+    margin-left: 20px;
     margin-bottom: 100px;
 }
 .example-title {
-    display: block;
+    display: inline-block;
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 1.2em;
+}
+.example-subtitle {
+    margin-left: 10px;
 }
 .example-code-container {
     flex-grow: 1;
