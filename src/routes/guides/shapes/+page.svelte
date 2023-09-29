@@ -1,0 +1,128 @@
+<svelte:head>
+    <title>Shapes - Guide : Diagramatics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/fonts/ubuntu.css" rel="stylesheet">
+    <link href="/fonts/lm-math.css" rel="stylesheet">
+</svelte:head>
+
+<script>
+    import Header from '../../Header.svelte'
+    import Diagramatics from '../../Diagramatics.svelte'
+    import Navigation from '../navigation.svelte'
+    import 'diagramatics/css/diagramatics.css'
+    import '../guides.css'
+
+    var width = 100;
+    var height = 100;
+</script>
+
+<Header />
+<div class="guides-container">
+
+    <Navigation page="shapes"/>
+
+    <h1>Building Blocks</h1>
+
+    Diagramatics provides a set of basic building blocks for creating diagrams. 
+    These are <code>polygon</code>, <code>curve</code>, <code>empty</code>, and <code>text</code>.
+
+
+    <Diagramatics title="polygon" subtitle="(points : Vector2[])" {width} {height}>
+        {`
+        let poly = polygon([V2(0,0), V2(0,10), V2(10,10)]);
+        draw(poly);
+        `}
+    </Diagramatics>
+    <Diagramatics title="curve" subtitle="(points : Vector2[])" {width} {height}>
+        {`
+        let curv = curve([V2(0,0), V2(0,10), V2(10,10)]);
+        draw(curv);
+        `}
+    </Diagramatics>
+    <Diagramatics title="text" subtitle="(str : string)" {width} {height}>
+        {`
+        // *for math variable italic style, use \`textvar()\`
+
+        let sq = square(20);
+        let tx = text('hello');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+
+    <hr>
+    <h1>Basic Shapes</h1>
+
+    Diagramatics also provides a set of basic shapes for creating diagrams.
+    These are <code>rectangle</code>, <code>square</code>, <code>regular_polygon</code>, <code>regular_polygon_side</code>, <code>circle</code>, <code>arc</code>, <code>arrow</code>, <code>arrow2</code>, <code>textvar</code>.
+
+    <Diagramatics title="rectangle" subtitle="(width : number, height : number)" {width} {height}>
+        {`
+        let rect = rectangle(20,10);
+        draw(rect);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="square" subtitle="(sidelength : number = 1)" {width} {height}>
+        {`
+        let sq = square(20);
+        draw(sq);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="regular_polygon" subtitle="(sides : number, radius : number)" {width} {height}>
+        {`
+        let poly = regular_polygon(5, 10);
+        draw(poly);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="regular_polygon_side" subtitle="(sides : number, sidelength : number)" {width} {height}>
+        {`
+        // if you want to define a regular polygon by its side length instead of radius,
+        // use \`regular_polygon_side()\`
+
+        let poly = regular_polygon_side(5, 10);
+        draw(poly);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="circle" subtitle="(radius : number = 1)" {width} {height}>
+        {`
+        let circ = circle(10);
+        draw(circ);
+        `}
+    </Diagramatics>
+    <Diagramatics {width} {height}>
+        {`
+        // you can create an ellipse by scaling a circle
+        let ell = circle(10).scale(V2(2,1));
+        draw(ell);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="arc" subtitle="(radius : number = 1, angle : number)" {width} {height}>
+        {`
+        let ar = arc(10, Math.PI/3);
+        draw(ar);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="arrow" subtitle="(vector : Vector2, headsize : number = 1)" {width} {height}>
+        {`
+        let ar = arrow(V2(10,5), 0.5);
+        draw(ar);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="textvar" subtitle="(str : string)" {width} {height}>
+        {`
+        let sq = square(20);
+        let tx = textvar('hello');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+
+
+</div>
+

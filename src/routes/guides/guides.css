@@ -1,0 +1,15 @@
+.guides-container {
+    font-family: Ubuntu, sans-serif;
+    padding: 0px 20px;
+}
+
+code {
+    background: #f5f5f5;
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+
+hr{
+    width: 95%;
+    border-top: 1px dashed rgba(0,0,0,0.3);
+}
