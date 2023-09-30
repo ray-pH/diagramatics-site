@@ -63,6 +63,6 @@
 	<a class="header-right" href="../guides/home/">Guides</a>
 	<a class="header-right" href="../editor/">Editor</a>
 	<a class="header-right" href="../examples/">Examples</a>
-	<span class="header-right">⋅</span>
+	<!-- <span class="header-right">⋅</span> -->
 </div>
 
