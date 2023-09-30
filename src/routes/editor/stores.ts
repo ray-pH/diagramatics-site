@@ -1,3 +1,4 @@
 import { writable } from 'svelte/store';
 
-export const sss = writable<string>('');
+export const code_str    = writable<string>('');
+export const eval_status = writable<'success'|'error'|'waiting'>('waiting');

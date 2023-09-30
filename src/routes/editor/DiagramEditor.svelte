@@ -23,29 +23,67 @@
         mechanics,
         mod,
     } from 'diagramatics'
-    import { onMount } from 'svelte';
-    import { sss } from './stores';
+    import { browser } from "$app/environment";
+    import { code_str, eval_status } from './stores';
 
     let diagram_svg : SVGSVGElement;
+    let prev_str = "";
 
-    var draw = (...diagrams : Diagram[]) => {
+    let typing_timeout : number | undefined = undefined;
+
+    const draw = (...diagrams : Diagram[]) => {
         console.log("drawing")
         draw_to_svg(diagram_svg, diagram_combine(...diagrams));
     };
-    var eval_diagram = (c : string) => {
-        // if (diagram_svg == undefined) return;
+
+    const eval_diagram = (str : string) => {
+
+        // reset default styles
+        for (let s in default_diagram_style) 
+            (default_diagram_style as any)[s] = (_init_default_diagram_style as any)[s];
+        for (let s in default_text_diagram_style)
+            (default_text_diagram_style as any)[s] = (_init_default_text_diagram_style as any)[s];
+        for (let s in default_textdata)
+            (default_textdata as any)[s] = (_init_default_textdata as any)[s];
+
+        let success = true;
         try {
-            eval(c);
+            eval(str);
         } catch (e) {
-            console.log(e);
+            // wait first to see if user is still typing
+            // if user is still typing, then don't show error
+            success = false;
+            eval_status.set('waiting');
+            if (typing_timeout) clearTimeout(typing_timeout);
+            typing_timeout = setTimeout(() => {
+                wait_typing_show_error(e as Error)
+            }, 500);
+        } finally {
+            if (browser) localStorage.setItem('editorCode', str);
+            if(success){
+                prev_str = str;
+                eval_status.set('success');
+                if (typing_timeout) clearTimeout(typing_timeout);
+                typing_timeout = undefined;
+            }
         }
-        //draw_code_to_svg(diagram_svg, c);
     }
 
-    sss.subscribe((value) => {
+    // waiting for user to stop typing, then show if there is an error
+    function wait_typing_show_error(e : Error){
+        eval_status.set('error');
+        let error_message = e.toString();
+        //let error_position = parse_error_position(e);
+
+        // editor_footer_desc.innerHTML = `${error_message} at ${error_position}`;
+
+        if (typing_timeout) clearTimeout(typing_timeout);
+        typing_timeout = undefined;
+    }
+
+
+    code_str.subscribe((value) => {
         eval_diagram(value);
-    });
-    onMount(()=>{
     });
 </script>
 

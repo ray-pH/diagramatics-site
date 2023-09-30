@@ -12,7 +12,11 @@
     import DiagramEditor from './DiagramEditor.svelte';
     import 'diagramatics/css/diagramatics.css'
 
-    let initial_str = "let sq = square(10).fill('blue'); draw(sq);";
+    let initial_str = 
+`
+let sq  = square(10);
+let sq2 = square(4).fill('lightblue'); 
+draw(sq, sq2);`;
 </script>
 
 <Header />

@@ -1,21 +1,29 @@
 <script lang="ts">
-    import {basicSetup} from "codemirror"
-    import {espresso} from 'thememirror';
-    import {EditorView, keymap} from "@codemirror/view"
-    import {indentWithTab} from "@codemirror/commands"
-    import {javascript} from "@codemirror/lang-javascript"
-    import {onMount} from "svelte";
-
-
-    import { sss } from './stores';
+    import { basicSetup } from "codemirror"
+    import { espresso } from 'thememirror';
+    import { EditorView, keymap } from "@codemirror/view"
+    import { indentWithTab } from "@codemirror/commands"
+    import { javascript } from "@codemirror/lang-javascript"
+    import { onMount } from "svelte";
+    import { code_str, eval_status } from './stores';
+    import { browser } from "$app/environment";
 
     export let initial_str : string = "";
 
+    let status : 'success' | 'waiting' | 'error' = 'waiting';
+    eval_status.subscribe((st) => { status = st; });
+
+    const status_str = {
+        'success' : 'success',
+        'waiting' : '...',
+        'error' : 'error',
+    };
+
     function extension_update_listener() { 
         return EditorView.updateListener.of( (v) => {
-            if (v.docChanged) sss.set(v.state.doc.toString());
+            if (v.docChanged) code_str.set(v.state.doc.toString());
         });
-    }
+    };
 
     let extension_fixed_height = EditorView.theme({
         "&": {
@@ -26,12 +34,27 @@
             outline: "none"
         },
         ".cm-scroller": {overflow: "auto"}
-    })
+    });
+
+    function load_editor_code(){
+        // first check if there is code in url
+        // if not, then check if there is code in localstorage
+        // if not, then use initial_str
+        
+        //let url_code = load_code_from_url();
+        //if (url_code != '') return url_code;
+
+        let code : string | null = '';
+        if (browser) code = localStorage.getItem('editorCode');
+        return code ? code : initial_str;
+    }
 
     let editor_div : HTMLDivElement;
     onMount (() => {
+        let init_doc = load_editor_code();
+
         let editor = new EditorView({
-            doc: initial_str,
+            doc: init_doc,
             extensions: [
                 basicSetup, 
                 javascript(),
@@ -42,7 +65,10 @@
             ],
             parent: editor_div,
         })
-    })
+
+        // init diagram
+        code_str.set(init_doc);
+    });
 </script>
 
 <div class="editor-container">
@@ -52,7 +78,7 @@
     <div id="editor" bind:this={editor_div}>
     </div>
     <div class="editor-footer">
-        <span id="editor-footer-info" class="error">success</span>
+        <span id="editor-footer-info" class={status}>{status_str[status]}</span>
         <div id="editor-footer-desc"></div>
     </div>
 </div>
