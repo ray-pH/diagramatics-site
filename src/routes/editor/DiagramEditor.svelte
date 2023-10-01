@@ -59,6 +59,7 @@
     let typing_timeout : number | undefined = undefined;
 
     const draw = (...diagrams : Diagram[]) => {
+        if (diagram_svg == null) return;
         draw_to_svg(diagram_svg, diagram_combine(...diagrams));
     };
     let int : Interactive; 

@@ -9,9 +9,9 @@
     <span class="navigation-title">Guides</span>
     {#each pages as pagename}
         {#if pagename == page}
-            <a class="navigation-link current-page" href='./{pagename}'>{pagename}</a>
+            <a class="navigation-link current-page" href='/guides/{pagename}/'>{pagename}</a>
         {:else}
-            <a class="navigation-link" href='./{pagename}'>{pagename}</a>
+            <a class="navigation-link" href='/guides/{pagename}/'>{pagename}</a>
         {/if}
     {/each}
 </div>

@@ -60,9 +60,9 @@
 	<a class="header-left"  href=".">Diagramatics</a>
 	<a class="header-right" href=".">GitHub</a>
 	<a class="header-right" href=".">Docs</a>
-	<a class="header-right" href="../guides/home/">Guides</a>
-	<a class="header-right" href="../editor/">Editor</a>
-	<a class="header-right" href="../examples/">Examples</a>
+	<a class="header-right" href="/guides/home/">Guides</a>
+	<a class="header-right" href="/editor/">Editor</a>
+	<a class="header-right" href="/examples/">Examples</a>
 	<!-- <span class="header-right">⋅</span> -->
 </div>
 
