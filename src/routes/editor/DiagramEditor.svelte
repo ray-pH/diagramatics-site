@@ -25,16 +25,21 @@
     } from 'diagramatics'
     import { browser } from "$app/environment";
     import { code_str, eval_status } from './stores';
+    import { onMount } from 'svelte';
 
     let diagram_svg : SVGSVGElement;
+    let control_div : HTMLDivElement;
     let prev_str = "";
 
     let typing_timeout : number | undefined = undefined;
 
     const draw = (...diagrams : Diagram[]) => {
-        console.log("drawing")
         draw_to_svg(diagram_svg, diagram_combine(...diagrams));
     };
+    let int : Interactive; 
+    onMount(() => {
+        int = new Interactive(diagram_svg, control_div);
+    });
 
     const eval_diagram = (str : string) => {
 
@@ -47,6 +52,7 @@
             (default_textdata as any)[s] = (_init_default_textdata as any)[s];
 
         let success = true;
+        if (control_div) control_div.innerHTML = '';
         try {
             eval(str);
         } catch (e) {
@@ -81,7 +87,6 @@
         typing_timeout = undefined;
     }
 
-
     code_str.subscribe((value) => {
         eval_diagram(value);
     });
@@ -90,7 +95,7 @@
 <div class="top-block">
     <div class="svg-container">
         <svg id="svg" width="300px" height="300px" bind:this={diagram_svg}></svg>
-        <div id="control-container">
+        <div id="control-container" bind:this={control_div}>
         </div>
     </div>
 
