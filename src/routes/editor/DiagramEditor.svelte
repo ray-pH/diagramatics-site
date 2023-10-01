@@ -23,6 +23,31 @@
         mechanics,
         mod,
     } from 'diagramatics'
+    let HACK_FOR_DIAGRAMATICS_IMPORT = [
+        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Vector2, V2, Vdir, from_degree, linspace, 
+        draw_to_svg,
+        default_diagram_style, default_text_diagram_style, default_textdata,
+        _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
+        rectangle, square, regular_polygon, regular_polygon_side, circle, arc,
+        arrow, arrow2, textvar,
+        str_to_mathematical_italic,
+        Interactive,
+        axes_transform, ax, axes_empty, 
+        xtickmark_empty, xtickmark, xticks,
+        ytickmark_empty, ytickmark, yticks,
+        xyaxes, xygrid,
+        plot, plotv, plotf, under_curvef,
+
+        align_vertical, align_horizontal,
+        distribute_horizontal, distribute_vertical,
+        distribute_horizontal_and_align, distribute_vertical_and_align, 
+
+        annotation,
+        mechanics,
+        mod,
+    ]
+
     import { browser } from "$app/environment";
     import { code_str, eval_status, eval_msg } from './stores';
     import { onMount } from 'svelte';
@@ -39,6 +64,12 @@
     let int : Interactive; 
     onMount(() => {
         int = new Interactive(diagram_svg, control_div);
+        // =================== hack
+        // hack to make svelte not remove the unused variables
+        // because we're using `eval` here
+        let x = Math.random();
+        if (x+1 == x) console.log(draw, int, HACK_FOR_DIAGRAMATICS_IMPORT);
+        // =================== hack
     });
 
     const eval_diagram = (str : string) => {

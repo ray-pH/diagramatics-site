@@ -23,6 +23,31 @@
         mechanics,
         mod,
     } from 'diagramatics'
+    let HACK_FOR_DIAGRAMATICS_IMPORT = [
+        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Vector2, V2, Vdir, from_degree, linspace, 
+        draw_to_svg,
+        default_diagram_style, default_text_diagram_style, default_textdata,
+        _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
+        rectangle, square, regular_polygon, regular_polygon_side, circle, arc,
+        arrow, arrow2, textvar,
+        str_to_mathematical_italic,
+        Interactive,
+        axes_transform, ax, axes_empty, 
+        xtickmark_empty, xtickmark, xticks,
+        ytickmark_empty, ytickmark, yticks,
+        xyaxes, xygrid,
+        plot, plotv, plotf, under_curvef,
+
+        align_vertical, align_horizontal,
+        distribute_horizontal, distribute_vertical,
+        distribute_horizontal_and_align, distribute_vertical_and_align, 
+
+        annotation,
+        mechanics,
+        mod,
+    ]
+
     import { onMount } from 'svelte';
     import hljs from 'highlight.js/lib/core';
     import javascript from 'highlight.js/lib/languages/javascript';
@@ -79,6 +104,7 @@
         let draw = (...diagrams : Diagram[]) => {
             draw_to_svg(diagram_svg, diagram_combine(...diagrams));
         };
+
         let int = new Interactive(diagram_svg, control_container);
 
         let content = parse_content(content_div.innerHTML);
@@ -104,6 +130,14 @@
 
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
+
+
+        // =================== hack
+        // hack to make svelte not remove the unused variables
+        // because we're using `eval` here
+        let x = Math.random();
+        if (x+1 == x) console.log(draw, HACK_FOR_DIAGRAMATICS_IMPORT);
+        // =================== hack
     });
 </script>
 

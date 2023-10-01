@@ -55,7 +55,8 @@
     onMount (() => {
         let init_doc = load_editor_code();
 
-        let editor = new EditorView({
+        // let editor = new EditorView({
+        new EditorView({
             doc: init_doc,
             extensions: [
                 basicSetup, 
