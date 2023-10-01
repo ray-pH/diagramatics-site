@@ -5,13 +5,15 @@
     import { indentWithTab } from "@codemirror/commands"
     import { javascript } from "@codemirror/lang-javascript"
     import { onMount } from "svelte";
-    import { code_str, eval_status } from './stores';
+    import { code_str, eval_status, eval_msg } from './stores';
     import { browser } from "$app/environment";
 
     export let initial_str : string = "";
 
     let status : 'success' | 'waiting' | 'error' = 'waiting';
     eval_status.subscribe((st) => { status = st; });
+    let msg : string = '';
+    eval_msg.subscribe((m) => { msg = m; });
 
     const status_str = {
         'success' : 'success',
@@ -74,12 +76,12 @@
 <div class="editor-container">
     <div class="editor-header">
         <span id="editor-header-text">Editor</span>
+        <span id="editor-header-info" class={status}>{status_str[status]}</span>
+        <div id="editor-header-desc">
+            {#if status == 'error'}{msg}{/if}
+        </div>
     </div>
     <div id="editor" bind:this={editor_div}>
-    </div>
-    <div class="editor-footer">
-        <span id="editor-footer-info" class={status}>{status_str[status]}</span>
-        <div id="editor-footer-desc"></div>
     </div>
 </div>
 
@@ -91,30 +93,40 @@
     border-radius: 15px;
 }
 .editor-header{
+    /*margin: 0px 5px 10px 5px;*/
+    height: 25px;
+    align-items: center;
+    align-content: center;
+    vertical-align: middle;
+}
+#editor-header-text{
     font-weight: 600;
-    margin: 0px 5px 5px 5px;
+    padding-left: 10px;
+    float: left;
 }
 .editor-footer{
     margin: 10px 5px 0px 0px;
 }
-#editor-footer-info{
-    padding : 5px 10px;
-    border-radius: 10px;
+#editor-header-info{
+    font-size: 0.9em;
+    padding : 1px 10px;
+    border-radius: 8px;
+    float: right;
 }
-#editor-footer-info.success{
+#editor-header-info.success{
     background-color: #aec7e8;
 }
-#editor-footer-info.waiting{
+#editor-header-info.waiting{
     background-color: #c7c7c7;
 }
-#editor-footer-info.error{
+#editor-header-info.error{
     background-color: #ff9896;
 }
-#editor-footer-desc{
-    display: inline-block;
+#editor-header-desc{
     font-size: 0.8em;
     /* margin-top: 10px; */
-    margin-left: 10px;
+    margin-right: 10px;
+    float: right;
 }
 
 

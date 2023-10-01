@@ -24,7 +24,7 @@
         mod,
     } from 'diagramatics'
     import { browser } from "$app/environment";
-    import { code_str, eval_status } from './stores';
+    import { code_str, eval_status, eval_msg } from './stores';
     import { onMount } from 'svelte';
 
     let diagram_svg : SVGSVGElement;
@@ -75,13 +75,37 @@
         }
     }
 
+
+    // get error position from error.stack
+    function parse_error_position(e : Error){
+        try{
+            // e.stack :
+            //    ReferenceError: s is not defined
+            //    at eval (eval at eval_diagram (index.js:24:9), <anonymous>:3:16)
+            //    at eval_diagram (index.js:24:9)
+            //    at index.js:66:5
+            //    at editor.js:21674:7
+            // get second line of e.stack
+            let line1 = e.stack?.split('\n')[1];
+            // line1:
+            //    at eval (eval at eval_diagram (index.js:24:9), <anonymous>:3:16)
+            // get the part after <anonymous> and also remove the last ')'
+            let pos = line1?.split('<anonymous>:')[1].slice(0, -1);
+            return pos
+        }catch (err) {
+            console.warn(e);
+            return ''
+        }
+    }
+
     // waiting for user to stop typing, then show if there is an error
     function wait_typing_show_error(e : Error){
         eval_status.set('error');
         let error_message = e.toString();
-        //let error_position = parse_error_position(e);
+        let error_position = parse_error_position(e);
 
-        // editor_footer_desc.innerHTML = `${error_message} at ${error_position}`;
+        let position_msg = error_position ? `at ${error_position}` : '';
+        eval_msg.set(`${error_message} ${position_msg}`);
 
         if (typing_timeout) clearTimeout(typing_timeout);
         typing_timeout = undefined;
