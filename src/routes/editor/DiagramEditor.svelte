@@ -100,10 +100,14 @@
     </div>
 
     <div class="svg-settings-container">
-        <button id="svg-preview-button" class="svg-settings-button">preview</button>
-        <button id="svg-save-button" class="svg-settings-button">save image</button>
-        <button id="svg-share-button" class="svg-settings-button">share</button>
-        <button id="svg-save-code-button" class="svg-settings-button">save code</button>
+        <button id="svg-preview-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
+            preview</button>
+        <button id="svg-save-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
+            save image</button>
+        <button id="svg-share-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
+            share</button>
+        <button id="svg-save-code-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
+            save code</button>
     </div>
 </div>
 
