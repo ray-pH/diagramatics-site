@@ -2,8 +2,8 @@
     <title>Examples : Diagramatics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/fonts/ubuntu.css" rel="stylesheet">
-    <link href="/fonts/lm-math.css" rel="stylesheet">
+    <link href="{base}/fonts/ubuntu.css" rel="stylesheet">
+    <link href="{base}/fonts/lm-math.css" rel="stylesheet">
     <!---->
     <!-- <link href="./style.css" rel="stylesheet"> -->
     <!-- <link href="../style.css" rel="stylesheet"> -->
@@ -17,6 +17,7 @@
     import Header from '../Header.svelte'
     import Diagramatics from '../Diagramatics.svelte'
     import 'diagramatics/css/diagramatics.css'
+    import { base } from '$app/paths';
     var margin_right = 0;
     var width = 350;
     var height = 300;

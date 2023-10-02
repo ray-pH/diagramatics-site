@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
     export let page : string = "";
     var pages : string[] = [
         'home', 'shapes', 'transformation', 'style', 'points'
@@ -9,9 +10,9 @@
     <span class="navigation-title">Guides</span>
     {#each pages as pagename}
         {#if pagename == page}
-            <a class="navigation-link current-page" href='/guides/{pagename}/'>{pagename}</a>
+            <a class="navigation-link current-page" href='{base}/guides/{pagename}/'>{pagename}</a>
         {:else}
-            <a class="navigation-link" href='/guides/{pagename}/'>{pagename}</a>
+            <a class="navigation-link" href='{base}/guides/{pagename}/'>{pagename}</a>
         {/if}
     {/each}
 </div>

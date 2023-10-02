@@ -55,14 +55,18 @@
 	}
 </style>
 
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <div class="header">
-	<img src="/assets/diagramatics_logo.png" class="header-left" alt="diagramatics logo">
+	<img src="{base}/assets/diagramatics_logo.png" class="header-left" alt="diagramatics logo">
 	<a class="header-left"  href=".">Diagramatics</a>
 	<a class="header-right" href=".">GitHub</a>
 	<a class="header-right" href=".">Docs</a>
-	<a class="header-right" href="/guides/home/">Guides</a>
-	<a class="header-right" href="/editor/">Editor</a>
-	<a class="header-right" href="/examples/">Examples</a>
+	<a class="header-right" href="{base}/guides/home/">Guides</a>
+	<a class="header-right" href="{base}/editor/">Editor</a>
+	<a class="header-right" href="{base}/examples/">Examples</a>
 	<!-- <span class="header-right">⋅</span> -->
 </div>
 
