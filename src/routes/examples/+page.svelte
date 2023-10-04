@@ -4,13 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{base}/fonts/ubuntu.css" rel="stylesheet">
     <link href="{base}/fonts/lm-math.css" rel="stylesheet">
-    <!---->
-    <!-- <link href="./style.css" rel="stylesheet"> -->
-    <!-- <link href="../style.css" rel="stylesheet"> -->
-    <!-- <link href="../lib/diagramatics.css" rel="stylesheet"> -->
-    <!-- <link href="./lib/lightfair.css" rel="stylesheet"> -->
-
-    <!-- <script src="./index.js" type="module"></script> -->
 </svelte:head>
 
 <script>
