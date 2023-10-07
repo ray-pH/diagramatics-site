@@ -104,7 +104,17 @@
 
     <Diagramatics title="arc" subtitle="(radius : number = 1, angle : number)" {width} {height}>
         {`
-        let ar = arc(10, Math.PI/3);
+        // arc will start from the positive x-axis and go counter-clockwise
+        let ar = arc(10, Math.PI/2);
+        draw(ar);
+        `}
+    </Diagramatics>
+    <Diagramatics {width} {height}>
+        {`
+        // if you need an arc from angle \`a\` to \`b\`, use the \`.rotate\` method
+        let a = Math.PI*3/4;
+        let b = Math.PI*3/2;
+        let ar = arc(10, b-a).rotate(a);
         draw(ar);
         `}
     </Diagramatics>
