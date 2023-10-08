@@ -64,7 +64,7 @@
     };
     let int : Interactive; 
     onMount(() => {
-        int = new Interactive(diagram_svg, control_div);
+        int = new Interactive(control_div, diagram_svg);
         // =================== hack
         // hack to make svelte not remove the unused variables
         // because we're using `eval` here

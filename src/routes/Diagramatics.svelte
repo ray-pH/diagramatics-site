@@ -105,7 +105,7 @@
             draw_to_svg(diagram_svg, diagram_combine(...diagrams));
         };
 
-        let int = new Interactive(diagram_svg, control_container);
+        let int = new Interactive(control_container, diagram_svg);
 
         let content = parse_content(content_div.innerHTML);
         try {
