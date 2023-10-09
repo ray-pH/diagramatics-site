@@ -96,12 +96,12 @@
     let pb = circle(0.05).position(V2(b, f(b)))
     .fill('blue').stroke('none');
 
-    let ticka = xtickmark(a, 'a');
-    let tickb = xtickmark(b, 'b');
+    let ticka = xtickmark(a, 0, 'a');
+    let tickb = xtickmark(b, 0, 'b');
     let labela = textvar('f(a)').move_origin_text('bottom-right').position(V2(a, f(a)));
     let labelb = textvar('f(b)').move_origin_text('bottom-left').position(V2(b, f(b)));
 
-    let labels = labela.combine(labelb).translate(V2(0, 0.1)).fill('blue');
+    let labels = labela.combine(labelb).translate(V2(0, 0.1)).filltext('blue');
     let texts = diagram_combine(ticka, tickb, labels, pa, pb);
 
     draw(axes, under_f, graph_f, texts);
