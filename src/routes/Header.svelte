@@ -1,3 +1,19 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
+<div class="header">
+	<img src="{base}/assets/diagramatics_logo.png" class="header-left" alt="diagramatics logo">
+	<a class="header-left"  href="{base}/">Diagramatics</a>
+	<a class="header-right" href="https://github.com/ray-pH/diagramatics">GitHub</a>
+	<a class="header-right" href="https://photon-ray.xyz/diagramatics/">Docs</a>
+	<a class="header-right" href="{base}/guides/home/">Guides</a>
+	<a class="header-right" href="{base}/editor/">Editor</a>
+	<a class="header-right" href="{base}/examples/">Examples</a>
+	<!-- <span class="header-right">⋅</span> -->
+</div>
+
+
 <style>
 	/* 'blue'        : '#1f77b4', */
 	/* 'lightblue'   : '#aec7e8', */
@@ -54,19 +70,4 @@
 		float: right;
 	}
 </style>
-
-<script lang="ts">
-	import { base } from '$app/paths';
-</script>
-
-<div class="header">
-	<img src="{base}/assets/diagramatics_logo.png" class="header-left" alt="diagramatics logo">
-	<a class="header-left"  href=".">Diagramatics</a>
-	<a class="header-right" href=".">GitHub</a>
-	<a class="header-right" href=".">Docs</a>
-	<a class="header-right" href="{base}/guides/home/">Guides</a>
-	<a class="header-right" href="{base}/editor/">Editor</a>
-	<a class="header-right" href="{base}/examples/">Examples</a>
-	<!-- <span class="header-right">⋅</span> -->
-</div>
 
