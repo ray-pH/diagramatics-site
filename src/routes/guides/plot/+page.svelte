@@ -102,7 +102,7 @@
 
     <Diagramatics title="xyaxes" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
         {`
-        let ax = xyaxes();
+        let ax = xyaxes().fontsize(12);
         draw(ax);
         `}
     </Diagramatics>
