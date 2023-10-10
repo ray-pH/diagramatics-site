@@ -57,10 +57,12 @@
         left: 0;
         background: #1f77b4;
         color: white;
-        padding: 2px 20px;
+        padding: 2px 30px;
+        border-radius: 20px 0px 20px 0px;
     }
-    .code-html {
+    .code-html,.code-javascript {
         background-color: #f5f5f5;
+        border-radius: 20px;
     }
     .cdn-url {
         display: inline-block;
