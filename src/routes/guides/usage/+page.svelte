@@ -249,5 +249,46 @@ int.draw();
         </code></pre>
     </div>
 
+    <hr>
+    <h1>Importing</h1>
+
+    You can use the <code>import</code> statement to import the necessary functions from the library one by one.
+    <div class="code-snippet">
+        <span class="code-filename">index.js</span>
+        <pre><code class="code-javascript">
+{`import {square, circle, V2} from 'diagramatics'
+
+let sq   = square(10).fill();
+let circ = circle(2).fill('red').translate(V2(5,0));
+`}
+        </code></pre>
+    </div>
+
+    You can also import everything from the library using the <code>*</code> wildcard and give it an alias.
+    <div class="code-snippet">
+        <span class="code-filename">index.js</span>
+        <pre><code class="code-javascript">
+{`import * as dg from 'diagramatics'
+
+let sq   = dg.square(10).fill();
+let circ = dg.circle(2).fill('red').translate(dg.V2(5,0));
+`}
+        </code></pre>
+    </div>
+
+    Or, if you're feeling frisky, you can import everything and put it in the global namespace.
+    <div class="code-snippet">
+        <span class="code-filename">index.js</span>
+        <pre><code class="code-javascript">
+{`import * as dg from 'diagramatics'
+Object.entries(dg).forEach(([name, exported]) => window[name] = exported);
+
+let sq   = square(10).fill();
+let circ = circle(2).fill('red').translate(V2(5,0));
+`}
+        </code></pre>
+    </div>
+
+
 
 </div>
