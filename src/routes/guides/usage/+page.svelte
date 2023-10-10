@@ -81,11 +81,18 @@
         font-size: 1.1em;
         color: #1f77b4;
     }
+    #dg-url{
+        color: #1f77b4;
+    }
 </style>
 
 <Header />
 <div class="guides-container">
     <Navigation page="usage"/>
+    <h1>Try Online</h1>
+    Try online : <a id="dg-url" href="{base}/editor/">Diagramatics Online Editor</a>
+    <br> <br>
+    <hr>
     <h1>Install</h1>
     <h2>CDN</h2>
     The simplest way of using Diagramatics is to import it from a CDN like unpkg.<br>
