@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>Transformation - Guide : Diagramatics</title>
+    <title>Interactivity - Guide : Diagramatics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{base}/fonts/ubuntu.css" rel="stylesheet">
