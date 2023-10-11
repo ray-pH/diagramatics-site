@@ -2,7 +2,8 @@
     import { base } from '$app/paths';
     export let page : string = "";
     var pages : string[] = [
-        'home', 'usage', 'shapes', 'transformation', 'style', 'points', 'plot',
+        'home', 'usage', 'shapes', 'transformation', 'style', 
+        'points', 'plot', 'alignment', 'interactivity',
     ];
 </script>
 
