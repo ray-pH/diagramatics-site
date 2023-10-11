@@ -63,6 +63,7 @@
     export let margin_right : number = 20;
     export let title  : string = "";
     export let subtitle : string = "";
+    export let subtitle_is_args : boolean = true;
 
     // ======================== code
 
@@ -72,6 +73,22 @@
     let example_code : HTMLDivElement;
     // let content_div : HTMLDivElement;
 
+    function parse_subtitle_args(subtitle : string) : [string, string][]{
+        try{
+            let args = subtitle.slice(1, -1).split(',');
+            // each arg in args is in the form of `arg_name : arg_type`
+            let split_type = (arg : string) => {
+                let indexof_colon = arg.indexOf(':');
+                let arg_name = arg.slice(0, indexof_colon).trim();
+                let arg_type = arg.slice(indexof_colon + 1).trim();
+                return [arg_name, arg_type];
+            }
+            let parsed = args.map((arg : string) => split_type(arg));
+            return parsed as [string, string][];
+        }catch(e){
+            return [[`error parsing subtitle: ${e}`,""]];
+        }
+    }
 
     function left_trim_block(block : string){
         let lines = block.split('\n');
@@ -155,7 +172,18 @@
     </div>
     <div class="example-code-container"> 
         <span class="example-title">{title}</span>
-        <span class="example-subtitle">{subtitle}</span>
+        {#if subtitle_is_args && subtitle != ""}
+            <span class="example-subtitle">(
+                {#each parse_subtitle_args(subtitle) as args, i}
+                    <span class="example-subtitle-argname">{args[0]}</span>
+                    &nbsp;:&nbsp;
+                    <span class="example-subtitle-argtype">{args[1]}</span>
+                    {#if (i < parse_subtitle_args(subtitle).length - 1)},&nbsp;{/if}
+                {/each}
+            )</span>
+        {:else}
+            <span class="example-subtitle">{subtitle}</span>
+        {/if}
         <div class="example-code-bg"> 
             <div bind:this={example_code} class="example-code" style="color: #444"> 
                 <pre></pre>
@@ -202,6 +230,14 @@ pre{
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
+}
+.example-subtitle-argname{
+    font-weight: 600;
+    color: #1f77b4;
+}
+.example-subtitle-argtype{
+    color: #666;
+    font-family: monospace;
 }
 </style>
 
