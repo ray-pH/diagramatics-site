@@ -64,6 +64,7 @@
     export let title  : string = "";
     export let subtitle : string = "";
     export let subtitle_is_args : boolean = true;
+    export let subtitle_newline : boolean = false;
 
     // ======================== code
 
@@ -172,6 +173,7 @@
     </div>
     <div class="example-code-container"> 
         <span class="example-title">{title}</span>
+        {#if subtitle_newline}<br>{/if}
         {#if subtitle_is_args && subtitle != ""}
             <span class="example-subtitle">(
                 {#each parse_subtitle_args(subtitle) as args, i}
@@ -184,6 +186,7 @@
         {:else}
             <span class="example-subtitle">{subtitle}</span>
         {/if}
+        {#if subtitle_newline}<br><br>{/if}
         <div class="example-code-bg"> 
             <div bind:this={example_code} class="example-code" style="color: #444"> 
                 <pre></pre>
