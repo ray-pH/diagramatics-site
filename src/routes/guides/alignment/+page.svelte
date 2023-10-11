@@ -70,30 +70,37 @@
 
         <h2>Distribution</h2>
 
-    <Diagramatics {width} {height}>
+    <Diagramatics title="distribute_horizontal" subtitle="(diagrams : Diagram[], space : number = 0) : Diagram[]" {width} {height}>
         {`
-        let r1 = rectangle(3, 2).fill('blue' );
-        let r2 = rectangle(2, 3).fill('white');
-        let r3 = rectangle(2, 2).fill('red'  );
+        // the objects will be distributed from left to right 
+        // in the order of the array
+
+        let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
+        let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
+        let r3 = rectangle(2, 2).fill('red'  ).position(V2(-1, -1));
+        [r1, r2, r3] = distribute_horizontal([r1, r2, r3], 1);
         draw(r1, r2, r3);
         `}
     </Diagramatics>
 
-    <Diagramatics title="distribute_horizontal" subtitle="(diagrams : Diagram[], space : number = 0) : Diagram[]" {width} {height}>
+    <Diagramatics {width} {height}>
         {`
-        let r1 = rectangle(3, 2).fill('blue' );
-        let r2 = rectangle(2, 3).fill('white');
-        let r3 = rectangle(2, 2).fill('red'  );
-        [r1, r2, r3] = distribute_horizontal([r1, r2, r3], 1);
+        let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
+        let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
+        let r3 = rectangle(2, 2).fill('red'  ).position(V2(-1, -1));
+        [r2, r1, r3] = distribute_horizontal([r2, r1, r3], 1);
         draw(r1, r2, r3);
         `}
     </Diagramatics>
 
     <Diagramatics title="distribute_vertical" subtitle="(diagrams : Diagram[], space : number = 0) : Diagram[]" {width} {height}>
         {`
-        let r1 = rectangle(3, 2).fill('blue' );
-        let r2 = rectangle(2, 3).fill('white');
-        let r3 = rectangle(2, 2).fill('red'  );
+        // the objects will be distributed from top to bottom
+        // in the order of the array
+
+        let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
+        let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
+        let r3 = rectangle(2, 2).fill('red'  ).position(V2(-1, -1));
         [r1, r2, r3] = distribute_vertical([r1, r2, r3], 1);
         draw(r1, r2, r3);
         `}
@@ -104,21 +111,21 @@
 <!-- export function distribute_horizontal_and_align(diagrams : Diagram[], horizontal_space : number = 0, -->
 <!-- export function distribute_vertical_and_align(diagrams : Diagram[], vertical_space : number = 0, -->
 
-    <Diagramatics title="distribute_horizontal_and_align" subtitle="(diagrams : Diagram[], horizontal_space : number, alignment : 'top' | 'center' | 'bottom')" {width} {height}>
+<Diagramatics title="distribute_horizontal_and_align" subtitle="(diagrams : Diagram[], horizontal_space : number, alignment : 'top' | 'center' | 'bottom')" {width} {height} subtitle_newline={true}>
         {`
-        let r1 = rectangle(3, 2).fill('blue' );
-        let r2 = rectangle(2, 3).fill('white');
-        let r3 = rectangle(2, 2).fill('red'  );
+        let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
+        let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
+        let r3 = rectangle(2, 2).fill('red'  ).position(V2(-1, -1));
         [r1, r2, r3] = distribute_horizontal_and_align([r1, r2, r3], 1, 'bottom');
         draw(r1, r2, r3);
         `}
     </Diagramatics>
 
-    <Diagramatics title="distribute_vertical_and_align" subtitle="(diagrams : Diagram[], vertical_space : number, alignment : 'left' | 'center' | 'right')" {width} {height}>
+    <Diagramatics title="distribute_vertical_and_align" subtitle="(diagrams : Diagram[], vertical_space : number, alignment : 'left' | 'center' | 'right')" {width} {height} subtitle_newline={true}>
         {`
-        let r1 = rectangle(3, 2).fill('blue' );
-        let r2 = rectangle(2, 3).fill('white');
-        let r3 = rectangle(2, 2).fill('red'  );
+        let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
+        let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
+        let r3 = rectangle(2, 2).fill('red'  ).position(V2(-1, -1));
         [r1, r2, r3] = distribute_vertical_and_align([r1, r2, r3], 1, 'right');
         draw(r1, r2, r3);
         `}
