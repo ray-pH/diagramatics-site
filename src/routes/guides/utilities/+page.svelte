@@ -95,7 +95,7 @@
 
     <Diagramatics title="array_repeat" subtitle="(arr : T[], len : number)" {width} {height}>
         {`
-        // repeat an array \`len\` times
+        // repeat an array until the length is \`len\`
 
         let arr = [1,2,3];
         let new_arr = array_repeat(arr, 5); // [1,2,3,1,2]
