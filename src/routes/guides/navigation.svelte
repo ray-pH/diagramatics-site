@@ -3,7 +3,7 @@
     export let page : string = "";
     var pages : string[] = [
         'home', 'usage', 'shapes', 'transformation', 'style', 
-        'points', 'plot', 'alignment', 'interactivity',
+        'points', 'plot', 'alignment', 'interactivity', 'modifier',
     ];
 </script>
 
