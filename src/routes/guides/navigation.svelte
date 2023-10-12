@@ -4,6 +4,7 @@
     var pages : string[] = [
         'home', 'usage', 'shapes', 'transformation', 'style', 
         'points', 'plot', 'alignment', 'interactivity', 'modifier',
+        'utilities',
     ];
 </script>
 
