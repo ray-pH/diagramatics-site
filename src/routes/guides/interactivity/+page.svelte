@@ -26,7 +26,7 @@
 
     Interactivity is a very important feature of Diagramatics. It allows you to add interactivity to your diagrams, and make them more engaging.
     <!-- interactive object is slider, locator, and custom -->
-    The interactive objects in Diagramatics are <code>slider</code>, <code>locator</code>, and <code>custom</code>.
+    The interactive objects in Diagramatics are <code>slider</code>, <code>locator</code>, and <code>label</code>.
 
     <h2>Setting up Interactivity</h2>
     TODO: write this section
@@ -141,6 +141,78 @@
         `}
     </Diagramatics>
 
+    <h2>Label</h2>
+    Label allows you to display a value. You can set the value of the label using <code>int.set(varname : string, value : any)</code>.
+    <Diagramatics {width} {height}>
+        {`
+        int.draw_function = (inp) => {
+            // read the value of the variable \`p\`
+            let p = inp['p'];
+            let r = p.length();
+
+            let sq   = square(2);
+            let circ = circle(r).fill('lightgray');
+
+            // calculate the area of the circle
+            let area = Math.PI * r * r;
+            int.set('A', area);
+
+            draw(sq, circ);
+        }
+
+        int.label('A',0);
+        int.locator('p', Vdir(from_degree(30)).scale(0.3), 0.1, 'blue');
+        int.draw();
+        int.locator_draw();
+        `}
+    </Diagramatics>
+
+    <h1>Custom</h1>
+    You can also create your own interactive object and interact with Diagramatics using <code>int.set()</code> and <code>int.get()</code>.<br>
+    For example, you can create a custom button.
+
+    <div class="custom-button-container">
+        <button class="custom-button" id="custom-button-l">-</button>
+        <button class="custom-button" id="custom-button-r">+</button>
+    </div>
+    <Diagramatics {width} {height}>
+        {`
+        let button_l = document.getElementById('custom-button-l');
+        let button_r = document.getElementById('custom-button-r');
+
+        int.draw_function = (inp) => {
+            // read the value of the variable \`x\`
+            let x = inp['x'];
+
+            let big_sq   = square(40);
+            let small_sq = square(10).fill('blue').position(V2(x, 0));
+            draw(big_sq, small_sq);
+        }
+
+        int.label('x', 0);
+        int.draw();
+
+        // setup custom behaviour
+        button_l.onclick = () => {
+            int.set('x', int.get('x') - 1);
+            int.draw();
+        }
+        button_r.onclick = () => {
+            int.set('x', int.get('x') + 1);
+            int.draw();
+        }
+        `}
+    </Diagramatics>
+
 
 </div>
 
+<style>
+    .custom-button-container{
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .custom-button{
+        padding: 10px 20px;
+    }
+</style>
