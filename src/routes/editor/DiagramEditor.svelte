@@ -1,7 +1,10 @@
 <script lang="ts">
     import {  
         Diagram, polygon, line, curve, empty, text, diagram_combine,
-        Vector2, V2, Vdir, from_degree, linspace, 
+        Vector2, V2, Vdir,
+        from_degree, linspace, range, array_repeat,
+        linspace_exc, range_inc,
+
         draw_to_svg,
         default_diagram_style, default_text_diagram_style, default_textdata,
         _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
@@ -17,6 +20,7 @@
         align_vertical, align_horizontal,
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
+
 
         annotation,
         mechanics,
@@ -27,8 +31,12 @@
     import { text as dgtext } from 'diagramatics'
     let HACK_FOR_DIAGRAMATICS_IMPORT = [
         dgtext,
+
         Diagram, polygon, line, curve, empty, text, diagram_combine,
-        Vector2, V2, Vdir, from_degree, linspace, 
+        Vector2, V2, Vdir,
+        from_degree, linspace, range, array_repeat,
+        linspace_exc, range_inc,
+
         draw_to_svg,
         default_diagram_style, default_text_diagram_style, default_textdata,
         _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
@@ -41,10 +49,10 @@
         ytickmark_empty, ytickmark, yticks,
         xyaxes, xygrid, xycorneraxes,
         plot, plotv, plotf, under_curvef,
-
         align_vertical, align_horizontal,
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
+
 
         annotation,
         mechanics,
