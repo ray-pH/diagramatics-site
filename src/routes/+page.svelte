@@ -29,8 +29,8 @@
     }
     .title::first-letter{
         background-color: #aec7e8;
-        padding-left: 0.5rem;
-        border-radius: 0.5rem 0 0.5rem 0;
+        padding-left: 0.2em;
+        border-radius: 0.3em 0 0.3em 0;
     }
     #main_logo {
         margin-top: -3.4rem;

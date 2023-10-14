@@ -4,7 +4,7 @@
 
 <div class="header">
 	<img src="{base}/assets/diagramatics_logo.png" class="header-left" alt="diagramatics logo">
-	<a class="header-left"  href="{base}/">Diagramatics</a>
+	<a class="header-left"  href="{base}/" id="project-title">Diagramatics</a>
 	<a class="header-right" href="https://github.com/ray-pH/diagramatics">GitHub</a>
 	<a class="header-right" href="https://photon-ray.xyz/diagramatics/">Docs</a>
 	<a class="header-right" href="{base}/guides/home/">Guides</a>
@@ -49,6 +49,14 @@
 		margin-bottom: 30px;
 		font-weight: 500;
 		border-bottom: solid black 1px;
+	}
+
+	#project-title::first-letter {
+        background-color: #aec7e8;
+        padding-left: 0.2em;
+		padding-top: 0.1em;
+		padding-bottom: 0.1em;
+        border-radius: 0.3em 0 0.3em 0;
 	}
 
 	.header>span{
