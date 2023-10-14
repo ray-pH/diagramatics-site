@@ -8,7 +8,7 @@
 
 <script>
     import Header from '../../Header.svelte'
-    import Diagramatics from '../../Diagramatics.svelte'
+    import Diagramatics from '../../DiagramaticsWithCode.svelte'
     import Navigation from '../navigation.svelte'
     import 'diagramatics/css/diagramatics.css'
     import '../guides.css'
