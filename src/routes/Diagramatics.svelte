@@ -130,5 +130,8 @@
     margin-left: 20px;
     margin-bottom: 100px;
 }
+.example-diagram {
+    display: inline-block;
+}
 </style>
 
