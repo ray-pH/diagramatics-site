@@ -54,6 +54,7 @@
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
 
+        geometry,
         annotation,
         mechanics,
         mod,
@@ -110,7 +111,7 @@
         // hack to make svelte not remove the unused variables
         // because we're using `eval` here
         let x = Math.random();
-        if (x+1 == x) console.log(draw, HACK_FOR_DIAGRAMATICS_IMPORT);
+        if (x+1 == x) console.log(draw, int, HACK_FOR_DIAGRAMATICS_IMPORT);
         // =================== hack
     });
 </script>
