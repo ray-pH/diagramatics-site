@@ -136,6 +136,50 @@
 </Diagramatics>
 <hr>
 
+<Diagramatics title="Circle Angle Theorem" {margin_right} {width} {height}>
+    {`
+    let circ = regular_polygon(100,50).fill('none').stroke('black');
+    let pA0 = circ.parametric_point(0.4);
+    let pB0 = circ.parametric_point(0.6);
+
+    int.draw_function = (inp) => {
+        let pA = inp['A'];
+        let pB = inp['B'];
+        let p1 = inp['p1'];
+        let p2 = inp['p2'];
+
+        let ang = pA.angle() - pB.angle();
+        let arcc = arc(50, ang).strokewidth(3).stroke('blue').rotate(pB.angle());
+
+        let line1 = curve([pA,p1,pB]).stroke('gray').strokedasharray([5]);
+        let line2 = curve([pA,p2,pB]).stroke('gray').strokedasharray([5]);
+
+        let labels = diagram_combine(
+            textvar('A').position(pA.scale(1.15)),
+            textvar('B').position(pB.scale(1.15)),
+        );
+        let angles = diagram_combine(
+            annotation.angle_smaller([pA,p1,pB], '\\\\theta', 15, 10).fill('lightred'),
+            annotation.angle_smaller([pA,p2,pB], '\\\\theta', 15, 10).fill('lightred'),
+        );
+
+        draw(
+            circ, arcc,
+            labels, angles,
+            line1, line2,
+        );
+    }
+
+    int.locator('A', pA0, 4, 'blue', circ);
+    int.locator('B', pB0, 4, 'blue', circ);
+    int.locator('p1', circ.parametric_point(0.2), 4, 'red', circ);
+    int.locator('p2', circ.parametric_point(0.9), 4, 'red', circ);
+    int.draw();
+    int.locator_draw();
+    `}
+</Diagramatics>
+<hr>
+
 
 <Diagramatics title="Free Body Diagram" {margin_right} {width} {height}>
     {`
