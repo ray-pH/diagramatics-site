@@ -21,7 +21,7 @@
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
 
-
+        geometry,
         annotation,
         mechanics,
         mod,
@@ -101,7 +101,7 @@
         }
 
         // delete `control_container` if it's empty
-        if (Object.keys(int.inp_variables).length == 0) {
+        if (!control_container.innerHTML){
             // delete controlelem if it's empty
             control_container.outerHTML = '';
         }
@@ -132,6 +132,7 @@
 }
 .example-diagram {
     display: inline-block;
+    vertical-align: top;
 }
 </style>
 
