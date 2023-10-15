@@ -62,29 +62,29 @@
     let pulley = circle(pulley_radius).position(ppulley)
         .fill('lightgrey').stroke('grey').strokewidth(2);
 
-    let pA = geometry.circle_tangent_point_from_point(porigin, pulley)[1];
-    let pB = pulley.origin.add(V2(pulley_radius, 0));
+    let pL = geometry.circle_tangent_point_from_point(porigin, pulley)[1];
+    let pR = pulley.origin.add(V2(pulley_radius, 0));
 
-    let trackline = line(porigin, pA).strokedasharray([5]).stroke('gray');
+    let trackline = line(porigin, pL).strokedasharray([5]).stroke('gray');
     let track = trackline.apply(mod.slicepath(0.15, 0.75, 100));
 
     let phand0 = trackline.parametric_point(0.8)
-    let pBox0 = pB.sub(V2(0,1).scale(10));
-    let left_length0 = phand0.sub(pA).length();
+    let pBox0 = pR.sub(V2(0,1).scale(10));
+    let x0 = phand0.sub(pL).length();
 
     int.draw_function = (inp) => {
         let phand = inp['phand'];
 
-        let left_length = phand.sub(pA).length();
-        let dlength = left_length - left_length0;
+        let x = phand.sub(pL).length();
+        let dx = x - x0;
 
-        let pBox = pBox0.add(V2(0, dlength));
+        let pBox = pBox0.add(V2(0, dx));
         let box  = square(2).move_origin('bottom-center').position(pBox)
             .fill('lightblue').stroke('none');
 
         let ropes = diagram_combine(
-            line(pA, phand),
-            line(pB, box.get_anchor('top-center')),
+            line(pL, phand),
+            line(pR, box.get_anchor('top-center')),
         );
 
         let annotations = diagram_combine(
@@ -105,24 +105,162 @@
     `}
 </Diagramatics>
 
-sdfsd
+TODO : WIP
 
 
 <h3>2. Movable Pulleys</h3>
 <p>A movable pulley is attached to the object you want to move. When you pull one end of the rope, the pulley and the load move together. Movable pulleys do provide a mechanical advantage because they reduce the force needed to lift the load.</p>
 
 
+<div>
 <Diagramatics>
     {`
-    let big_rect   = square(150).fill('lightblue').stroke('none');
-    let small_rect = square(20).fill('blue').rotate(Math.PI/4);
-    let r1 = small_rect.position(big_rect.get_anchor('top-left'));
-    let r2 = small_rect.position(big_rect.get_anchor('top-right'));
-    let r3 = small_rect.position(big_rect.get_anchor('bottom-left'));
-    let r4 = small_rect.position(big_rect.get_anchor('bottom-right'));
-    draw(big_rect, r1, r2, r3, r4);
+    let porigin = V2(0,0);
+
+    let pulley_radius = 0.5;
+
+    let topy = 10.8;
+    let ceiling = rectangle(5, 0.1).move_origin('bottom-left').position(V2(-1,topy))
+        .fill('lightgray').stroke('none')
+    ;
+
+    let p1      = V2(pulley_radius,10);
+    let pulley1 = circle(pulley_radius).position(p1)
+        .fill('lightgrey').stroke('grey').strokewidth(2);
+    let pL1     = pulley1.get_anchor('center-left');
+    let pR1     = pulley1.get_anchor('center-right');
+    let ptop1   = V2(pulley1.origin.x, topy);
+
+    let p2_0    = V2(3*pulley_radius, 3);
+
+    let trackline = line(porigin, pL1).strokedasharray([5]).stroke('gray');
+    let track = trackline.apply(mod.slicepath(0.15, 0.9, 100));
+    let phand0 = trackline.parametric_point(0.95)
+
+    int.draw_function = (inp) => {
+        let phand = inp['phand'];
+        let dx = phand.sub(phand0).length();
+
+
+        let p2      = p2_0.add(V2(0, dx/2));
+        let pulley2 = circle(pulley_radius).position(p2)
+            .fill('lightgrey').stroke('grey').strokewidth(2);
+        let pL2     = pulley2.get_anchor('center-left');
+        let pR2     = pulley2.get_anchor('center-right');
+        let ptop2   = V2(pR2.x, topy);
+
+        let box = square(1.5).position(p2).translate(V2(0, -2))
+            .fill('lightblue').stroke('none');
+
+        let ropes = diagram_combine(
+            line(pL1, phand),
+            line(pR1, pL2),
+            line(pR2, ptop2),
+            line(pulley2.origin, box.origin),
+            line(pulley1.origin, ptop1),
+        );
+
+        let annotations = diagram_combine(
+            annotation.length(phand0, phand, 'x', -0.5, -0.2),
+            annotation.length(p2_0,  p2,  'x/2', -1.2, -0.2, -0.4).translate(V2(0,-2.75)),
+        ).stroke('gray').textfill('black');
+
+        draw(
+            ceiling,
+            ropes, trackline, 
+            pulley1, pulley2,
+            box,
+            annotations,
+        );
+    }
+
+    int.locator('phand', track.parametric_point(1), 0.5, 'blue', track);
+    int.draw();
+    int.locator_draw();
     `}
 </Diagramatics>
+
+WIP
+</div>
+
+<Diagramatics {width} {height}>
+    {`
+    let porigin = V2(0,0);
+
+    let pulley_radius = 0.5;
+
+    let topy = 10.8;
+    let ceiling = rectangle(10, 0.1).move_origin('bottom-left').position(V2(-1,topy))
+        .fill('lightgray').stroke('none')
+    ;
+
+    let pA      = V2(pulley_radius,10);
+    let pulley1 = circle(pulley_radius).position(pA)
+        .fill('lightgrey').stroke('grey').strokewidth(2);
+    let pLA     = pulley1.get_anchor('center-left');
+    let pRA     = pulley1.get_anchor('center-right');
+    let ptopA   = V2(pulley1.origin.x, topy);
+
+    let pB_0    = V2(3*pulley_radius, 1);
+
+    let trackline = line(porigin, pLA).strokedasharray([5]).stroke('gray');
+    let track = trackline.apply(mod.slicepath(0.15, 0.9, 100));
+    let phand0 = trackline.parametric_point(0.95)
+
+    int.draw_function = (inp) => {
+        let n     = inp['n'];
+        let phand = inp['phand'];
+        let dx = phand.sub(phand0).length();
+
+        let mech_adv = Math.pow(2,n);
+        let pB      = pB_0.add(V2(0, dx/mech_adv));
+
+        let pulleytops = range(0,n-1).map((i) => {
+            let p = V2(pA.x + (4*pulley_radius)*(i+1), pA.y);
+            return circle(pulley_radius).position(p)
+                .fill('lightgrey').stroke('grey').strokewidth(2);
+        });
+        let pulleybots = range(0,n).map((i) => {
+            let p = V2(pB.x + (4*pulley_radius)*i, pB.y + dx/mech_adv);
+            return circle(pulley_radius).position(p)
+                .fill('lightgrey').stroke('grey').strokewidth(2);
+        });
+
+        let top_ropes = [pulley1, ...pulleytops].map((pulley) => {
+            let p = pulley.origin;
+            return line(p, V2(p.x, topy));
+        });
+        let left_ropes = pulleybots.map((pulley) => {
+            let p = pulley.get_anchor('center-left');
+            return line(p, V2(p.x, pA.y));
+        });
+        let right_ropes = pulleybots.map((pulley, i) => {
+            let p = pulley.get_anchor('center-right');
+            return line(p, V2(p.x, i < n-1 ? pA.y : topy));
+        });
+
+
+
+        draw(
+            ceiling,
+            trackline, 
+            pulley1,
+            ...left_ropes, ...right_ropes,
+            ...pulleytops,
+            ...pulleybots,
+            ...top_ropes,
+        );
+    }
+
+    int.slider('n', 1, 4, 2, 1);
+    int.locator('phand', track.parametric_point(0.5), 0.5, 'blue', track);
+    int.draw();
+    int.locator_draw();
+
+
+    `}
+</Diagramatics>
+<br>
 <hr>
 
 </div>
