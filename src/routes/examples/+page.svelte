@@ -101,7 +101,7 @@
     let labela = textvar('f(a)').move_origin_text('bottom-right').position(V2(a, f(a)));
     let labelb = textvar('f(b)').move_origin_text('bottom-left').position(V2(b, f(b)));
 
-    let labels = labela.combine(labelb).translate(V2(0, 0.1)).filltext('blue');
+    let labels = labela.combine(labelb).translate(V2(0, 0.1)).textfill('blue');
     let texts = diagram_combine(ticka, tickb, labels, pa, pb);
 
     draw(axes, under_f, graph_f, texts);
