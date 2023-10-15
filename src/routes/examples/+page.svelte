@@ -29,6 +29,10 @@
 <Header />
 
 <div class="container">
+
+<h1>Example Articles</h1>
+<a href="./pulley/">Pulley</a>
+
 <h1>Examples</h1>
 
 <Diagramatics title="Simple Squares" {margin_right} {width} {height}>
