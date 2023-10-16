@@ -7,7 +7,7 @@
     <a class="header-left"  href="{base}/" id="project-title">Diagramatics</a>
     <a class="header-right" href="https://github.com/ray-pH/diagramatics">GitHub</a>
     <a class="header-right" href="https://photon-ray.xyz/diagramatics/">Docs</a>
-    <a class="header-right" href="{base}/guides/home/">Guides</a>
+    <a class="header-right" href="{base}/guides/usage/">Guides</a>
     <a class="header-right" href="{base}/editor/">Editor</a>
     <a class="header-right" href="{base}/examples/">Examples</a>
     <!-- <span class="header-right">⋅</span> -->
