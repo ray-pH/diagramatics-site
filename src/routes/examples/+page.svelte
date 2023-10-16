@@ -22,7 +22,18 @@
     }
     .container {
         font-family: Ubuntu, sans-serif;
-        padding: 10px;
+        padding: 0 20px;
+    }
+    a, a:visited {
+        color: #1f77b4;
+    }
+    a:hover{
+        color: #aec7e8;
+    }
+    .article-link::before {
+        content: "\a0\a0\a0";
+        background-color: #1f77b4;
+        margin-right: 5px;
     }
 </style>
 
@@ -31,7 +42,10 @@
 <div class="container">
 
 <h1>Example Articles</h1>
-<a href="./pulley/">Pulley</a>
+<a class="article-link" href="./pulley/">Mechanical Advantages of Pulleys</a>
+
+<br><br>
+<hr>
 
 <h1>Examples</h1>
 
