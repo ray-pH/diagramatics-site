@@ -12,7 +12,7 @@
     import 'diagramatics/css/diagramatics.css'
     import { base } from '$app/paths';
     var margin_right = 0;
-    var width = 350;
+    var width = 320;
     var height = 300;
 </script>
 <style>
