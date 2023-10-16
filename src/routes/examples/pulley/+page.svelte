@@ -307,7 +307,7 @@
 
 <p><em>Pulleys</em> are one of the most fundamental and versatile mechanical devices in our world. These simple machines have been in use for thousands of years, enabling us to lift heavy loads with ease and efficiency. They are at the heart of numerous everyday systems, from elevators and cranes to flagpoles and even the cords on your window blinds. This article will explore the concept of pulleys and delve into the fascinating world of mechanical advantage, which is the key to their efficiency and effectiveness.</p>
 
-<p><em>Mechanical advantage</em> is a fundamental concept that helps us understand how pulleys <em>make tasks easier</em>. It is the ratio of the force applied to a system to the force exerted by that system. In the case of pulleys, mechanical advantage is calculated by dividing the load force (the weight you want to lift) by the effort force (the force you apply to the rope). The formula for mechanical advantage (MA) is:</p>
+<p><em>Mechanical advantage</em> is a fundamental concept that helps us understand how pulleys <em>make tasks easier</em>. It is the ratio of the force applied to a system to the force exerted by that system. In the case of pulleys, mechanical advantage is calculated by dividing the load force (the weight you want to lift) by the effort force (the force you apply to the rope).</p>
 
 <p>The mechanical advantage can be greater than 1, indicating that the pulley system makes the task easier. The higher the mechanical advantage, the more effectively the pulley system multiplies your force, allowing you to lift heavier loads with less effort.</p>
 
