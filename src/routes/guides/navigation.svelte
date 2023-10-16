@@ -22,6 +22,7 @@
 <style>
 .navigation{
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     align-items: center;
     margin: 10px 0px;
