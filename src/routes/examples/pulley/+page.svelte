@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>Mechanical Advantages of Pulley - Examples : Diagramatics</title>
+    <title>Mechanical Advantages of Pulleys - Examples : Diagramatics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{base}/fonts/ubuntu.css" rel="stylesheet">
@@ -303,7 +303,7 @@
 <Header />
 
 <div class="container">
-<h1>Mechanical Advantages of Pulley</h1>
+<h1>Mechanical Advantages of Pulleys</h1>
 
 <p><em>Pulleys</em> are one of the most fundamental and versatile mechanical devices in our world. These simple machines have been in use for thousands of years, enabling us to lift heavy loads with ease and efficiency. They are at the heart of numerous everyday systems, from elevators and cranes to flagpoles and even the cords on your window blinds. This article will explore the concept of pulleys and delve into the fascinating world of mechanical advantage, which is the key to their efficiency and effectiveness.</p>
 
