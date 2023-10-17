@@ -1,3 +1,5 @@
+<!-- TODO : slicepath -->
+
 <svelte:head>
     <title>Modifier - Guide : Diagramatics</title>
     <meta charset="UTF-8">
