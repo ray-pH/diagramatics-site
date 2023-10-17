@@ -5,7 +5,7 @@
     import hljs from 'highlight.js/lib/core';
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/lightfair.css';
-    import { docsrefs } from './docsrefs';
+    import { generate_docsrefs } from './docsrefs';
     import './docsrefs.css';
 
     hljs.registerLanguage('javascript', javascript);
@@ -42,6 +42,7 @@
 
 
     onMount(() => {
+        let docsrefs = generate_docsrefs();
         let content = parse_content(content_div.innerHTML);
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
@@ -63,7 +64,7 @@
         <slot/>
     </Diagramatics>
     <div class="example-code-container"> 
-        <span class="example-title">{title}</span>
+        <span class="example-title" id={title}>{title}</span>
         {#if subtitle_newline}<br>{/if}
         {#if subtitle_is_args && subtitle != ""}
             <span class="example-subtitle">(

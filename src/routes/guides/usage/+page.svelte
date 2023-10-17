@@ -197,7 +197,7 @@ draw_to_svg(mysvg, sq);`}
     </div>
 
 
-    <h2>draw function</h2>
+    <h2 id="draw">draw function</h2>
     <code>draw_to_svg()</code> only accept a single diagram object to draw. To draw multiple diagram objects, use <code>diagram_combine()</code> to combine them into a single diagram object. <br>
     To make it simpler, we can also define a function to draw the diagram.
     <div class="code-snippet">
