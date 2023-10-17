@@ -1,0 +1,6 @@
+.docsrefs {
+    text-decoration: none;
+}
+.docsrefs:hover{
+    text-decoration: underline;
+}

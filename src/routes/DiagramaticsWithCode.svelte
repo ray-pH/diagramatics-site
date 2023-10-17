@@ -5,6 +5,8 @@
     import hljs from 'highlight.js/lib/core';
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/lightfair.css';
+    import { docsrefs } from './docsrefs';
+    import './docsrefs.css';
 
     hljs.registerLanguage('javascript', javascript);
 
@@ -43,6 +45,16 @@
         let content = parse_content(content_div.innerHTML);
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
+
+        // get all function and methods, put href for all the supported names
+        let function_elems = code_pre.getElementsByClassName('function_');
+        for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
+            let name = elem.innerText;
+            if(docsrefs[name]){
+                elem.innerHTML = 
+                `<a href="${docsrefs[name]}" class="hljs-title docsrefs">${name}</a>`;
+            }
+        }
     });
 </script>
 
