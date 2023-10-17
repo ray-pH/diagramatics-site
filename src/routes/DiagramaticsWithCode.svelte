@@ -5,8 +5,8 @@
     import hljs from 'highlight.js/lib/core';
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/lightfair.css';
-    import { generate_docsrefs } from './docsrefs';
-    import './docsrefs.css';
+    import { generate_guiderefs } from './guiderefs';
+    import './guiderefs.css';
 
     hljs.registerLanguage('javascript', javascript);
 
@@ -42,7 +42,7 @@
 
 
     onMount(() => {
-        let docsrefs = generate_docsrefs();
+        let guiderefs = generate_guiderefs();
         let content = parse_content(content_div.innerHTML);
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
@@ -51,9 +51,9 @@
         let function_elems = code_pre.getElementsByClassName('function_');
         for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
             let name = elem.innerText;
-            if(docsrefs[name]){
+            if(guiderefs[name]){
                 elem.innerHTML = 
-                `<a href="${docsrefs[name]}" class="hljs-title docsrefs">${name}</a>`;
+                `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
             }
         }
     });
