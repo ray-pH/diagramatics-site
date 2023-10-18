@@ -25,7 +25,11 @@
 
     function parse_subtitle_args(subtitle : string) : [string, string][]{
         try{
-            let args = subtitle.slice(1, -1).split(',');
+            // (x : type, y : type, ...) : type
+            // find the index of last )
+            let last_paren = subtitle.lastIndexOf(')');
+            let args = subtitle.slice(1, last_paren).split(',');
+            let rettype = subtitle.slice(last_paren + 1).split(':')[1]?.trim();
             // each arg in args is in the form of `arg_name : arg_type`
             let split_type = (arg : string) => {
                 let indexof_colon = arg.indexOf(':');
@@ -34,6 +38,7 @@
                 return [arg_name, arg_type];
             }
             let parsed = args.map((arg : string) => split_type(arg));
+            parsed.push(["return", rettype]);
             return parsed as [string, string][];
         }catch(e){
             return [[`error parsing subtitle: ${e}`,""]];
@@ -69,12 +74,20 @@
         {#if subtitle_is_args && subtitle != ""}
             <span class="example-subtitle">(
                 {#each parse_subtitle_args(subtitle) as args, i}
-                    <span class="example-subtitle-argname">{args[0]}</span>
-                    &nbsp;:&nbsp;
-                    <span class="example-subtitle-argtype">{args[1]}</span>
-                    {#if (i < parse_subtitle_args(subtitle).length - 1)},&nbsp;{/if}
+                    {#if (i < parse_subtitle_args(subtitle).length - 1)}
+                        <span class="example-subtitle-argname">{args[0]}</span>
+                        &nbsp;:&nbsp;
+                        <span class="example-subtitle-argtype">{args[1]}</span>
+                        {#if (i < parse_subtitle_args(subtitle).length - 2)},&nbsp;{/if}
+                    {:else}
+                        )
+                        {#if args[1]}
+                            &nbsp;:&nbsp;
+                            <span class="example-subtitle-argtype">{args[1]}</span>
+                        {/if}
+                    {/if}
                 {/each}
-            )</span>
+            </span>
         {:else}
             <span class="example-subtitle">{subtitle}</span>
         {/if}
