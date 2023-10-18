@@ -111,7 +111,7 @@
 <!-- export function distribute_horizontal_and_align(diagrams : Diagram[], horizontal_space : number = 0, -->
 <!-- export function distribute_vertical_and_align(diagrams : Diagram[], vertical_space : number = 0, -->
 
-<Diagramatics title="distribute_horizontal_and_align" subtitle="(diagrams : Diagram[], horizontal_space : number, alignment : 'top' | 'center' | 'bottom')" {width} {height} subtitle_newline={true}>
+<Diagramatics title="distribute_horizontal_and_align" subtitle="(diagrams : Diagram[], horizontal_space : number, alignment : 'top' | 'center' | 'bottom') : Diagram[]" {width} {height} subtitle_newline={true}>
         {`
         let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
         let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));
@@ -121,7 +121,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="distribute_vertical_and_align" subtitle="(diagrams : Diagram[], vertical_space : number, alignment : 'left' | 'center' | 'right')" {width} {height} subtitle_newline={true}>
+    <Diagramatics title="distribute_vertical_and_align" subtitle="(diagrams : Diagram[], vertical_space : number, alignment : 'left' | 'center' | 'right') : Diagram[]" {width} {height} subtitle_newline={true}>
         {`
         let r1 = rectangle(3, 2).fill('blue' ).position(V2( 1,  1));
         let r2 = rectangle(2, 3).fill('white').position(V2( 0,  0));

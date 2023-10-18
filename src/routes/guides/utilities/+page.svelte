@@ -93,7 +93,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="array_repeat" subtitle="(arr : T[], len : number)" {width} {height}>
+    <Diagramatics title="array_repeat" subtitle="(arr : T[], len : number) : T[]" {width} {height}>
         {`
         // repeat an array until the length is \`len\`
 
@@ -102,7 +102,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="linspace" subtitle="(start : number, end : number, n : number = 100)" {width} {height}>
+    <Diagramatics title="linspace" subtitle="(start : number, end : number, n : number = 100) : number[]" {width} {height}>
         {`
         // create an equivalently spaced array of numbers from start to end (inclusive)
         // [start, end]
@@ -112,7 +112,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="linspace_exc" subtitle="(start : number, end : number, n : number = 100)" {width} {height}>
+    <Diagramatics title="linspace_exc" subtitle="(start : number, end : number, n : number = 100) : number[]" {width} {height}>
         {`
         // create an equivalently spaced array of numbers from start to end (exclusice)
         // [start, end)
@@ -122,7 +122,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="range" subtitle="(start : number, end : number, step : number = 1)" {width} {height}>
+    <Diagramatics title="range" subtitle="(start : number, end : number, step : number = 1) : number[]" {width} {height}>
         {`
         // create an equivalently spaced array of numbers from start to end (exclusive)
         // [start, end)
@@ -134,7 +134,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="range_inc" subtitle="(start : number, end : number, step : number = 1)" {width} {height}>
+    <Diagramatics title="range_inc" subtitle="(start : number, end : number, step : number = 1) : number[]" {width} {height}>
         {`
         // create an equivalently spaced array of numbers from start to end (inclusive)
         // [start, end]

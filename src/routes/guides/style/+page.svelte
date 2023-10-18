@@ -94,7 +94,7 @@
     <hr>
     <h1>Styling Diagram</h1>
 
-    <Diagramatics title="Diagram.fill" subtitle="(color : string)" {width} {height}>
+    <Diagramatics title="Diagram.fill" subtitle="(color : string) : Diagram" {width} {height}>
         {`
         let sq = square(10).fill('blue');
         draw(sq);
@@ -108,20 +108,20 @@
         draw(sq);
         `}
     </Diagramatics>
-    <Diagramatics title="Diagram.stroke" subtitle="(color : string)" {width} {height}>
+    <Diagramatics title="Diagram.stroke" subtitle="(color : string) : Diagram" {width} {height}>
         {`
         let sq = square(10).stroke('red');
         draw(sq);
         `}
     </Diagramatics>
-    <Diagramatics title="Diagram.opacity" subtitle="(opacity : number)" {width} {height}>
+    <Diagramatics title="Diagram.opacity" subtitle="(opacity : number) : Diagram" {width} {height}>
         {`
         // opacity is between 0 and 1
         let sq = square(10).fill('blue').opacity(0.5);
         draw(sq);
         `}
     </Diagramatics>
-    <Diagramatics title="Diagram.strokewidth" subtitle="(width : number)" {width} {height}>
+    <Diagramatics title="Diagram.strokewidth" subtitle="(width : number) : Diagram" {width} {height}>
         {`
         let sq = square(10).strokewidth(4);
         draw(sq);
@@ -131,7 +131,7 @@
 
     <hr>
     <h1>Styling Stroke</h1>
-    <Diagramatics title="Diagram.strokelinecap" subtitle="(linecap : 'butt' | 'round' | 'square')" {width} {height}>
+    <Diagramatics title="Diagram.strokelinecap" subtitle="(linecap : 'butt' | 'round' | 'square') : Diagram" {width} {height}>
         {`
         let l   = line(V2(0,0), V2(0,1)).strokewidth(12);
         let l0 = l.strokelinecap('butt');
@@ -148,7 +148,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="Diagram.strokelinejoin" subtitle="(linejoin : 'miter' | 'round' | 'bevel')" {width} {height}>
+    <Diagramatics title="Diagram.strokelinejoin" subtitle="(linejoin : 'miter' | 'round' | 'bevel') : Diagram" {width} {height}>
         {`
         // this style is based on svg w3c standard
         // more info : https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
@@ -167,7 +167,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="Diagram.strokedasharray" subtitle="(dasharray : number[])" {width} {height}>
+    <Diagramatics title="Diagram.strokedasharray" subtitle="(dasharray : number[]) : Diagram" {width} {height}>
         {`
         // this style is based on svg w3c standard
         // more info : https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray
@@ -194,7 +194,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="Diagram.vectoreffect" subtitle="(vectoreffect : 'none' | 'non-scaling-stroke')" {width} {height}>
+    <Diagramatics title="Diagram.vectoreffect" subtitle="(vectoreffect : 'none' | 'non-scaling-stroke') : Diagram" {width} {height}>
         {`
         let l = line(V2(0,0), V2(2,0));
 
@@ -234,7 +234,7 @@
     </Diagramatics>
 
     To make it simpler, you can use <code>Diagram.apply</code> and passing it a function that will style the diagram.
-    <Diagramatics title="Diagram.apply" subtitle="(func : (d : Diagram) => Diagram)" {width} {height}>
+    <Diagramatics title="Diagram.apply" subtitle="(func : (d : Diagram) => Diagram) : Diagram" {width} {height}>
         {`
         let style = (d) => d.fill('lightblue').stroke('blue').strokewidth(2).strokedasharray([5]);
 

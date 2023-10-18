@@ -40,7 +40,7 @@
 
     <h1>Plotting</h1>
 
-    <Diagramatics title="plotv" subtitle="(data : Vector2[], axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="plotv" subtitle="(data : Vector2[], axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         // plot a data in the form of Vector2[]
 
@@ -50,7 +50,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="plot" subtitle="(xdata : number[], ydata : number[], axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="plot" subtitle="(xdata : number[], ydata : number[], axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         // plot a data in the form of xdata and ydata
 
@@ -61,7 +61,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="plotf" subtitle="(f : (x:number)=>number, axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="plotf" subtitle="(f : (x:number)=>number, axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         // plot a function
 
@@ -86,35 +86,35 @@
     <h2>Axes</h2>
     <!-- axes_empty, axes_corner_empty, -->
     <!-- xyaxes, xygrid, xycorneraxes, -->
-    <Diagramatics title="axes_empty" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="axes_empty" subtitle="(axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         let ax = axes_empty();
         draw(ax);
         `}
     </Diagramatics>
 
-    <Diagramatics title="axes_corner_empty" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="axes_corner_empty" subtitle="(axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         let ax = axes_corner_empty();
         draw(ax);
         `}
     </Diagramatics>
 
-    <Diagramatics title="xyaxes" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="xyaxes" subtitle="(axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         let ax = xyaxes().fontsize(12);
         draw(ax);
         `}
     </Diagramatics>
 
-    <Diagramatics title="xycorneraxes" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="xycorneraxes" subtitle="(axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         let ax = xycorneraxes();
         draw(ax);
         `}
     </Diagramatics>
 
-    <Diagramatics title="xygrid" subtitle="(axes_options? : Partial<axes_options>)" {width} {height}>
+    <Diagramatics title="xygrid" subtitle="(axes_options? : Partial<axes_options>) : Diagram" {width} {height}>
         {`
         let ax = xygrid();
         draw(ax);

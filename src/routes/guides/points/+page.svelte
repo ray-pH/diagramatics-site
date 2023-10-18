@@ -26,7 +26,7 @@ A diagram have an origin and a bounding box.
 You can see this using <code>Diagram.debug</code>
 
 <h1>Points</h1>
-<Diagramatics title="Diagram.debug" subtitle="(show_index : boolean = true)" {width} {height}>
+<Diagramatics title="Diagram.debug" subtitle="(show_index : boolean = true) : Diagram" {width} {height}>
     {`
     // the + symbol shows the origin
     // the gray lines shows the bounding box
@@ -39,7 +39,7 @@ You can see this using <code>Diagram.debug</code>
 </Diagramatics>
 
 You can access the special points of the bounding box using <code>Diagram.get_anchor</code>
-<Diagramatics title="Diagram.get_anchor" subtitle="(anchor : string)" {width} {height}>
+<Diagramatics title="Diagram.get_anchor" subtitle="(anchor : string) : Diagram" {width} {height}>
     {`
     // anchors can be :
     // 'top-left', 'top-center', 'top-right',
@@ -57,7 +57,7 @@ You can access the special points of the bounding box using <code>Diagram.get_an
 
 You can move the origin of the diagram using <code>Diagram.move_origin</code>
 
-<Diagramatics title="Diagram.move_origin" subtitle="(pos : Vector2 | string)" {width} {height}>
+<Diagramatics title="Diagram.move_origin" subtitle="(pos : Vector2 | string) : Diagram" {width} {height}>
     {`
     // anchors can be :
     // 'top-left', 'top-center', 'top-right',
@@ -87,7 +87,7 @@ You can move the origin of the diagram using <code>Diagram.move_origin</code>
     <!--  */ -->
     <!-- public parametric_point(t : number, segment_index? : number) : Vector2  -->
 
-    <Diagramatics title="Diagram.parametric_point" subtitle="(t : number, segment_index? : number)" {width} {height}>
+    <Diagramatics title="Diagram.parametric_point" subtitle="(t : number, segment_index? : number) : Vector2" {width} {height}>
         {`
     // Path can be described parametrically in the form of (x(t), y(t))
     // Path starts at t=0 and ends at t=1

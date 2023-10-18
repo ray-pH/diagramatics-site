@@ -28,7 +28,7 @@
     Modifier is a function that modifies a Diagram. It takes a Diagram as input, and returns a Diagram as output.<br>
     Modifier can be applied to a Diagram using the <code>Diagram.apply</code> method.<br>
 
-    <Diagramatics title="Diagram.apply" subtitle="(modifier_function : (d : Diagram) => Diagram)" {width} height={10}>
+    <Diagramatics title="Diagram.apply" subtitle="(modifier_function : (d : Diagram) => Diagram) : Diagram" {width} height={10}>
         {`
         // \`Diagram.apply\` takes any function that takes a Diagram as input and returns a Diagram as output
         // but diagramatics also provides built-in modifier functions that can be used
@@ -62,7 +62,7 @@
 <!--  */ -->
 <!-- export function round_corner(radius : number | number[] =  1, point_indices? : number[]) : modifierFunction { -->
 
-    <Diagramatics title="mod.subdivide" subtitle="(n : number)" {width} {height}>
+    <Diagramatics title="mod.subdivide" subtitle="(n : number) : modifierFunction" {width} {height}>
         {`
         // Subdivide each segment of a diagram into \`n\` segments
 
@@ -74,7 +74,7 @@
 
     <hr>
 
-    <Diagramatics title="mod.resample" subtitle="(n : number)" {width} {height}>
+    <Diagramatics title="mod.resample" subtitle="(n : number) : modifierFunction" {width} {height}>
         {`
         // Resample a diagram so that it has \`n\` points
 
@@ -105,7 +105,7 @@
 
     <hr>
 
-    <Diagramatics title="mod.round_corner" subtitle="(radius : number | number[], point_indices? : number[])" {width} {height}>
+    <Diagramatics title="mod.round_corner" subtitle="(radius : number | number[], point_indices? : number[]) : modifierFunction" {width} {height}>
         {`
         // Modifies a diagram by rounding the corners of a polygon or curve
         // \`radius\` : radius of the corner
