@@ -8,6 +8,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 	let f_shapes = [
 		'polygon', 'curve', 'text',
 		'rectangle', 'square', 'regular_polygon', 'regular_polygon_side', 'circle', 'arc', 'arrow', 'textvar',
+		'diagram_combine',
 	];
 	for (let shape of f_shapes) {
 		guiderefs[shape] = `${base}/guides/shapes#${shape}`;

@@ -134,6 +134,18 @@
         `}
     </Diagramatics>
 
+    <hr>
+    <h1>Combining Diagram</h1>
+    <Diagramatics title="diagram_combine" subtitle="(...diagrams : Diagram[])" {width} {height}>
+        {`
+        let sq1 = square(10);
+        let sq2 = square(10).translate(V2(12,0));
+
+        let sq  = diagram_combine(sq1, sq2);
+        let sqs = sq.fill('lightblue').translate(V2(0,12));
+        draw(sq, sqs);
+        `}
+    </Diagramatics>
 
 </div>
 
