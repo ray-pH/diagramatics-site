@@ -34,8 +34,9 @@
     <h2>Slider</h2>
     Slider allows you to select a value from a range.
     <!-- public slider(variable_name : string, min : number = 0, max : number = 100, value : number = 50, step : number = -1,  --> <!-- time : number = 1.5){ -->
-    <Diagramatics title="slider"
+    <Diagramatics title="Interactive.slider"
                   subtitle="(variable_name : string, min : number, max : number, value : number, step? : number, time? : number)"
+                  subtitle_newline={true}
         {width} {height}>
         {`
         // create the draw_function that will be run each time the interactive control is changed
@@ -63,9 +64,9 @@
     <br><br>
     If you don't define the <code>track_diagram</code> parameter, then the locator will be free.
     <!-- public locator(variable_name : string, value : Vector2, radius : number, color : string = 'blue', track_diagram? : Diagram){ -->
-    <Diagramatics title="locator"
+    <Diagramatics title="Interactive.locator"
                   subtitle="(variable_name : string, value : Vector2, radius : number, color? : string, track_diagram? : Diagram)"
-        {width} {height}>
+                  {width} {height} subtitle_newline={true}>
         {`
         // create the draw_function that will be run each time the interactive control is changed
         int.draw_function = (inp) => {
@@ -143,7 +144,7 @@
 
     <h2>Label</h2>
     Label allows you to display a value. You can set the value of the label using <code>int.set(varname : string, value : any)</code>.
-    <Diagramatics {width} {height}>
+    <Diagramatics title="Interactive.label" subtitle="(variable_name : string, value : any)"{width} {height}>
         {`
         int.draw_function = (inp) => {
             // read the value of the variable \`p\`
