@@ -71,6 +71,16 @@
         `}
     </Diagramatics>
 
+    <Diagramatics title="rectangle_corner" subtitle="(bottomleft : Vector2, topright : Vector2)" {width} {height}>
+        {`
+        // if you need to define a rectangle by its bottom left and top right corners,
+        let p1   = V2(0,0);
+        let p2   = V2(20,10);
+        let rect = rectangle_corner(p1,p2);
+        draw(rect);
+        `}
+    </Diagramatics>
+
     <Diagramatics title="regular_polygon" subtitle="(sides : number, radius : number)" {width} {height}>
         {`
         let poly = regular_polygon(5, 10);
@@ -121,7 +131,25 @@
 
     <Diagramatics title="arrow" subtitle="(vector : Vector2, headsize : number = 1)" {width} {height}>
         {`
+        // if you need to put this arrow at a different position, use the \`.translate\` method
         let ar = arrow(V2(10,5), 0.5);
+        draw(ar);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="arrow1" subtitle="(start : Vector2, end : Vector2, headsize : number = 1)" {width} {height}>
+        {`
+        // if you need to define the arrow by its start and end points, you can use this instead of \`arrow()\`
+        // this is equal to \`arrow(end.sub(start)).translate(start)\`
+
+        let ar = arrow1(V2(0,5), V2(10,5), 0.5);
+        draw(ar);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="arrow2" subtitle="(start : Vector2, end : Vector2, headsize : number = 1)" {width} {height}>
+        {`
+        let ar = arrow2(V2(0,5), V2(10,5), 0.5);
         draw(ar);
         `}
     </Diagramatics>
