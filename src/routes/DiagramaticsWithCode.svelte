@@ -43,7 +43,7 @@
                 return [arg_name, arg_type];
             }
             let parsed = args.map((arg : string) => split_type(arg));
-            parsed.push(["return", rettype]);
+            parsed.push(["return", rettype ?? 'undefined']);
             // replace ，back with ,
             parsed = parsed.map((arg) => [arg[0], arg[1].replace(/，/g, ',')]);
             return parsed as [string, string][];
@@ -125,7 +125,7 @@
                         {/if}
                     {:else}
                         )
-                        {#if args[1]}
+                        {#if args[1] != 'undefined'}
                             &nbsp;:&nbsp;
                             <span class="example-subtitle-argtype">{args[1]}</span>
                         {/if}
