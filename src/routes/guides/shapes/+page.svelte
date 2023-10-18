@@ -112,6 +112,13 @@
         `}
     </Diagramatics>
 
+    <Diagramatics title="line" subtitle="(start : Vector2, end : Vector2) : Diagram" {width} {height}>
+        {`
+        let l = line(V2(0,1), V2(1,0));
+        draw(l);
+        `}
+    </Diagramatics>
+
     <Diagramatics title="arc" subtitle="(radius : number = 1, angle : number) : Diagram" {width} {height}>
         {`
         // arc will start from the positive x-axis and go counter-clockwise
