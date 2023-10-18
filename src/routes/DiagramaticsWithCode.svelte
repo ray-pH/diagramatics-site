@@ -5,7 +5,7 @@
     import hljs from 'highlight.js/lib/core';
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/lightfair.css';
-    import { generate_guiderefs } from './guiderefs';
+    import { generate_guiderefs, known_dg_object } from './guiderefs';
     import './guiderefs.css';
 
     hljs.registerLanguage('javascript', javascript);
@@ -23,6 +23,7 @@
 
     let content_div : HTMLDivElement;
     let example_code : HTMLDivElement;
+    let guiderefs = generate_guiderefs();
 
     function parse_subtitle_args(subtitle : string) : [string, string][]{
         try{
@@ -46,24 +47,37 @@
         }
     }
 
+    function get_guideref_elementstr(elem : HTMLSpanElement) : string | null {
+        let name = elem.innerText;
+        // check for mod.* geometry.* etc.
+        // check previous element
+        let prev = elem.previousSibling;
+        if (prev != null){
+            // If the node is a text node, the nodeType property will return 3.
+            if (prev.nodeType == 3){
+            }
+        }
+        if (guiderefs[name]){
+            return `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
+        }
+        return null;
+    }
+    function handle_guiderefs(code_pre : Element){
+        // get all function and methods, put href for all the supported names
+        let function_elems = code_pre.getElementsByClassName('function_');
+        for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
+            let str = get_guideref_elementstr(elem);
+            if(str){
+                elem.innerHTML = str;
+            }
+        }
+    }
 
     onMount(() => {
-        let guiderefs = generate_guiderefs();
         let content = parse_content(content_div.innerHTML);
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
-
-        if (use_guiderefs){
-            // get all function and methods, put href for all the supported names
-            let function_elems = code_pre.getElementsByClassName('function_');
-            for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
-                let name = elem.innerText;
-                if(guiderefs[name]){
-                    elem.innerHTML = 
-                    `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
-                }
-            }
-        }
+        if (use_guiderefs) handle_guiderefs(code_pre);
     });
 </script>
 
