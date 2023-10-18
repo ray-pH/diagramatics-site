@@ -17,6 +17,7 @@
     export let subtitle : string = "";
     export let subtitle_is_args : boolean = true;
     export let subtitle_newline : boolean = false;
+    export let use_guiderefs    : boolean = true;
 
     // ======================== code
 
@@ -52,13 +53,15 @@
         let code_pre = example_code.children[0];
         code_pre.innerHTML = hljs.highlight(content, { language: 'javascript' }).value;
 
-        // get all function and methods, put href for all the supported names
-        let function_elems = code_pre.getElementsByClassName('function_');
-        for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
-            let name = elem.innerText;
-            if(guiderefs[name]){
-                elem.innerHTML = 
-                `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
+        if (use_guiderefs){
+            // get all function and methods, put href for all the supported names
+            let function_elems = code_pre.getElementsByClassName('function_');
+            for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
+                let name = elem.innerText;
+                if(guiderefs[name]){
+                    elem.innerHTML = 
+                    `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
+                }
             }
         }
     });

@@ -38,7 +38,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="Operation on Vector2" {width} {height}>
+    <Diagramatics title="Operation on Vector2" {width} {height} use_guiderefs={false}>
         {`
         let va = V2(1,2);
         let vb = V2(3,4);
