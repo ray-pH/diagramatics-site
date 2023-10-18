@@ -104,7 +104,7 @@
 
     <Diagramatics title="linspace" subtitle="(start : number, end : number, n : number = 100)" {width} {height}>
         {`
-        // create a equivalently spaced array of numbers from start to end (inclusive)
+        // create an equivalently spaced array of numbers from start to end (inclusive)
         // [start, end]
 
         let arr1 = linspace(0, 1, 5); // [0, 0.25, 0.5, 0.75, 1]
@@ -114,7 +114,7 @@
 
     <Diagramatics title="linspace_exc" subtitle="(start : number, end : number, n : number = 100)" {width} {height}>
         {`
-        // create a equivalently spaced array of numbers from start to end (exclusice)
+        // create an equivalently spaced array of numbers from start to end (exclusice)
         // [start, end)
 
         let arr1 = linspace_exc(0, 1, 5); // [ 0, 0.2, 0.4, 0.6, 0.8 ]
@@ -124,7 +124,7 @@
 
     <Diagramatics title="range" subtitle="(start : number, end : number, step : number = 1)" {width} {height}>
         {`
-        // create a equivalently spaced array of numbers from start to end (exclusive)
+        // create an equivalently spaced array of numbers from start to end (exclusive)
         // [start, end)
 
         let arr1 = range(0, 5);    // [0, 1, 2, 3, 4]
@@ -136,7 +136,7 @@
 
     <Diagramatics title="range_inc" subtitle="(start : number, end : number, step : number = 1)" {width} {height}>
         {`
-        // create a equivalently spaced array of numbers from start to end (inclusive)
+        // create an equivalently spaced array of numbers from start to end (inclusive)
         // [start, end]
 
         let arr1 = range_inc(0, 5);    // [0, 1, 2, 3, 4, 5]
