@@ -165,6 +165,8 @@
         {`
         let sq = square(20);
         let tx = textvar('hello');
+        // \`textvar\` is just a helper function
+        // this is equivalent to \`tx = text('hello').text_tovar()\`
         draw(sq, tx);
         `}
     </Diagramatics>
