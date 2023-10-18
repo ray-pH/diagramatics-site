@@ -6,7 +6,7 @@
     <link href="{base}/fonts/lm-math.css" rel="stylesheet">
 </svelte:head>
 
-<script>
+<script lang="ts">
     import Header from '../../Header.svelte'
     import Diagramatics from '../../DiagramaticsWithCode.svelte'
     import Navigation from '../navigation.svelte'
@@ -20,7 +20,9 @@
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/lightfair.css';
     import { onMount } from 'svelte';
+    import { generate_guiderefs } from '../../guiderefs';
 
+    let guiderefs = generate_guiderefs();
     var width = 200;
     var height = 200;
 
@@ -29,6 +31,21 @@
         hljs.registerLanguage('bash', bash);
         hljs.registerLanguage('javascript', javascript);
         hljs.highlightAll();
+
+        let hljscode = document.getElementsByClassName('hljs');
+        for (let i = 0; i < hljscode.length; i++) {
+            let function_elems = hljscode[i].getElementsByClassName('function_');
+            console.log(function_elems)
+            for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
+                let name = elem.innerText;
+                if(guiderefs[name]){
+                    elem.innerHTML = 
+                    `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
+                }
+            }
+        }
+
+
     });
 </script>
 
