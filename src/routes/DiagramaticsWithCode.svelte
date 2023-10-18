@@ -47,6 +47,14 @@
         }
     }
 
+    function get_ahref_guideref(name : string, content : string = "") : string | null {
+        if (content == "") content = name;
+        if (guiderefs[name]){
+            return `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${content}</a>`;
+        }
+        return null;
+    }
+
     function get_guideref_elementstr(elem : HTMLSpanElement) : string | null {
         let name = elem.innerText;
         // check for mod.* geometry.* etc.
@@ -54,13 +62,23 @@
         let prev = elem.previousSibling;
         if (prev != null){
             // If the node is a text node, the nodeType property will return 3.
-            if (prev.nodeType == 3){
-            }
+            if (prev.nodeType != 3) return get_ahref_guideref(name);
+
+            let prev_text = prev.textContent;
+            if (prev_text == null) return get_ahref_guideref(name)
+
+            // get the last [a-zA-Z|_]*. from the psubdividerev_text
+            let prefixRegExpMatch = prev_text.match(/[a-zA-Z_]*\.$/);
+            if (prefixRegExpMatch == null) return get_ahref_guideref(name);
+
+            let prefix = prefixRegExpMatch[0].slice(0,-1);
+            if (name == 'subdivide') console.log('prefix');
+            if (name == 'subdivide') console.log(known_dg_object.includes(prefix));
+            if (!known_dg_object.includes(prefix)) return get_ahref_guideref(name);
+
+            return get_ahref_guideref(prefix + '.' + name, name);
         }
-        if (guiderefs[name]){
-            return `<a href="${guiderefs[name]}" class="hljs-title guiderefs">${name}</a>`;
-        }
-        return null;
+        return get_ahref_guideref(name);
     }
     function handle_guiderefs(code_pre : Element){
         // get all function and methods, put href for all the supported names

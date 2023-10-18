@@ -1,6 +1,7 @@
 import { base } from '$app/paths';
 let docsbase = 'https://photon-ray.xyz/diagramatics'
 
+export let known_dg_object = [ 'mod', 'geometry', 'annotation' ];
 export function generate_guiderefs() : {[key : string] : string} {
 	const guiderefs : {[key : string] : string} = {
 		'draw'    : `${base}/guides/usage#draw`,
@@ -70,7 +71,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 		'subdivide', 'resample', 'round_corner'
 	]
 	for (let modifier of m_modifier) {
-		guiderefs[modifier] = `${base}/guides/modifier#mod.${modifier}`;
+		guiderefs[`mod.${modifier}`] = `${base}/guides/modifier#mod.${modifier}`;
 	}
 	guiderefs['apply'] = `${base}/guides/modifier#Diagram.apply`;
 
@@ -88,7 +89,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 		'circle_radius', 'circle_tangent_point_from_point', 'line_extend',
 	]
 	for (let geometry of m_geometry) {
-		guiderefs[geometry] = `${base}/guides/geometry#geometry.${geometry}`;
+		guiderefs[`geometry.${geometry}`] = `${base}/guides/geometry#geometry.${geometry}`;
 	}
 
 
