@@ -228,7 +228,7 @@
         annotation.vector(Vdir(angle).scale(2), 'F', V2(-0.5,-1.0), arrow_head_size)
             .move_origin(Vdir(angle).scale(2)).position(sq.parametric_point(0.5,0)),
     );
-    let angle_annotation = annotation.angle([V2(1,0), V2(0,0), Vdir(angle)], '\\\\theta', 1, V2(0.5,0.1));
+    let angle_annotation = annotation.angle([V2(1,0), V2(0,0), Vdir(angle)], '\\\\theta', 1, 1.5);
 
     draw (horizontal, sq, plane, forces_annotation, angle_annotation);
     `}
