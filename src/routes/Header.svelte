@@ -31,7 +31,7 @@
     /* 'lightgrey'   : '#c7c7c7', */
 
     .header {
-        font-family: Ubuntu;
+        font-family: Ubuntu, sans-serif;
     }
 
     .header>img {
