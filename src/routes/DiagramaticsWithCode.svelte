@@ -26,6 +26,8 @@
     let guiderefs = generate_guiderefs();
 
     function parse_subtitle_args(subtitle : string) : [string, string][]{
+        // convert `\,` to ，
+        subtitle = subtitle.replace(/\\,/g, '，');
         try{
             // (x : type, y : type, ...) : type
             // find the index of last )
@@ -41,6 +43,8 @@
             }
             let parsed = args.map((arg : string) => split_type(arg));
             parsed.push(["return", rettype]);
+            // replace ，back with ,
+            parsed = parsed.map((arg) => [arg[0], arg[1].replace(/，/g, ',')]);
             return parsed as [string, string][];
         }catch(e){
             return [[`error parsing subtitle: ${e}`,""]];
