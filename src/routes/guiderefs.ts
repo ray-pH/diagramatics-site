@@ -1,8 +1,10 @@
 import { base } from '$app/paths';
+let docsbase = 'https://photon-ray.xyz/diagramatics'
 
 export function generate_guiderefs() : {[key : string] : string} {
 	const guiderefs : {[key : string] : string} = {
 		'draw'    : `${base}/guides/usage#draw`,
+		'draw_to_svg' : `${docsbase}/functions/draw_to_svg`,
 	}
 
 	let f_shapes = [
