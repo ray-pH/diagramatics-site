@@ -92,6 +92,13 @@ export function generate_guiderefs() : {[key : string] : string} {
 		guiderefs[`geometry.${geometry}`] = `${base}/guides/geometry#geometry.${geometry}`;
 	}
 
+	let m_annotation = [
+		'vector', 'angle', 'angle_smaller', 'length',
+	]
+	for (let annotation of m_annotation) {
+		guiderefs[`annotation.${annotation}`] = `${base}/guides/annotation#annotation.${annotation}`;
+	}
+
 
 	return guiderefs;
 }
