@@ -84,6 +84,13 @@ export function generate_guiderefs() : {[key : string] : string} {
 	guiderefs['Vector2'] = `${base}/guides/utilities#Vector2`;
 	guiderefs['Vdir'] = `${base}/guides/utilities#Vector2`;
 
+	let m_geometry = [
+		'circle_radius', 'circle_tangent_point_from_point', 'line_extend',
+	]
+	for (let geometry of m_geometry) {
+		guiderefs[geometry] = `${base}/guides/geometry#geometry.${geometry}`;
+	}
+
 
 	return guiderefs;
 }

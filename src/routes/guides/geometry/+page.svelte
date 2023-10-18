@@ -37,7 +37,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="circle_tangent_point_from_point" subtitle="(point : Vector2, circle : Diagram) : [Vector2, Vector2]" {width} {height}>
+    <Diagramatics title="geometry.circle_tangent_point_from_point" subtitle="(point : Vector2, circle : Diagram) : [Vector2, Vector2]" {width} {height}>
         {`
         // Get two points on the circle where the tangent line that pass through the given point intersects the circle
 
@@ -58,7 +58,7 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="line_extend" subtitle="(l : Diagram, len1 : number, len2 : number) : Diagram" {width} {height}>
+    <Diagramatics title="geometry.line_extend" subtitle="(l : Diagram, len1 : number, len2 : number) : Diagram" {width} {height}>
         {`
         // extends a line by len1 and len2 on each end
         // the extension length can be negative
