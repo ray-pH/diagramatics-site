@@ -65,7 +65,7 @@
     </Diagramatics>
 
 
-    <Diagramatics title="Diagram.scale" subtitle="(scale : Vector2, origin? : Vector2) : Diagram" {width} {height}>
+    <Diagramatics title="Diagram.scale" subtitle="(scale : Vector2 | number, origin? : Vector2) : Diagram" {width} {height}>
         {`
         let sq = square(10);
         let sq0 = sq.stroke('grey').strokedasharray([5]);
