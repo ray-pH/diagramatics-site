@@ -36,6 +36,7 @@
             let rettype = subtitle.slice(last_paren + 1).split(':')[1]?.trim();
             // each arg in args is in the form of `arg_name : arg_type`
             let split_type = (arg : string) => {
+                if (arg.trim() == "<br>") return ["<br>", ""];
                 let indexof_colon = arg.indexOf(':');
                 let arg_name = arg.slice(0, indexof_colon).trim();
                 let arg_type = arg.slice(indexof_colon + 1).trim();
@@ -114,10 +115,14 @@
             <span class="example-subtitle">(
                 {#each parse_subtitle_args(subtitle) as args, i}
                     {#if (i < parse_subtitle_args(subtitle).length - 1)}
-                        <span class="example-subtitle-argname">{args[0]}</span>
-                        &nbsp;:&nbsp;
-                        <span class="example-subtitle-argtype">{args[1]}</span>
-                        {#if (i < parse_subtitle_args(subtitle).length - 2)},&nbsp;{/if}
+                        {#if args[0] == "<br>"}
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {:else}
+                            <span class="example-subtitle-argname">{args[0]}</span>
+                            &nbsp;:&nbsp;
+                            <span class="example-subtitle-argtype">{args[1]}</span>
+                            {#if (i < parse_subtitle_args(subtitle).length - 2)},&nbsp;{/if}
+                        {/if}
                     {:else}
                         )
                         {#if args[1]}
