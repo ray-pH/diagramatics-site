@@ -6,7 +6,7 @@
     import { javascript } from "@codemirror/lang-javascript"
     import { autocompletion } from "@codemirror/autocomplete"
     import { onMount } from "svelte";
-    import { code_str, eval_status, eval_msg } from './stores';
+    import { code_str, eval_status, eval_msg, code_loaded_str } from './stores';
     import { browser } from "$app/environment";
     import { dg_completions } from "./completions";
 
@@ -59,12 +59,13 @@ draw(sq, sq2);`;
         return code ? code : initial_str;
     }
 
+    let editor : any;
     let editor_div : HTMLDivElement;
     onMount (() => {
         let init_doc = load_editor_code();
 
         // let editor = new EditorView({
-        new EditorView({
+        editor = new EditorView({
             doc: init_doc,
             extensions: [
                 basicSetup, 
@@ -81,6 +82,15 @@ draw(sq, sq2);`;
         // init diagram
         code_str.set(init_doc);
     });
+
+    code_loaded_str.subscribe((code) => {
+        if (code == '') return;
+        editor.dispatch({
+            changes: {from: 0, to: editor.state.doc.length, insert: code},
+        });
+        code_loaded_str.set('');
+    });
+
 </script>
 
 <div class="editor-container">

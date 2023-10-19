@@ -59,12 +59,13 @@
         mod,
     ]
 
-    import { code_str, eval_status, eval_msg } from './stores';
+    import { code_str, eval_status, eval_msg, code_loaded_str } from './stores';
     import { onMount } from 'svelte';
 
     let diagram_svg : SVGSVGElement;
     let control_div : HTMLDivElement;
-    let prev_str = "";
+    let prev_valid_str = "";
+    let curr_str = "";
 
     let typing_timeout : number | undefined = undefined;
     const draw = (...diagrams : Diagram[]) => {
@@ -110,7 +111,7 @@
             }, 500);
         } finally {
             if(success){
-                prev_str = str;
+                prev_valid_str = str;
                 eval_status.set('success');
                 if (typing_timeout) clearTimeout(typing_timeout);
                 typing_timeout = undefined;
@@ -154,7 +155,37 @@
         typing_timeout = undefined;
     }
 
-    code_str.subscribe((value) => { eval_diagram(value); });
+    code_str.subscribe((value) => { 
+        curr_str = value;
+        eval_diagram(value); 
+    });
+
+    // ============================= saves ===============================
+
+    function download_code() {
+        const link = document.createElement("a");
+        const content = curr_str;
+        const file = new Blob([content], { type: "text/plain;charset=utf-8" });
+        link.href = URL.createObjectURL(file);
+        link.download = "diagramatics.js";
+        link.click();
+        URL.revokeObjectURL(link.href);
+    }
+
+    function load_code(){
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.onchange = (e : any) => { 
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.readAsText(file,'UTF-8');
+            reader.onload = readerEvent => {
+                const content = readerEvent.target?.result as string;
+                code_loaded_str.set(content);
+            }
+        }
+        input.click();
+    }
 </script>
 
 <div class="top-block">
@@ -165,13 +196,15 @@
     </div>
 
     <div class="svg-settings-container">
-        <button id="svg-preview-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
-            preview</button>
+        <!-- <button id="svg-preview-button" class="svg-settings-button" on:click={() => alert('not implemented')}> -->
+        <!--     preview</button> -->
         <button id="svg-save-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
             save image</button>
-        <button id="svg-share-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
-            share</button>
-        <button id="svg-save-code-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
+        <!-- <button id="svg-share-button" class="svg-settings-button" on:click={() => alert('not implemented')}> -->
+        <!--     share</button> -->
+        <button id="svg-load-code-button" class="svg-settings-button" on:click={load_code}>
+            load code</button>
+        <button id="svg-save-code-button" class="svg-settings-button" on:click={download_code}>
             save code</button>
     </div>
 </div>
