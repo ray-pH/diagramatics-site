@@ -117,7 +117,7 @@
                     {#if (i < parse_subtitle_args(subtitle).length - 1)}
                         {#if args[0] == "<br>"}
                             <br>&nbsp;&nbsp;&nbsp;&nbsp;
-                        {:else}
+                        {:else if args[0]}
                             <span class="example-subtitle-argname">{args[0]}</span>
                             &nbsp;:&nbsp;
                             <span class="example-subtitle-argtype">{args[1]}</span>
