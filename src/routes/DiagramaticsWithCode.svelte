@@ -28,7 +28,14 @@
 
     function parse_subtitle_args(subtitle : string) : [string, string][]{
         // convert `\,` to ，
-        subtitle = subtitle.replace(/\\,/g, '，');
+        // convert `\(` to （
+        // convert `\)` to ）
+        // convert `\:` to `⋮`
+        subtitle = subtitle
+            .replace(/\\,/g, '，')
+            .replace(/\\\(/g, '（')
+            .replace(/\\\)/g, '）')
+            .replace(/\\\:/g, '⋮');
         try{
             // (x : type, y : type, ...) : type
             // find the index of last )
@@ -45,8 +52,10 @@
             }
             let parsed = args.map((arg : string) => split_type(arg));
             parsed.push(["return", rettype ?? 'undefined']);
-            // replace ，back with ,
-            parsed = parsed.map((arg) => [arg[0], arg[1].replace(/，/g, ',')]);
+            // replace all back
+            parsed = parsed.map((arg) => [arg[0], 
+                arg[1].replace(/，/g, ',').replace(/（/g, '(').replace(/）/g, ')').replace(/⋮/g, ':')
+            ]);
             return parsed as [string, string][];
         }catch(e){
             return [[`error parsing subtitle: ${e}`,""]];
