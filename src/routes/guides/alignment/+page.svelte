@@ -68,6 +68,7 @@
 <!-- export function distribute_horizontal(diagrams : Diagram[], space : number = 0) : Diagram[] { -->
 <!-- export function distribute_vertical(diagrams : Diagram[], space : number = 0) : Diagram[] { -->
 
+        <hr>
         <h2>Distribution</h2>
 
     <Diagramatics title="distribute_horizontal" subtitle="(diagrams : Diagram[], space : number = 0) : Diagram[]" {width} {height}>
@@ -106,6 +107,7 @@
         `}
     </Diagramatics>
 
+    <hr>
     <h2>Alignment and Distribution</h2>
 
 <!-- export function distribute_horizontal_and_align(diagrams : Diagram[], horizontal_space : number = 0, -->
