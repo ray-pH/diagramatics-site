@@ -81,6 +81,11 @@
 
         // checking for equality
         x = va.equals(vb); // false;
+
+        // apply a function
+        let f = (v) => v.add(V2(1,1));
+        vc = va.apply(f); // V2(2,3);
+        // the same as \`vc = f(va)\`
         `}
     </Diagramatics>
 
