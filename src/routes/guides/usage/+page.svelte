@@ -35,7 +35,6 @@
         let hljscode = document.getElementsByClassName('hljs');
         for (let i = 0; i < hljscode.length; i++) {
             let function_elems = hljscode[i].getElementsByClassName('function_');
-            console.log(function_elems)
             for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
                 let name = elem.innerText;
                 if(guiderefs[name]){

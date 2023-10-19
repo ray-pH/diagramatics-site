@@ -87,8 +87,6 @@
             if (prefixRegExpMatch == null) return get_ahref_guideref(name);
 
             let prefix = prefixRegExpMatch[0].slice(0,-1);
-            if (name == 'subdivide') console.log('prefix');
-            if (name == 'subdivide') console.log(known_dg_object.includes(prefix));
             if (!known_dg_object.includes(prefix)) return get_ahref_guideref(name);
 
             return get_ahref_guideref(prefix + '.' + name, name);
