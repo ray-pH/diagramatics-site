@@ -59,9 +59,6 @@
         border-radius: 0.3em 0 0.3em 0;
     }
 
-    .header>span{
-        padding: 5px 10px;
-    }
     .header>a {
         text-decoration: none;
         color: black;

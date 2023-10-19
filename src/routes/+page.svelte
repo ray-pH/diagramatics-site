@@ -160,7 +160,8 @@
     }
     .text-container{
         font-size: 1.2rem;
-        width: 60%;
+        max-width: 800px;
+        margin: 0 1em;
     }
     .center {
         align-items: center;
