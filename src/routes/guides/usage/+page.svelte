@@ -256,7 +256,7 @@ let draw = (...diagrams) => {
     draw_to_svg(mysvg, diagram_combine(...diagrams));
 };
 // create the interactive object
-let int = new Interactive(mysvg, controldiv);
+let int = new Interactive(controldiv, mysvg);
 
 // build the diagram objects
 int.draw_function = (inp) => {

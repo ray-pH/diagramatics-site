@@ -16,6 +16,21 @@
 
     var width = 300;
     var height = 300;
+
+    import { onMount } from 'svelte';
+    import hljs from 'highlight.js/lib/core';
+    import html from 'highlight.js/lib/languages/xml';
+    import bash from 'highlight.js/lib/languages/bash';
+    import javascript from 'highlight.js/lib/languages/javascript';
+    import 'highlight.js/styles/lightfair.css';
+
+    onMount(() => {
+        hljs.registerLanguage('html', html);
+        hljs.registerLanguage('bash', bash);
+        hljs.registerLanguage('javascript', javascript);
+        hljs.highlightAll();
+    });
+
 </script>
 
 <Header />
@@ -29,8 +44,68 @@
     The interactive objects in Diagramatics are <code>slider</code>, <code>locator</code>, and <code>label</code>.
 
     <h2>Setting up Interactivity</h2>
-    TODO: write this section
+    In the <code>html</code> file, what you need to have is a div to hold the interactive controls, and also to link the css to style the control elements.
+    <br><br><i>*In the example below, we import Diagramatics as a package. But you can also import it from the 
+        <a href="{base}/guides/usage">CDN</a></i>
+    <br><code>{`<link href="https://unpkg.com/diagramatics@latest/css/diagramatics.css" rel="stylesheet">`}</code>
+    <div class="code-snippet">
+        <span class="code-filename">index.html</span>
+        <pre><code class="code-html">
+{`<!DOCTYPE html>
+<html>
+    <head>
+        <!-- optional css for interactive controls -->
+        <link href="diagramatics/css/diagramatics.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- svg component to draw the diagram -->
+        <svg id="mysvg"></svg>
 
+        <!-- optional div to hold interactive controls -->
+        <div id="controldiv"></div>
+    </body>
+    <`+`script src="index.js" type="module"><`+`/script>
+</html>`}
+        </code></pre>
+    </div>
+
+    In the javascript, you need to create the interactive object, let's call it <code>int</code>. You need to pass in the <b>control div</b> and the <b>svg element</b>.
+
+    <div class="code-snippet">
+        <span class="code-filename">index.js</span>
+        <pre><code class="code-javascript">
+{`// import the necessary functions from the library
+import {square, draw_to_svg, diagram_combine, V2, Interactive} from 'diagramatics'
+
+// get the svg and control element
+let mysvg = document.getElementById('mysvg');
+let controldiv = document.getElementById('controldiv');
+
+// define the \`draw\` helper function
+let draw = (...diagrams) => {
+    draw_to_svg(mysvg, diagram_combine(...diagrams));
+};
+
+// create the interactive object
+let int = new Interactive(controldiv, mysvg);
+
+// ================= build the diagram objects ============================
+
+int.draw_function = (inp) => {
+    let x = inp['x'];
+    let big_sq   = square(10).fill();
+    let small_sq = square(2).fill('red').translate(V2(x,0));
+
+    draw(big_sq, small_sq);
+}
+
+int.slider('x', -10, 10, 0);
+int.draw();
+`}
+        </code></pre>
+    </div>
+
+    <hr>
     <h2>Slider</h2>
     Slider allows you to select a value from a range.
     <!-- public slider(variable_name : string, min : number = 0, max : number = 100, value : number = 50, step : number = -1,  --> <!-- time : number = 1.5){ -->
@@ -215,5 +290,28 @@
     }
     .custom-button{
         padding: 10px 20px;
+    }
+    .code-snippet {
+        position: relative;
+        margin-top: 1em;
+    }
+    .code-filename {
+        position: absolute;
+        font-size: 0.9em;
+        left: 0;
+        background: #1f77b4;
+        color: white;
+        padding: 2px 30px;
+        border-radius: 20px 0px 20px 0px;
+    }
+    .code-html,.code-javascript {
+        background-color: #f5f5f5;
+        border-radius: 20px;
+    }
+    a, a:visited {
+        color: #1f77b4;
+    }
+    a:hover {
+        color: #aec7e8;
     }
 </style>
