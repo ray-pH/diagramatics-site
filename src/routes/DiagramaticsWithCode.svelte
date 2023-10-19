@@ -115,6 +115,8 @@
         <span class="example-title" id={title}>
             {#if title.startsWith("Diagram.") && title_is_fname}
                 <span class="example-title-greyed">Diagram</span>{title.slice(7)}
+            {:else if title.startsWith("Interactive.") && title_is_fname}
+                <span class="example-title-greyed">Interactive</span>{title.slice(11)}
             {:else}
                 {title}
             {/if}
