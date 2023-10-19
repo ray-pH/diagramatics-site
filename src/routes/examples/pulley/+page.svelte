@@ -256,12 +256,12 @@
                 bar, box,
                 annotations, vectors,
             );
+            int.locator_draw();
         }
 
         int.slider('n', 1, 4, 2, 1);
         int.locator('phand', track.parametric_point(0.5), 0.5, 'blue', track);
         int.draw();
-        int.locator_draw();
         `
 </script>
 <style>

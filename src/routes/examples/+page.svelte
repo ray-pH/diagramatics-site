@@ -186,6 +186,7 @@
             labels, angles,
             line1, line2,
         );
+        int.locator_draw();
     }
 
     int.locator('A', pA0, 4, 'blue', circ);
@@ -193,7 +194,6 @@
     int.locator('p1', circ.parametric_point(0.2), 4, 'red', circ);
     int.locator('p2', circ.parametric_point(0.9), 4, 'red', circ);
     int.draw();
-    int.locator_draw();
     `}
 </Diagramatics>
 <hr>
