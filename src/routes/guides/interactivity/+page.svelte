@@ -114,14 +114,14 @@
         `}
     </Diagramatics>
 
-    If you want to have more point on the track, you can use the resample modifier (<code>mod.resample</code>).
+    If you want to have more point on the track, you can use the subdivide modifier (<code>mod.subdivide</code>).
 
     <Diagramatics {width} {height}>
         {`
         // create the track for the locator
         // you have to define it outside the \`draw_function\`
         // resample so you have more point to snap to
-        let pent = regular_polygon(5, 18).apply(mod.resample(100));
+        let pent = regular_polygon(5, 18).apply(mod.subdivide(20));
 
         // create the draw_function that will be run each time the interactive control is changed
         int.draw_function = (inp) => {
