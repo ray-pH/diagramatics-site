@@ -16,6 +16,7 @@
     export let title  : string = "";
     export let subtitle : string = "";
     export let subtitle_is_args : boolean = true;
+    export let title_is_fname   : boolean = true;
     export let subtitle_newline : boolean = false;
     export let use_guiderefs    : boolean = true;
 
@@ -111,7 +112,13 @@
         <slot/>
     </Diagramatics>
     <div class="example-code-container"> 
-        <span class="example-title" id={title}>{title}</span>
+        <span class="example-title" id={title}>
+            {#if title.startsWith("Diagram.") && title_is_fname}
+                <span class="example-title-greyed">Diagram</span>{title.slice(7)}
+            {:else}
+                {title}
+            {/if}
+        </span>
         {#if subtitle_newline}<br>{/if}
         {#if subtitle_is_args && subtitle != ""}
             <span class="example-subtitle">(
@@ -188,6 +195,10 @@ pre{
 .example-subtitle-argtype{
     color: #666;
     font-family: monospace;
+}
+.example-title-greyed{
+    color: #6666;
+    font-weight: normal;
 }
 </style>
 
