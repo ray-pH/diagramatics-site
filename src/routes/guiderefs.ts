@@ -6,6 +6,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 	const guiderefs : {[key : string] : string} = {
 		'draw'    : `${base}/guides/usage#draw`,
 		'draw_to_svg' : `${docsbase}/functions/draw_to_svg`,
+		'combine' : `${base}/guides/shapes#Diagram.combine`,
 	}
 
 	let f_shapes = [
@@ -31,13 +32,16 @@ export function generate_guiderefs() : {[key : string] : string} {
 		'fill', 'stroke', 'opacity', 'strokewidth',
 		'strokelinecap', 'strokelinejoin', 'strokedasharray', 'vectoreffect',
 		// 'apply' defined in modifier
+		'fontfamily', 'fontsize', 'fontweight', 'move_origin_text',
+		'text_totext', 'text_tovar', 'textfill', 'textstroke', 'textstrokewidth',
 	]
 	for (let style of m_style) {
 		guiderefs[style] = `${base}/guides/style#Diagram.${style}`;
 	}
 
 	let m_points = [
-		'debug', 'get_anchor', 'move_origin', 'parametric_point'
+		'debug', 'get_anchor', 'move_origin', 'parametric_point', 
+		'add_points', 'bounding_box',
 	]
 	for (let point of m_points) {
 		guiderefs[point] = `${base}/guides/points#Diagram.${point}`;
