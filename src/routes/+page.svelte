@@ -19,9 +19,8 @@
     <img src="{base}/assets/diagramatics_logo.png" alt="Diagramatics Logo" id="main_logo"/>
     <div class="text-container">
         <em>Diagramatics</em> is a JavaScript/TypeScript library that makes it easy to create <em>interactive diagrams</em>, especially math and physics diagrams. It provides a simple high-level API for creating and manipulating diagram elements and interactive controls.
+    <hr>
     </div>
-
-    <div class="text-container"><hr></div>
 
     <h2 class="title">Examples</h2>
     <div class="text-container center">
@@ -123,16 +122,15 @@
         </div>
         <br>
         <a href="{base}/examples/" style="margin-top:20px">More examples</a>
+        <hr>
     </div>
 
-    <div class="text-container"><hr></div>
     <h2 class="title">Usage</h2>
     <div class="text-container center">
         You can try online in the <a href="{base}/editor/">editor</a><br>
         Or see the <a href="{base}/guides/usage/">Guides</a> for more details.
+        <hr>
     </div>
-
-    <div class="text-container"><hr></div>
 
 </div>
 
@@ -160,6 +158,7 @@
     }
     .text-container{
         font-size: 1.2rem;
+        min-width: 60%;
         max-width: 800px;
         margin: 0 1em;
     }
