@@ -317,12 +317,26 @@
         {`
         let style = (d) => d.fill('lightblue').stroke('blue').strokewidth(2).strokedasharray([5]);
 
-        let p3 = regular_polygon(3,10).apply(style).position(V2(-10, 10));
-        let p4 = regular_polygon(4,10).apply(style).position(V2(-10,-10));
-        let p5 = regular_polygon(5,10).apply(style).position(V2( 10, 10));
-        let p6 = regular_polygon(6,10).apply(style).position(V2( 10,-10));
+        let p3 = regular_polygon(3,10).position(V2(-10, 10)).apply(style);
+        let p4 = regular_polygon(4,10).position(V2(-10,-10)).apply(style);
+        let p5 = regular_polygon(5,10).position(V2( 10, 10)).apply(style);
+        let p6 = regular_polygon(6,10).position(V2( 10,-10)).apply(style);
 
         draw(p3,p4,p5,p6);
+        `}
+    </Diagramatics>
+
+    You can also combine the diagram first, and style the parent Diagram. This will apply the styles to all the children.
+    <Diagramatics title="diagram_combine" subtitle="(...diagrams : Diagram[]) : Diagram" {width} {height}>
+        {`
+        let p3 = regular_polygon(3,10).position(V2(-10, 10));
+        let p4 = regular_polygon(4,10).position(V2(-10,-10));
+        let p5 = regular_polygon(5,10).position(V2( 10, 10));
+        let p6 = regular_polygon(6,10).position(V2( 10,-10));
+        let ps = diagram_combine(p3,p4,p5,p6)
+                    .fill('lightblue').stroke('blue').strokewidth(2).strokedasharray([5]);
+
+        draw(ps);
         `}
     </Diagramatics>
 
