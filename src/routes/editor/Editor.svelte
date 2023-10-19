@@ -26,16 +26,14 @@ draw(sq, sq2);`;
         'error' : 'error',
     };
 
-    function extension_update_listener() { 
-        return EditorView.updateListener.of( (v) => {
+    const extension_update_listener = EditorView.updateListener.of( (v) => {
             if (v.docChanged) {
                 code_str.set(v.state.doc.toString());
                 if (browser) localStorage.setItem('editorCode',v.state.doc.toString());
             }
         });
-    };
 
-    let extension_fixed_height = EditorView.theme({
+    const extension_fixed_height = EditorView.theme({
         "&": {
             height: "300px",
             borderRadius: "15px",
@@ -46,14 +44,14 @@ draw(sq, sq2);`;
         ".cm-scroller": {overflow: "auto"}
     });
 
-    function load_editor_code(){
-        // first check if there is code in url
-        // if not, then check if there is code in localstorage
-        // if not, then use initial_str
-        
-        //let url_code = load_code_from_url();
-        //if (url_code != '') return url_code;
+    const path_activeLine_color = EditorView.theme({
+      ".cm-activeLine": { backgroundColor: "#1f77b418" },
+      ".cm-activeLineGutter": { backgroundColor: "#1f77b418" },
+    });
 
+    function load_editor_code(){
+        // first check if there is code in localstorage
+        // if not, then use initial_str
         let code : string | null = '';
         if (browser) code = localStorage.getItem('editorCode');
         return code ? code : initial_str;
@@ -61,6 +59,7 @@ draw(sq, sq2);`;
 
     let editor : any;
     let editor_div : HTMLDivElement;
+
     onMount (() => {
         let init_doc = load_editor_code();
 
@@ -70,9 +69,10 @@ draw(sq, sq2);`;
             extensions: [
                 basicSetup, 
                 javascript(),
+                path_activeLine_color,
                 espresso,
                 keymap.of([indentWithTab]),
-                extension_update_listener(),
+                extension_update_listener,
                 extension_fixed_height,
                 autocompletion({override: dg_completions}),
             ],
