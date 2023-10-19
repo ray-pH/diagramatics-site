@@ -4,9 +4,11 @@
     import { EditorView, keymap } from "@codemirror/view"
     import { indentWithTab } from "@codemirror/commands"
     import { javascript } from "@codemirror/lang-javascript"
+    import { autocompletion } from "@codemirror/autocomplete"
     import { onMount } from "svelte";
     import { code_str, eval_status, eval_msg } from './stores';
     import { browser } from "$app/environment";
+    import { dg_completions } from "./completions";
 
     let initial_str = 
 `let sq  = square(10);
@@ -71,6 +73,7 @@ draw(sq, sq2);`;
                 keymap.of([indentWithTab]),
                 extension_update_listener(),
                 extension_fixed_height,
+                autocompletion({override: dg_completions}),
             ],
             parent: editor_div,
         })

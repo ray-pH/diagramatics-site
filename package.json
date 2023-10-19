@@ -26,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@codemirror/autocomplete": "^6.10.2",
 		"@codemirror/commands": "^6.2.5",
 		"@codemirror/lang-javascript": "^6.2.1",
 		"@codemirror/view": "^6.20.2",
