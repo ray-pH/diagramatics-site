@@ -26,19 +26,22 @@
     <h1>Building Blocks</h1>
 
     Diagramatics provides a set of basic building blocks for creating diagrams. 
-    These are <code>polygon</code>, <code>curve</code>, <code>empty</code>, and <code>text</code>.
-
+    These are <code>polygon</code>, <code>curve</code>, and <code>text</code>.
 
     <Diagramatics title="polygon" subtitle="(points : Vector2[]) : Diagram" {width} {height}>
         {`
         let poly = polygon([V2(0,0), V2(0,10), V2(10,10)]);
         draw(poly);
+
+        // poly.type == 'polygon'
         `}
     </Diagramatics>
     <Diagramatics title="curve" subtitle="(points : Vector2[]) : Diagram" {width} {height}>
         {`
         let curv = curve([V2(0,0), V2(0,10), V2(10,10)]);
         draw(curv);
+
+        // curve.type == 'curve'
         `}
     </Diagramatics>
     <Diagramatics title="text" subtitle="(str : string) : Diagram" {width} {height}>
@@ -48,6 +51,8 @@
         let sq = square(20);
         let tx = text('hello');
         draw(sq, tx);
+
+        // tx.type == 'text'
         `}
     </Diagramatics>
 
@@ -55,7 +60,6 @@
     <h1>Basic Shapes</h1>
 
     Diagramatics also provides a set of basic shapes for creating diagrams.
-    These are <code>rectangle</code>, <code>square</code>, <code>regular_polygon</code>, <code>regular_polygon_side</code>, <code>circle</code>, <code>arc</code>, <code>arrow</code>, <code>arrow2</code>, <code>textvar</code>.
 
     <Diagramatics title="rectangle" subtitle="(width : number, height : number) : Diagram" {width} {height}>
         {`
@@ -179,6 +183,24 @@
         let sq2 = square(10).translate(V2(12,0));
 
         let sq  = diagram_combine(sq1, sq2);
+        // when combined, the type of the object is 'diagram'
+        // sq.type == 'diagram'
+
+        let sqs = sq.fill('lightblue').translate(V2(0,12));
+        draw(sq, sqs);
+        `}
+    </Diagramatics>
+     
+    You can also use <code>Diagram.combine</code> method which does the same thing
+    <Diagramatics title="Diagram.combine" subtitle="(...diagrams : Diagram[]) : Diagram" {width} {height}>
+        {`
+        // \`d0.combine(d1,d2,d3)\` is equivalent to
+        // \`diagram_combine(d0,d1,d2,d3)\`
+
+        let sq1 = square(10);
+        let sq2 = square(10).translate(V2(12,0));
+
+        let sq  = sq1.combine(sq2);
         let sqs = sq.fill('lightblue').translate(V2(0,12));
         draw(sq, sqs);
         `}

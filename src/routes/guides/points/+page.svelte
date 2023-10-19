@@ -55,6 +55,19 @@ You can access the special points of the bounding box using <code>Diagram.get_an
     `}
 </Diagramatics>
 
+You can get the bounding box directly using <code>Diagram.bounding_box</code>
+<Diagramatics title="Diagram.bounding_box" subtitle="() : [Vector2, Vector2]" {width} {height}>
+    {`
+    let pentagon = regular_polygon(5,10);
+    let bbox = pentagon.bounding_box(); // bbox = [v2_bottomleft, v2_topright]
+
+    let p1 = circle(0.5).position(bbox[0]).fill('red');
+    let p2 = circle(0.5).position(bbox[1]).fill('blue');
+
+    draw(pentagon, p1, p2);
+    `}
+</Diagramatics>
+
 You can move the origin of the diagram using <code>Diagram.move_origin</code>
 
 <Diagramatics title="Diagram.move_origin" subtitle="(pos : Vector2 | string) : Diagram" {width} {height}>
@@ -119,6 +132,14 @@ You can move the origin of the diagram using <code>Diagram.move_origin</code>
     let c = circle(0.5).fill('blue').position(p);
 
     draw(pentagon, c);
+    `}
+</Diagramatics>
+<Diagramatics title="Diagram.add_points" subtitle="(points : Vector2[]) : Diagram" {width} {height}>
+    {`
+    let pentagon = regular_polygon(5,10);
+    let p2 = pentagon.add_points([V2(0,0), V2(-1,2), V2(9,5)]);
+
+    draw(p2);
     `}
 </Diagramatics>
 

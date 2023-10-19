@@ -14,8 +14,8 @@
     import '../guides.css'
     import { base } from '$app/paths';
 
-    var width = 200;
-    var height = 200;
+    var width = 150;
+    var height = 150;
 </script>
 
 <style>
@@ -212,6 +212,85 @@
         draw(...lines);
         `}
     </Diagramatics>
+
+    <hr>
+    <h1>Styling Text</h1>
+    <Diagramatics title="Diagram.fontfamily" subtitle="(fontfamily : string) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontfamily('sans-serif');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.fontsize" subtitle="(fontsize : number) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontsize(50);
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.fontweight" subtitle="(fontweight : 'normal' | 'bold' | 'bolder' | 'lighter' | number ) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontweight('bold');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.move_origin_text" subtitle="(anchor : string) : Diagram" {width} {height}>
+        {`
+        // anchors can be :
+        // 'top-left', 'top-center', 'top-right',
+        // 'center-left', 'center-center', 'center-right',
+        // 'bottom-left', 'bottom-center', 'bottom-right',
+
+        let sq  = square(10).stroke('lightgrey');
+        let tx1 = text('hello').move_origin_text('bottom-right').position(V2(0,0));
+        let tx2 = text('there').move_origin_text('top-left').position(V2(0,0));
+        draw(sq, tx1, tx2);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.textfill" subtitle="(color : string) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').textfill('blue');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.textstroke" subtitle="(color : string) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontweight('bold').textstroke('blue');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.textstrokewidth" subtitle="(width : number) : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontweight('bold').textstroke('blue').textstrokewidth(5);
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="Diagram.text_tovar" subtitle="() : Diagram" {width} {height}>
+        {`
+        // convert the text into mathematical italic
+        // equivalent to using \`textvar\`
+
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').text_tovar();
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.text_totext" subtitle="() : Diagram" {width} {height}>
+        {`
+        // convert the text from mathematical italic
+
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').text_tovar().text_totext();
+        draw(sq, tx);
+        `}
+    </Diagramatics>
+
 
     <hr>
     <h1>Applying the same style multiple time</h1>
