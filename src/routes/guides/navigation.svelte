@@ -3,8 +3,8 @@
     export let page : string = "";
     var pages : string[] = [
         'usage', 'shapes', 'transformation', 'style', 
-        'points', 'plot', 'alignment', 'interactivity', 'modifier',
-        'utilities', 'geometry', 'annotation',
+        'points', 'alignment', 'interactivity', 'modifier',
+        'utilities', 'geometry', 'annotation', 'plot',
     ];
 </script>
 
