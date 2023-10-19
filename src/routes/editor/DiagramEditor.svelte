@@ -59,7 +59,6 @@
         mod,
     ]
 
-    import { browser } from "$app/environment";
     import { code_str, eval_status, eval_msg } from './stores';
     import { onMount } from 'svelte';
 
@@ -68,7 +67,6 @@
     let prev_str = "";
 
     let typing_timeout : number | undefined = undefined;
-
     const draw = (...diagrams : Diagram[]) => {
         if (diagram_svg == null) return;
         draw_to_svg(diagram_svg, diagram_combine(...diagrams));
@@ -111,7 +109,6 @@
                 wait_typing_show_error(e as Error)
             }, 500);
         } finally {
-            if (browser) localStorage.setItem('editorCode', str);
             if(success){
                 prev_str = str;
                 eval_status.set('success');
@@ -157,9 +154,7 @@
         typing_timeout = undefined;
     }
 
-    code_str.subscribe((value) => {
-        eval_diagram(value);
-    });
+    code_str.subscribe((value) => { eval_diagram(value); });
 </script>
 
 <div class="top-block">

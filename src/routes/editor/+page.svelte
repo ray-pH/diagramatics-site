@@ -12,16 +12,11 @@
     import DiagramEditor from './DiagramEditor.svelte';
     import 'diagramatics/css/diagramatics.css'
     import { base } from '$app/paths';
-
-    let initial_str = 
-`let sq  = square(10);
-let sq2 = square(4).fill('lightblue'); 
-draw(sq, sq2);`;
 </script>
 
 <Header />
 
 <div class="container">
     <DiagramEditor/>
-    <Editor {initial_str}/>
+    <Editor/>
 </div>

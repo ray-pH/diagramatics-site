@@ -8,7 +8,10 @@
     import { code_str, eval_status, eval_msg } from './stores';
     import { browser } from "$app/environment";
 
-    export let initial_str : string = "";
+    let initial_str = 
+`let sq  = square(10);
+let sq2 = square(4).fill('lightblue'); 
+draw(sq, sq2);`;
 
     let status : 'success' | 'waiting' | 'error' = 'waiting';
     eval_status.subscribe((st) => { status = st; });
@@ -23,7 +26,10 @@
 
     function extension_update_listener() { 
         return EditorView.updateListener.of( (v) => {
-            if (v.docChanged) code_str.set(v.state.doc.toString());
+            if (v.docChanged) {
+                code_str.set(v.state.doc.toString());
+                if (browser) localStorage.setItem('editorCode',v.state.doc.toString());
+            }
         });
     };
 
