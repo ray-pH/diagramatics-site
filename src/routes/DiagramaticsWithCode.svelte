@@ -88,7 +88,9 @@
     function handle_guiderefs(code_pre : Element){
         // get all function and methods, put href for all the supported names
         let function_elems = code_pre.getElementsByClassName('function_');
-        for(let elem of function_elems as HTMLCollectionOf<HTMLSpanElement>){
+        let class_elems    = code_pre.getElementsByClassName('class_');
+        let elems = [...function_elems, ...class_elems] as HTMLSpanElement[];
+        for(let elem of elems){
             let str = get_guideref_elementstr(elem);
             if(str){
                 elem.innerHTML = str;
