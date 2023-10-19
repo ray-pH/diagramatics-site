@@ -142,7 +142,7 @@
         let ax = axes_empty();
         let ta = xtickmark(0.5, 0, 'a');
         let tb = xtickmark(1.5, 0, 'b');
-        let tc = xtickmark(-1,  0, 'c', 1);
+        let tc = xtickmark(-1,  0, 'c', {ticksize: 1});
         draw(ax, ta, tb, tc);
         `}
     </Diagramatics>
@@ -152,7 +152,7 @@
         let ax = axes_empty();
         let ta = ytickmark(0.5, 0, 'a');
         let tb = ytickmark(1.5, 0, 'b');
-        let tc = ytickmark(-1,  0, 'c', 1);
+        let tc = ytickmark(-1,  0, 'c', {ticksize: 1});
         draw(ax, ta, tb, tc);
         `}
     </Diagramatics>
