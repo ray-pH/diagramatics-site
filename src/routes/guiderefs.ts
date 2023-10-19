@@ -51,6 +51,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 		'plotv', 'plot', 'plotf',
 		'axes_empty', 'axes_corner_empty',
 		'xyaxes', 'xycorneraxes', 'xygrid',
+		'xtickmark', 'ytickmark', 'axes_transform',
 	]
 	for (let plot of f_plot) {
 		guiderefs[plot] = `${base}/guides/plot#${plot}`;
