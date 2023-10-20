@@ -144,7 +144,7 @@
 
             draw(
                 ceiling,
-                ropes, trackline, 
+                trackline, ropes,
                 pulley1, pulley2,
                 box,
                 annotations, vectors,
