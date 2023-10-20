@@ -1,5 +1,6 @@
 <script lang="ts">
     import {     
+        download_svg_as_png, download_svg_as_svg,
         Diagram, polygon, line, curve, empty, text, diagram_combine,
         Vector2, V2, Vdir,
         from_degree, linspace, range, array_repeat,
@@ -186,6 +187,13 @@
         }
         input.click();
     }
+
+    function download_svg() {
+        download_svg_as_svg(diagram_svg);
+    }
+    function download_png() {
+        download_svg_as_png(diagram_svg);
+    }
 </script>
 
 <div class="top-block">
@@ -196,16 +204,17 @@
     </div>
 
     <div class="svg-settings-container">
-        <!-- <button id="svg-preview-button" class="svg-settings-button" on:click={() => alert('not implemented')}> -->
-        <!--     preview</button> -->
-        <button id="svg-save-button" class="svg-settings-button" on:click={() => alert('not implemented')}>
-            save image</button>
-        <!-- <button id="svg-share-button" class="svg-settings-button" on:click={() => alert('not implemented')}> -->
-        <!--     share</button> -->
+        <span class="svg-settings-span">code</span>
         <button id="svg-load-code-button" class="svg-settings-button" on:click={load_code}>
             load code</button>
         <button id="svg-save-code-button" class="svg-settings-button" on:click={download_code}>
             save code</button>
+        <hr>
+        <span class="svg-settings-span">save image</span>
+        <button id="svg-save-button" class="svg-settings-button" on:click={download_svg}>
+            svg</button>
+        <button id="svg-save-button" class="svg-settings-button" on:click={download_png}>
+            png</button>
     </div>
 </div>
 
@@ -224,6 +233,7 @@
         border-radius: 15px;
         padding: 10px;
         width:100px;
+        text-align: right;
         /* display: inline-block; */
     }
 
@@ -231,6 +241,14 @@
         margin-left: 10px;
     }
 
+    .svg-settings-span{
+        font-size: 0.8em;
+    }
+    .svg-settings-span::after{
+        content: '\a0\a0';
+        background-color: #aec7e8;
+        margin-left: 0.6em;
+    }
     .svg-settings-button{
         border: none;
         font-family: inherit;
@@ -243,20 +261,5 @@
     }
     .svg-settings-button:hover{
         background-color: #aec7e8;
-    }
-
-
-    /* popup */
-    #share-popup{
-        font-size: 0.8em;
-        background-color: #DDD;
-        padding: 20px;
-        border-radius: 15px;
-        position: absolute;
-        top: 100px;
-        right: 150px;
-    }
-    #share-popup-close{
-        float: right;
     }
 </style>
