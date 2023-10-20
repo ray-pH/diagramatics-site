@@ -67,6 +67,8 @@
     let control_div : HTMLDivElement;
     let prev_valid_str = "";
     let curr_str = "";
+    let width  = 300;
+    let height = 300;
 
     let typing_timeout : number | undefined = undefined;
     const draw = (...diagrams : Diagram[]) => {
@@ -198,7 +200,7 @@
 
 <div class="top-block">
     <div class="svg-container">
-        <svg id="svg" width="300px" height="300px" bind:this={diagram_svg}></svg>
+        <svg id="svg" width={width} height={height} bind:this={diagram_svg}></svg>
         <div id="control-container" bind:this={control_div}>
         </div>
     </div>
@@ -215,6 +217,15 @@
             svg</button>
         <button id="svg-save-button" class="svg-settings-button" on:click={download_png}>
             png</button>
+        <hr>
+        <!-- input for width and height -->
+        <span class="svg-settings-span">dimension</span>
+        <div class="svg-settings-dimension">
+            <label for="width">width</label>
+            <input type="number" id="width" bind:value={width} min="0" step="1"/>
+            <label for="height">height</label>
+            <input type="number" id="height" bind:value={height} min="0" step="1"/>
+        </div>
     </div>
 </div>
 
@@ -261,5 +272,12 @@
     }
     .svg-settings-button:hover{
         background-color: #aec7e8;
+    }
+    .svg-settings-dimension{
+        margin-top: 5px;
+        font-size: 0.8em;
+    }
+    .svg-settings-dimension>input{
+        width:50%;
     }
 </style>
