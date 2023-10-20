@@ -97,8 +97,25 @@
         font-size: 1.1em;
         color: #1f77b4;
     }
-    #dg-url{
+    i{
+        color: gray;
+    }
+    .code-playground-card>img{
+        width: 2em;
+        height: 2em;
+        vertical-align: middle;
+        background: white;
+        border-radius: 10px;
+    }
+    .code-playground-card{
+        border: 1px solid #1f77b4;
+        border-radius: 10px;
+        padding: 10px 15px;
         color: #1f77b4;
+    }
+    .code-playground-card:hover{
+        background: #1f77b4;
+        color: white;
     }
 </style>
 
@@ -106,7 +123,25 @@
 <div class="guides-container">
     <Navigation page="usage"/>
     <h1>Try Online</h1>
-    Try online : <a id="dg-url" href="{base}/editor/">Diagramatics Online Editor</a>
+    Try online &nbsp;
+    <a class="code-playground-card" 
+       href="{base}/editor/" target="_blank">
+        <img src="{base}/assets/diagramatics_logo.png" alt="diagramatics_logo">
+        Diagramatics Online Editor
+    </a>
+    <br>
+    <p><i>Or use online code playgrounds</i></p>
+    <a class="code-playground-card" 
+        href="https://jsfiddle.net/photon_cruncher/b2yk789w/" target="_blank">
+        <img src="{base}/assets/jsfiddle.png" alt="jsfiddle_logo">
+        Edit in JSFiddle
+    </a>
+    <a class="code-playground-card" 
+        href="https://jsitor.com/bfkx-gnfxz" target="_blank">
+        <img src="{base}/assets/jsitor.png" alt="jsitor_logo">
+        Edit in JSitor
+    </a>
+
     <br> <br>
     <hr>
     <h1>Install</h1>
