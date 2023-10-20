@@ -155,6 +155,7 @@ draw(sq, sq2);`;
 .editor-footer{
     font-family: 'ubuntu', 'sans-serif';
     font-style: italic;
+    font-size: 0.8em;
 }
 .editor-footer>code{
     font-style: normal;
