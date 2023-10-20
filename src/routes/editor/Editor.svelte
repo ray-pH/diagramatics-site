@@ -104,6 +104,9 @@ draw(sq, sq2);`;
     <div id="editor" bind:this={editor_div}>
     </div>
 </div>
+<div class="editor-footer">
+    *for the online editor only: you can use <code>editor.set_dimension(width,height)</code> to set the dimension from the code
+</div>
 
 <style>
 .editor-container{
@@ -148,6 +151,18 @@ draw(sq, sq2);`;
     margin-right: 10px;
     float: right;
 }
+
+.editor-footer{
+    font-family: 'ubuntu', 'sans-serif';
+    font-style: italic;
+}
+.editor-footer>code{
+    font-style: normal;
+    background-color: #DDD;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
 
 
 </style>
