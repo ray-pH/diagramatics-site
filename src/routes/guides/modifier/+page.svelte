@@ -105,7 +105,7 @@
 
     <hr>
 
-    <Diagramatics title="mod.round_corner" subtitle="(radius : number | number[], point_indices? : number[]) : modifierFunction" {width} {height}>
+    <Diagramatics title="mod.round_corner" subtitle="(radius : number | number[], point_indices? : number[], count? : number = 40) : modifierFunction" {width} {height}>
         {`
         // Modifies a diagram by rounding the corners of a polygon or curve
         // \`radius\` : radius of the corner
