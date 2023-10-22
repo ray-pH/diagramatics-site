@@ -203,7 +203,11 @@ const list_alignment = [
 ]
 const list_utils = [
     [
-        "from_degree",
+        "to_degree",
+        "(angle : number)"
+    ],
+    [
+        "to_radian",
         "(angle : number)"
     ],
     [

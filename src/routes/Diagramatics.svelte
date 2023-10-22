@@ -2,7 +2,7 @@
     import {     
         Diagram, polygon, line, curve, empty, text, diagram_combine,
         Vector2, V2, Vdir,
-        from_degree, linspace, range, array_repeat,
+        to_radian, to_degree, linspace, range, array_repeat,
         linspace_exc, range_inc,
 
         draw_to_svg,
@@ -34,7 +34,7 @@
 
         Diagram, polygon, line, curve, empty, text, diagram_combine,
         Vector2, V2, Vdir,
-        from_degree, linspace, range, array_repeat,
+        to_radian, to_degree, linspace, range, array_repeat,
         linspace_exc, range_inc,
 
         draw_to_svg,

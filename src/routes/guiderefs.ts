@@ -82,7 +82,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 	guiderefs['apply'] = `${base}/guides/modifier#Diagram.apply`;
 
 	let f_utilities = [
-		'from_degree', 'array_repeat', 'linspace', 'linspace_exc', 'range', 'range_inc'
+		'to_radian', 'to_degree', 'array_repeat', 'linspace', 'linspace_exc', 'range', 'range_inc'
 	]
 	for (let utility of f_utilities) {
 		guiderefs[utility] = `${base}/guides/utilities#${utility}`;

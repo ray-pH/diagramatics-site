@@ -238,7 +238,7 @@ int.draw();
         }
 
         int.label('A',0);
-        int.locator('p', Vdir(from_degree(30)).scale(0.3), 0.1, 'blue');
+        int.locator('p', Vdir(to_radian(30)).scale(0.3), 0.1, 'blue');
         int.draw();
         `}
     </Diagramatics>

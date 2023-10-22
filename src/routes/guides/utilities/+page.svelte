@@ -89,12 +89,21 @@
         `}
     </Diagramatics>
 
-    <Diagramatics title="from_degree" subtitle="(angle : number)" {width} {height}>
+    <Diagramatics title="to_radian" subtitle="(angle : number)" {width} {height}>
         {`
         // helper function to convert from degrees to radians
 
-        let angle = from_degree(30); // 0.5235987755982988 
-        let ang2  = from_degree(90); // 1.5707963267948966 = Math.PI/2
+        let angle = to_radian(30); // 0.5235987755982988 
+        let ang2  = to_radian(90); // 1.5707963267948966 = Math.PI/2
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="to_degree" subtitle="(angle : number)" {width} {height}>
+        {`
+        // helper function to convert from radians to degrees
+
+        let angle = to_degree(Math.PI/2); // 90
+        let ang2  = to_degree(Math.PI/6); // 30
         `}
     </Diagramatics>
 

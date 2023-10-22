@@ -204,7 +204,7 @@
     default_diagram_style['stroke-width'] = 2;
     default_textdata['font-size'] = 21;
 
-    let angle = from_degree(30);
+    let angle = to_radian(30);
     let horizontal = line(V2(0,0), V2(8,0))
         .stroke('gray').strokedasharray([5,5]);
     let plane = line(V2(0,0), Vdir(angle).scale(10)).stroke('gray');
@@ -283,7 +283,7 @@
     let bean0 = circle(24).scale(V2(1,1.5))
         .move_origin('bottom-center').position().translate(V2(0,60))
         .strokewidth(2);
-    let angle_sep = from_degree(36);
+    let angle_sep = to_radian(36);
     let bean1 = bean0.rotate(angle_sep/2*3, pivot);
     let bean2 = bean0.rotate(angle_sep/2, pivot);
     let bean3 = bean2.hflip(0);
@@ -305,7 +305,7 @@
     let basebg2 = base2.translate(V2(5,5));
     let basebg  = basebg1.combine(basebg2).fill('lightblue').stroke('none');
     let beanbg  = bean2.combine(bean3)
-        .rotate(from_degree(-4), pivot).fill('lightblue').stroke('none');
+        .rotate(to_radian(-4), pivot).fill('lightblue').stroke('none');
 
 
     draw(
