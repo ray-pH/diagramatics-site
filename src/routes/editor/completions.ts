@@ -203,6 +203,30 @@ const list_alignment = [
     [
         "distribute_vertical_and_align",
         "(diagrams : Diagram[], vertical_space : number, alignment : 'left'|'center'|'right') : Diagram[]"
+    ],
+    [
+        "align_vertical_c",
+        "(diagrams : Diagram[], alignment : 'top'|'center'|'bottom') : Diagram[]"
+    ],
+    [
+        "align_horizontal_c",
+        "(diagrams : Diagram[], alignment : 'left'|'center'|'right') : Diagram[]"
+    ],
+    [
+        "distribute_horizontal_c",
+        "(diagrams : Diagram[], space : number=0) : Diagram[]"
+    ],
+    [
+        "distribute_vertical_c",
+        "(diagrams : Diagram[], space : number=0) : Diagram[]"
+    ],
+    [
+        "distribute_horizontal_and_align_c",
+        "(diagrams : Diagram[], horizontal_space : number, alignment : 'top'|'center'|'bottom') : Diagram[]"
+    ],
+    [
+        "distribute_vertical_and_align_c",
+        "(diagrams : Diagram[], vertical_space : number, alignment : 'left'|'center'|'right') : Diagram[]"
     ]
 ]
 const list_utils = [

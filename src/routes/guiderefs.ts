@@ -61,6 +61,9 @@ export function generate_guiderefs() : {[key : string] : string} {
 		'align_vertical', 'align_horizontal',
 		'distribute_horizontal', 'distribute_vertical',
 		'distribute_horizontal_and_align', 'distribute_vertical_and_align',
+        'align_vertical_c', 'align_horizontal_c',
+        'distribute_horizontal_c', 'distribute_vertical_c',
+        'distribute_horizontal_and_align_c', 'distribute_vertical_and_align_c',
 	]
 	for (let alignment of f_alignment) {
 		guiderefs[alignment] = `${base}/guides/alignment#${alignment}`;
