@@ -43,6 +43,8 @@
 
 <h1>Example Articles</h1>
 <a class="article-link" href="./pulley/">Mechanical Advantages of Pulleys</a>
+<br>
+<a class="article-link" href="./dice/">Rolling Dice : Central limit theorem</a>
 
 <br><br>
 <hr>
@@ -90,6 +92,36 @@
     let graph_f = plotf(f, opt).stroke('red').strokewidth(2);
     let graph_g = plotf(g, opt).stroke('blue').strokewidth(2);
     draw(ax, graph_f, graph_g);
+    `}
+</Diagramatics>
+<hr>
+
+<Diagramatics title="Dice" {margin_right} {width} {height}>
+    {`
+    let pip_positions = {
+        1 : [V2(0,0)],
+        2 : [V2(-1,-1), V2(1,1)],
+        3 : [V2(-1,-1), V2(0,0), V2(1,1)],
+        4 : [V2(-1,-1), V2(1,-1), V2(-1,1), V2(1,1)],
+        5 : [V2(-1,-1), V2(1,-1), V2(0,0), V2(-1,1), V2(1,1)],
+        6 : [V2(-1,-1), V2(1,-1), V2(-1,0), V2(1,0), V2(-1,1), V2(1,1)],
+    }
+    let generate_dice_pips = (n) => {
+        let positions = pip_positions[n];
+        let pips = positions.map((p) => circle(0.25).position(p));
+        return diagram_combine(...pips).fill('black').stroke('none');
+    }
+    let generate_dice = (n) => {
+        let outline = square(4).apply(mod.round_corner(0.5))
+            .fill('none').stroke('black').strokewidth(2);
+        let pips = generate_dice_pips(n);
+        return diagram_combine(outline, pips);
+    }
+    let dice = [1,2,3,4,5,6].map((n) => generate_dice(n));
+    let dice123 = distribute_vertical_and_align_c(dice.slice(0,3), 1);
+    let dice456 = distribute_vertical_and_align_c(dice.slice(3,6), 1);
+    let diceall = distribute_horizontal_and_align_c([dice123, dice456], 1);
+    draw(diceall);
     `}
 </Diagramatics>
 <hr>
@@ -226,7 +258,7 @@
         annotation.vector(Vdir(angle).scale(1.2), 'f', V2(0.0,-0.6), arrow_head_size)
             .position(plane.parametric_point(0.6)),
         annotation.vector(Vdir(angle).scale(2), 'F', V2(-0.5,-1.0), arrow_head_size)
-            .move_origin(Vdir(angle).scale(2)).position(sq.parametric_point(0.5,0)),
+            .move_origin(Vdir(angle).scale(2)).position(sq.parametric_point(0.5,3)),
     );
     let angle_annotation = annotation.angle([V2(1,0), V2(0,0), Vdir(angle)], '\\\\theta', 1, 1.5);
 
