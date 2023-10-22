@@ -26,7 +26,7 @@
     <h1>Building Blocks</h1>
 
     Diagramatics provides a set of basic building blocks for creating diagrams. 
-    These are <code>polygon</code>, <code>curve</code>, and <code>text</code>.
+    These are <code>polygon</code>, <code>curve</code>, <code>text</code>, and <code>image</code>.
 
     <Diagramatics title="polygon" subtitle="(points : Vector2[]) : Diagram" {width} {height}>
         {`
@@ -53,6 +53,16 @@
         draw(sq, tx);
 
         // tx.type == 'text'
+        `}
+    </Diagramatics>
+    <Diagramatics title="image" subtitle="(src : string, width : number, height : number) : Diagram" {width} {height}>
+        {`
+        // *for math variable italic style, use \`textvar()\`
+        let src = "https://photon-ray.xyz/img/rlogo.jpg";
+        let img = image(src,10,10);
+        draw(img);
+
+        // img.type == 'image'
         `}
     </Diagramatics>
 

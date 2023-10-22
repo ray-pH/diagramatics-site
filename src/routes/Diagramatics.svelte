@@ -1,6 +1,6 @@
 <script lang="ts">
     import {     
-        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Diagram, polygon, line, curve, empty, text, image, diagram_combine,
         Vector2, V2, Vdir,
         to_radian, to_degree, linspace, range, array_repeat,
         linspace_exc, range_inc,
@@ -32,7 +32,7 @@
     let HACK_FOR_DIAGRAMATICS_IMPORT = [
         dgtext,
 
-        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Diagram, polygon, line, curve, empty, text, image, diagram_combine,
         Vector2, V2, Vdir,
         to_radian, to_degree, linspace, range, array_repeat,
         linspace_exc, range_inc,

@@ -1,7 +1,7 @@
 <script lang="ts">
     import {     
         download_svg_as_png, download_svg_as_svg,
-        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Diagram, polygon, line, curve, empty, text, image, diagram_combine,
         Vector2, V2, Vdir,
         to_degree, to_radian, linspace, range, array_repeat,
         linspace_exc, range_inc,
@@ -33,7 +33,7 @@
     let HACK_FOR_DIAGRAMATICS_IMPORT : any = [
         dgtext,
 
-        Diagram, polygon, line, curve, empty, text, diagram_combine,
+        Diagram, polygon, line, curve, empty, text, image, diagram_combine,
         Vector2, V2, Vdir,
         to_degree, to_radian, linspace, range, array_repeat,
         linspace_exc, range_inc,

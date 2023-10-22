@@ -119,6 +119,10 @@ const list_shapes = [
         "(str : string) : Diagram"
     ],
     [
+        "image",
+        "(src : string, width : number, height : number) : Diagram"
+    ],
+    [
         "rectangle",
         "(width : number, height : number) : Diagram"
     ],
@@ -293,6 +297,14 @@ const list_transform = [
     [
         "scale",
         "(scale : Vector2|number, origin? : Vector2) : Diagram"
+    ],
+    [
+        "skewX",
+        "(angle : number, base? : Vector2) : Diagram"
+    ],
+    [
+        "skewY",
+        "(angle : number, base? : Vector2) : Diagram"
     ],
     [
         "vflip",

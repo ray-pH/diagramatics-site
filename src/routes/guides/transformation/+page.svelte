@@ -24,8 +24,7 @@
 
     <h1>Transformation</h1>
     Diagram that has been created can be transformed.
-    Diagramatics provide the following transformation 
-    <code>translate</code>, <code>position</code>, <code>rotate</code>, <code>scale</code>, <code>reflect_over_point</code>, <code>reflect_over_line</code>, <code>reflect</code>, <code>vflip</code>, <code>hflip</code>, <code>move_origin</code>, <code>move_origin_text</code>.
+    Diagramatics provide the following transformation :
 
     <Diagramatics title="Diagram.translate" subtitle="(v : Vector2) : Diagram" {width} {height}>
         {`
@@ -83,6 +82,43 @@
         draw(sq0, sq1);
         `}
     </Diagramatics>
+
+    <Diagramatics title="Diagram.skewX" subtitle="(angle : number, base? : Vector2) : Diagram" {width} {height}>
+        {`
+        // if base is left undefined, the diagram will skew about its origin
+        let sq = square(10);
+        let sq0 = sq.stroke('grey').strokedasharray([5]);
+        let sq1 = sq.skewX(to_radian(30));
+        draw(sq0, sq1);
+        `}
+    </Diagramatics>
+    <Diagramatics {width} {height}>
+        {`
+        let sq = square(10);
+        let sq0 = sq.stroke('grey').strokedasharray([5]);
+        let sq1 = sq.skewX(to_radian(30), sq.get_anchor('top-center'));
+        draw(sq0, sq1);
+        `}
+    </Diagramatics>
+
+    <Diagramatics title="Diagram.skewY" subtitle="(angle : number, base? : Vector2) : Diagram" {width} {height}>
+        {`
+        // if base is left undefined, the diagram will skew about its origin
+        let sq = square(10);
+        let sq0 = sq.stroke('grey').strokedasharray([5]);
+        let sq1 = sq.skewY(to_radian(30));
+        draw(sq0, sq1);
+        `}
+    </Diagramatics>
+    <Diagramatics {width} {height}>
+        {`
+        let sq = square(10);
+        let sq0 = sq.stroke('grey').strokedasharray([5]);
+        let sq1 = sq.skewY(to_radian(30), sq.get_anchor('center-left'));
+        draw(sq0, sq1);
+        `}
+    </Diagramatics>
+
 
     <Diagramatics title="Diagram.vflip" subtitle="(a? : number) : Diagram" {width} {height}>
         {`

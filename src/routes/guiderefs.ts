@@ -10,7 +10,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 	}
 
 	let f_shapes = [
-		'polygon', 'curve', 'text', 
+		'polygon', 'curve', 'text', 'image',
 		'rectangle', 'square', 'rectangle_corner',
 		'regular_polygon', 'regular_polygon_side', 'circle',  'line', 'arc', 'arrow', 'textvar',
 		'diagram_combine',
@@ -21,7 +21,7 @@ export function generate_guiderefs() : {[key : string] : string} {
 
 	let m_transformation = [
 		'translate',  'position', 'rotate', 'scale', 
-		'vflip', 'hflip',
+		'skewX', 'skewY', 'vflip', 'hflip',
 		'reflect', 'reflect_over_point', 'reflect_over_line', 'transform'
 	]
 	for (let transformation of m_transformation) {
