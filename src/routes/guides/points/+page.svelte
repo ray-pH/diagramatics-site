@@ -87,6 +87,17 @@ You can move the origin of the diagram using <code>Diagram.move_origin</code>
     `}
 </Diagramatics>
 
+You can retrieve origin of the diagram using <code>Diagram.origin</code> property
+<Diagramatics title="Diagram.origin" subtitle=": Vector2" subtitle_is_args={false} {width} {height}>
+    {`
+    let sq_red  = square(10).fill('blue' ).move_origin('bottom-left').position(V2(2,2));
+    let p       = sq_red.origin;
+    let sq_blue = square(5).fill('white').position(p);
+
+    draw(sq_red, sq_blue);
+    `}
+</Diagramatics>
+
 
     <!-- /** -->
     <!--  * Get the point on the path at t -->
