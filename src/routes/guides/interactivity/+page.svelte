@@ -110,7 +110,7 @@ int.draw();
     Slider allows you to select a value from a range.
     <!-- public slider(variable_name : string, min : number = 0, max : number = 100, value : number = 50, step : number = -1,  --> <!-- time : number = 1.5){ -->
     <Diagramatics title="Interactive.slider"
-                  subtitle="(variable_name : string, min : number, max : number, value : number, step? : number, time? : number)"
+                  subtitle="(variable_name : string, min : number, max : number, value : number, <br>, step? : number, time? : number, display_format_func? : formatFunction)"
                   subtitle_newline={true}
         {width} {height}>
         {`
@@ -219,7 +219,7 @@ int.draw();
 
     <h2>Label</h2>
     Label allows you to display a value. You can set the value of the label using <code>int.set(varname : string, value : any)</code>.
-    <Diagramatics title="Interactive.label" subtitle="(variable_name : string, value : any)"{width} {height}>
+    <Diagramatics title="Interactive.label" subtitle="(variable_name : string, value : any, display_format_func? : formatFunction)"{width} {height}>
         {`
         int.draw_function = (inp) => {
             // read the value of the variable \`p\`
@@ -277,6 +277,23 @@ int.draw();
             int.set('x', int.get('x') + 1);
             int.draw();
         }
+        `}
+    </Diagramatics>
+
+    <hr>
+    <h1>Display Format</h1>
+    By default, the <code>label</code> and <code>slider</code> will display the value as <code>`italic_name` = `value`</code>. You can change the display format by passing in a function to the <code>display_format_func</code> parameter.
+    <p>
+    The formatFunction have the following signature:
+    <code>(name : string, value : any, prec? : number) => string</code>
+    </p>
+    <Diagramatics title="formatFunction" subtitle="(name : string, value : any, prec? : number) : string" {width} height={10}>
+        {`
+        function my_fmt(name, value, prec){
+            return str_to_mathematical_italic(name) + ' is ' + value.toFixed(prec);
+        }
+        int.slider('x', 0, 10, 1, undefined, undefined, my_fmt);
+        int.draw();
         `}
     </Diagramatics>
 
