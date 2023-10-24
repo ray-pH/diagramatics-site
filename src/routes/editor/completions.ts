@@ -36,6 +36,7 @@ function dg_completions_Diagram_method(context : any) {
     let cl_transform = generate_completions_list(list_transform, "method", "transformation");
     let cl_style     = generate_completions_list(list_style, "method", "style");
     let cl_points    = generate_completions_list(list_points, "method", "points");
+    let cl_technical = generate_completions_list(list_technical, "method", "technical");
     let completions_list = cl_transform.concat(cl_style).concat(cl_points);
     let before = context.matchBefore(/\w+/)
     // let is_method = context.matchBefore(/\w+\.(\w+)$/)
@@ -511,6 +512,21 @@ const list_annot = [
         "(p1 : Vector2, p2 : Vector2, str : string, offset : number,     tablength? : number, textoffset? : number, tabsymmetric : boolean=true) : Diagram"
     ]
 ]
+const list_technical = [
+    [
+        "mut",
+        "() : Diagram"
+    ],
+    [
+        "immut",
+        "() : Diagram"
+    ],
+    [
+        "copy",
+        "() : Diagram"
+    ]
+]
+
 
 
 // ============================ scraper

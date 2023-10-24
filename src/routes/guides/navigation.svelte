@@ -5,6 +5,7 @@
         'usage', 'shapes', 'transformation', 'style', 
         'points', 'alignment', 'interactivity', 'modifier',
         'utilities', 'geometry', 'annotation', 'plot',
+        'technical',
     ];
 </script>
 

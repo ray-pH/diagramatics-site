@@ -61,7 +61,7 @@ export function generate_guiderefs() : {[key : string] : string} {
         'align_vertical', 'align_horizontal',
         'distribute_horizontal', 'distribute_vertical',
         'distribute_horizontal_and_align', 'distribute_vertical_and_align',
-	'distribute_grid_row',
+        'distribute_grid_row',
     ]
     for (let alignment of f_alignment) {
         guiderefs[alignment] = `${base}/guides/alignment#${alignment}`;
@@ -106,6 +106,12 @@ export function generate_guiderefs() : {[key : string] : string} {
         guiderefs[`annotation.${annotation}`] = `${base}/guides/annotation#annotation.${annotation}`;
     }
 
+    let m_technical = [
+        'mut', 'immut', 'copy'
+    ]
+    for (let technical of m_technical) {
+        guiderefs[technical] = `${base}/guides/technical#Diagram.${technical}`;
+    }
 
     return guiderefs;
 }
