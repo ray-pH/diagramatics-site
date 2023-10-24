@@ -71,7 +71,8 @@
     }
 
     function get_guideref_elementstr(elem : HTMLSpanElement) : string | null {
-        let name = elem.innerText;
+        let name = elem.textContent;
+        if (name == null) return null;
         // check for mod.* geometry.* etc.
         // check previous element
         let prev = elem.previousSibling;
@@ -115,9 +116,11 @@
 </script>
 
 <div class="example">
-    <Diagramatics {width} {height} {margin_right}>
-        <slot/>
-    </Diagramatics>
+    {#if width != 0 && height != 0}
+        <Diagramatics {width} {height} {margin_right}>
+            <slot/>
+        </Diagramatics>
+    {/if}
     <div class="example-code-container"> 
         <span class="example-title" id={title}>
             {#if title.startsWith("Diagram.") && title_is_fname}
