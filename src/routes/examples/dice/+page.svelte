@@ -681,4 +681,31 @@ It's important to note that the Central Limit Theorem is typically stated for me
 <br>
 <hr>
 
+<details>
+    <summary>Show Diagram SourceCode</summary>
+    <DiagramaticsWithCode width={0} title="single die 1">
+        {dg_single_small}
+    </DiagramaticsWithCode>
+    <hr>
+    <DiagramaticsWithCode width={0} title="single die 2">
+        {dg_single_big}
+    </DiagramaticsWithCode>
+    <hr>
+    <DiagramaticsWithCode width={0} title="double dice 1">
+        {dg_double_small}
+    </DiagramaticsWithCode>
+    <hr>
+    <DiagramaticsWithCode width={0} title="double dice 2">
+        {dg_double_big}
+    </DiagramaticsWithCode>
+    <hr>
+    <DiagramaticsWithCode width={0} title="m dice 1">
+        {dg_m_small}
+    </DiagramaticsWithCode>
+    <hr>
+    <DiagramaticsWithCode width={0} title="m dice 2">
+        {dg_m_big}
+    </DiagramaticsWithCode>
+</details>
+
 </div>
