@@ -117,6 +117,18 @@
         background: #1f77b4;
         color: white;
     }
+    .btn {
+        width: 200px;
+        font-family: inherit;
+        border-style: none;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #DDD;
+    }
+    .btn:hover{
+        cursor: pointer;
+        background-color: #EEE;
+    }
 </style>
 
 <Header />
@@ -347,6 +359,32 @@ let circ = circle(2).fill('red').translate(V2(5,0));
         </code></pre>
     </div>
 
+    <hr>
+    <h1>Downloading the Diagram</h1>
+    You can download the diagram as an <b>svg</b> or <b>png</b> file using the <code>download_svg_as_svg()</code> and <code>download_svg_as_png()</code> functions respectively.<br><br>
+    The size of the image will follow the size of the svg element in the html file.
+    <Diagramatics title="download_svg_as_svg" subtitle="(outer_svgelement : SVGSVGElement)" {width} height={10}>
+    </Diagramatics>
+    <Diagramatics title="download_svg_as_png" subtitle="(outer_svgelement : SVGSVGElement)" {width} {height}
+        hidden_code="diagram_svg.id = 'mysvg_svg'"
+        >
+        {`
+        let mysvg   = document.getElementById('mysvg_svg');
+        let btn_svg = document.getElementById('btn_download_svg_as_svg');
+        let btn_png = document.getElementById('btn_download_svg_as_png');
 
+        btn_svg.onclick = () => { download_svg_as_svg(mysvg); }
+        btn_png.onclick = () => { download_svg_as_png(mysvg); }
+
+        let sq  = square(10).fill('white');
+        let sq2 = square(4).fill('lightblue'); 
+        draw(sq, sq2);
+        `}
+    </Diagramatics>
+    <button id="btn_download_svg_as_svg" class="btn">Download as SVG</button>
+    <br><br>
+    <button id="btn_download_svg_as_png" class="btn">Download as PNG</button>
+    <br><br>
+    <hr>
 
 </div>

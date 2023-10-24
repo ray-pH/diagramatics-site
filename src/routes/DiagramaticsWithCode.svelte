@@ -19,6 +19,7 @@
     export let title_is_fname   : boolean = true;
     export let subtitle_newline : boolean = false;
     export let use_guiderefs    : boolean = true;
+    export let hidden_code      : string  = "";
 
     // ======================== code
 
@@ -117,7 +118,7 @@
 
 <div class="example">
     {#if width != 0 && height != 0}
-        <Diagramatics {width} {height} {margin_right}>
+        <Diagramatics {width} {height} {margin_right} {hidden_code}>
             <slot/>
         </Diagramatics>
     {/if}
