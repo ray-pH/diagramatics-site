@@ -409,6 +409,10 @@ const list_style = [
         "(anchor : string) : Diagram"
     ],
     [
+        "textangle",
+        "(angle : number) : Diagram"
+    ],
+    [
         "textfill",
         "(color : string) : Diagram"
     ],

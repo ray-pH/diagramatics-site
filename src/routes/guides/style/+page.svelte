@@ -249,6 +249,14 @@
         draw(sq, tx1, tx2);
         `}
     </Diagramatics>
+    <Diagramatics title="Diagram.textangle" subtitle="(angle : number) : Diagram" {width} {height}>
+        {`
+        // anchors can be :
+        let sq  = square(10).stroke('lightgrey');
+        let tx = text('hello').textangle(to_radian(45));
+        draw(sq, tx);
+        `}
+    </Diagramatics>
     <Diagramatics title="Diagram.textfill" subtitle="(color : string) : Diagram" {width} {height}>
         {`
         let sq = square(10).stroke('lightgrey');
