@@ -11,6 +11,7 @@
     import Diagramatics from '../../Diagramatics.svelte'
     import DiagramaticsWithCode from '../../DiagramaticsWithCode.svelte'
     import 'diagramatics/css/diagramatics.css'
+    import './extra.css'
     import { base } from '$app/paths';
     var margin_right = 0;
     var width = 300;
@@ -229,7 +230,7 @@
         let xax = bar.xaxes(datanames, baropt);
         let yax = bar.yaxes(bincount.slice(1), baropt);
         let xlabel = text('value').move_origin_text('top-center')
-            .position(xax.get_anchor('bottom-center')).translate(V2(0,-1.5));
+            .position(xax.get_anchor('bottom-center')).translate(V2(0,-3));
         let ylabel = text('# of occurrence').move_origin_text('bottom-center')
             .position(yax.get_anchor('center-left')).translate(V2(-1.5,0))
             .textangle(to_radian(-90));
@@ -251,8 +252,8 @@
                 let dtop = dice_diagram[vtop-1].copy();
                 let dbot = dice_diagram[vbot-1].copy();
                 let lsum = text(vsum);
-                let pair = distribute_vertical_and_align_c([dtop, dbot, lsum], 1)
-                let bg   = bgrect.copy().position(pair.origin).translate(V2(0,-3));
+                let pair = distribute_vertical_and_align_c([lsum, dtop, dbot], 1)
+                let bg   = bgrect.copy().position(pair.origin).translate(V2(0,-4.5));
                 return bg.combine(pair).mut();
             });
             let dice = distribute_grid_row_c(dicepairlist, 4, 0.5, 0.5).flatten()
@@ -317,11 +318,11 @@
                 bbox : [V2(0,0), V2(40,26)],
                 ticksize: 0.5,
             }
-            let margin = rectangle_corner(V2(-7,-4), V2(40,28)).stroke('none');
+            let margin = rectangle_corner(V2(-7,-5), V2(40,28)).stroke('none');
             let xax = bar.xaxes(datanames, baropt);
             let yax = bar.yaxes(bincount.slice(2), baropt);
             let xlabel = text('value').move_origin_text('top-center')
-                .position(xax.get_anchor('bottom-center')).translate(V2(0,-1.5));
+                .position(xax.get_anchor('bottom-center')).translate(V2(0,-3));
             let ylabel = text('# of occurrence').move_origin_text('bottom-center')
                 .position(yax.get_anchor('center-left')).translate(V2(-5,0))
                 .textangle(to_radian(-90));
@@ -337,7 +338,7 @@
 
         const italic_n = str_to_mathematical_italic('n');
         int.label('n',10);
-        int.slider('log(n)', 0, 5, 1, 1, 1, (name,val) => \`log($\{italic_n\}) = $\{val\}\`);
+        int.slider('log(n)', 0, 5, 2, 1, 1, (name,val) => \`log($\{italic_n\}) = $\{val\}\`);
         reroll();
         int.draw();
 
@@ -347,6 +348,186 @@
             int.draw();
         }
         `
+
+    let dg_m_small =
+        `
+        let pip_positions = {
+            1 : [V2(0,0)],
+            2 : [V2(-1,-1), V2(1,1)],
+            3 : [V2(-1,-1), V2(0,0), V2(1,1)],
+            4 : [V2(-1,-1), V2(1,-1), V2(-1,1), V2(1,1)],
+            5 : [V2(-1,-1), V2(1,-1), V2(0,0), V2(-1,1), V2(1,1)],
+            6 : [V2(-1,-1), V2(1,-1), V2(-1,0), V2(1,0), V2(-1,1), V2(1,1)],
+        }
+        let generate_dice_pips = (n) => {
+            let positions = pip_positions[n];
+            let pips = positions.map((p) => regular_polygon(10,0.25).position(p));
+            return diagram_combine(...pips).fill('black').stroke('none');
+        }
+        let generate_dice = (n) => {
+            let outline = square(4)
+                .apply(mod.round_corner(0.5, undefined, 4))
+                .fill('white').stroke('black').strokewidth(2);
+            let pips = generate_dice_pips(n);
+            return diagram_combine(outline, pips);
+        }
+        const dice_diagram = [1,2,3,4,5,6].map((n) => generate_dice(n).mut());
+
+        function randint(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let dicevalue = new Array(20*5).fill(1);
+
+        function reroll() { 
+            for (let i = 0; i < dicevalue.length; i++) dicevalue[i] = randint(1,6);
+        }
+
+        // ============================= diagram
+
+        let margin = rectangle(69,32).stroke('grey').strokedasharray([5]);
+
+        int.draw_function = (inp) => {
+            let m = inp['m'];
+            let n = inp['n'];
+
+            let bgrect = rectangle(6,3 + 5*m).mut()
+                .move_origin('top-center').apply(mod.round_corner(1, undefined, 4))
+                .fill('lightblue').stroke('none')
+
+            let dicegrouplist = range(0,n).map((i) => {
+                let values = dicevalue.slice(5*i, 5*i+m);
+                let vsum = values.reduce((a,b) => a+b, 0);
+                let lsum = text(vsum).mut();
+                let dicedg = values.map((v) => dice_diagram[v-1].copy());
+                let pair = distribute_vertical_and_align_c([lsum, ...dicedg], 1)
+                let bg   = bgrect.copy().position(pair.get_anchor('top-center')).translate(V2(0,2));
+                return bg.combine(pair).mut();
+            });
+            let dice = distribute_horizontal_and_align_c(dicegrouplist, 0.5)
+                .move_origin('top-left').position(margin.get_anchor('top-left').add(V2(2,-2)));
+
+            // draw
+            draw(margin, dice);
+        }
+
+        int.slider('m', 1, 5, 5, 1);
+        int.slider('n', 1, 10, 10, 1);
+        reroll();
+        int.draw();
+
+        let btn = document.getElementById("roll_m_small");
+        btn.onclick = () => {
+            reroll();
+            int.draw();
+        }
+        `
+
+    let dg_m_big =
+        `
+        function randint(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        let dicevalue = new Array(10*100000).fill(1);
+        let bincount = new Array(1).fill(1);
+
+        function reroll() { 
+            for (let i = 0; i < dicevalue.length; i++) dicevalue[i] = randint(1,6);
+        }
+        function countbin(m,n){
+            // groups of m dice, roll n times
+            bincount = new Array(m*6+1).fill(0);
+            for (let i = 0; i < n; i++) {
+                let val = dicevalue.slice(m*i, m*(i+1)).reduce((a,b) => a+b, 0);
+                bincount[val] += 1;
+            } 
+        }
+        const fraction_max_m = [
+            1,
+            1/6, 6/36, 27/216, 146/1296, 780/7776,
+            4332/46656, 24017/279936, 135954/1679616, 767394/10077696, 4395456/60466176,
+        ]
+        const stdevs_m = [
+            0,
+            1.707825127659933, 2.4152294576982400, 2.958039891549808,
+            3.415650255319866, 3.8188130791298667, 4.183300132670378,
+            4.518480570575320, 4.8304589153964800, 5.123475382979799,
+            5.400617248673217,
+        ]
+        const i_sqrt2pi = 1/Math.sqrt(2*Math.PI);
+        function gen_normaldist(sigma, mu, n) {
+            return function(x) {
+                let pow = -0.5 * Math.pow((x-mu)/sigma, 2);
+                return n * i_sqrt2pi/sigma * Math.exp(pow);
+            }
+        }
+
+        // ============================= diagram
+
+        int.draw_function = (inp) => {
+            let l = inp['log(n)'];
+            let m = inp['m'];
+            let n = Math.pow(10,l);
+            int.set('n', n);
+            countbin(m, n);
+            let datanames = range_inc(m,6*m).map(String);
+            for (let i = 0; i < datanames.length; i++) {
+                if (i % m != 0) datanames[i] = '';
+            }
+
+            let maxy = Math.max(...bincount.slice(m), n*fraction_max_m[m]*1.4);
+            let baropt = {
+                yrange : [0,maxy+0.5],
+                bbox : [V2(0,0), V2(40,26)],
+                ticksize: 0.5,
+            }
+
+            let margin = rectangle_corner(V2(-7,-4), V2(40,28)).stroke('none');
+            let xax = bar.xaxes(datanames, baropt);
+            let yax = bar.yaxes(bincount.slice(m), baropt);
+            let xlabel = text('value').move_origin_text('top-center')
+                .position(xax.get_anchor('bottom-center')).translate(V2(0,-1.5));
+            let ylabel = text('# of occurrence').move_origin_text('bottom-center')
+                .position(yax.get_anchor('center-left')).translate(V2(-5,0))
+                .textangle(to_radian(-90));
+
+            let bars = bar.plot(bincount.slice(m), baropt).fill('lightblue').stroke('none');
+
+            // normal dist overlay
+            let axopt = {
+                xrange : [m,6*m],
+                yrange : baropt.yrange,
+                bbox   : baropt.bbox,
+            }
+            let f = gen_normaldist(stdevs_m[m], m*3.5, n);
+            let graph_f = plotf(f, axopt).mut()
+                .fill('none')
+                .stroke('black')
+                .strokedasharray([5])
+            
+            // draw
+            draw(
+                margin,
+                bars, xax, yax, xlabel, ylabel,
+                graph_f,
+            );
+        }
+
+        const italic_n = str_to_mathematical_italic('n');
+        int.label('n',10);
+        int.slider('log(n)', 0, 5, 2, 1, 1, (name,val) => \`log($\{italic_n\}) = $\{val\}\`);
+        int.slider('m', 1, 10, 2, 1);
+        reroll();
+        int.draw();
+
+        let btn = document.getElementById("roll_m_big");
+        btn.onclick = () => {
+            reroll();
+            int.draw();
+        }
+        `
+        
 
 </script>
 <style>
@@ -462,6 +643,38 @@ As you roll the die more times, you'll notice that the distribution starts to re
     </Diagramatics>
     <div class="btn-container">
         <button class="btn" id="roll_double_big">Re-roll</button>
+    </div>
+</center>
+
+<h3>3. Rolling more Dice</h3>
+
+<p>
+    As we extend our experiment to rolling <var>m</var> dice, where <var>m</var> is a larger number, we begin to witness the remarkable effect of the Central Limit Theorem. The Central Limit Theorem states that when you take the mean of a large enough sample from a population with any shape of distribution, the distribution of the sample means approaches a normal distribution.
+</p>
+
+<p>
+It's important to note that the Central Limit Theorem is typically stated for means. However, the concept can be extended to the sum of random variables as well, as we have seen with dice rolling. In essence, it demonstrates the remarkable regularity and predictability that emerges as we gather more data or observations.
+</p>
+
+<center>
+    <Diagramatics width={500} height={260}>
+        {dg_m_small}
+    </Diagramatics>
+    <div class="btn-container">
+        <button class="btn" id="roll_m_small">Re-roll</button>
+    </div>
+</center>
+
+<p>
+    For the dice-rolling experiment, this means that as you roll more dice and calculate the sum, the distribution of these sums will approximate a normal distribution. The more dice you roll, the closer the distribution gets to the classic bell curve. 
+</p>
+
+<center>
+    <Diagramatics width={500} height={310}>
+        {dg_m_big}
+    </Diagramatics>
+    <div class="btn-container">
+        <button class="btn" id="roll_m_big">Re-roll</button>
     </div>
 </center>
 
