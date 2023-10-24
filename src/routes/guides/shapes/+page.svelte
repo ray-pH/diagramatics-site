@@ -216,5 +216,23 @@
         `}
     </Diagramatics>
 
+    You can access the list of diagrams in a <code>Diagram</code> object using <code>Diagram.children</code>
+    <Diagramatics title="Diagram.children" subtitle=" : Diagram[]" {width} {height} subtitle_is_args={false}>
+        {`
+        // \`d0.combine(d1,d2,d3)\` is equivalent to
+        // \`diagram_combine(d0,d1,d2,d3)\`
+
+        let sq1 = square(10);
+        let sq2 = square(10).translate(V2(12,0));
+
+        let sq  = sq1.combine(sq2);
+        let sqs = sq.fill('lightblue').translate(V2(0,12));
+
+        let sqa = sq.children[0];
+        let sqb = sqs.children[1];
+        draw(sqa, sqb);
+        `}
+    </Diagramatics>
+
 </div>
 
