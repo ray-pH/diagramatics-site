@@ -69,7 +69,7 @@
         let l3 = geometry.line_extend(l0, 0, 2);
         let l4 = geometry.line_extend(l0, -2, -2);
         let lines = distribute_vertical([l0, l1, l2, l3, l4], 1);
-        draw(...lines);
+        draw(lines);
         `}
     </Diagramatics>
 

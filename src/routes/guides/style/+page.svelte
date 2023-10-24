@@ -138,13 +138,12 @@
         let l1 = l.strokelinecap('square');
         let l2 = l.strokelinecap('round');
 
-        [l0, l1, l2] = distribute_horizontal([l0,l1,l2], 0.2);
-
+        let ls = distribute_horizontal([l0,l1,l2], 0.2);
 
         // highlight to make it easier to see
-        let lhighlight = [l0,l1,l2].map(x => l.stroke('lightred').strokewidth(2).position(x.origin));
+        let lhighlight = ls.children.map(x => l.stroke('lightred').strokewidth(2).position(x.origin));
 
-        draw(l0, l1, l2, ...lhighlight);
+        draw(ls, ...lhighlight);
         `}
     </Diagramatics>
 
@@ -158,12 +157,12 @@
         let c1 = c.strokelinejoin('round');
         let c2 = c.strokelinejoin('bevel');
 
-        [c0, c1, c2] = distribute_vertical([c0,c1,c2], 0.2);
+        let cs = distribute_vertical([c0,c1,c2], 0.2);
 
         // highlight to make it easier to see
-        let chighlight = [c0,c1,c2].map(x => c.stroke('lightred').strokewidth(2).position(x.origin));
+        let chighlight = cs.children.map(x => c.stroke('lightred').strokewidth(2).position(x.origin));
 
-        draw(c0, c1, c2, ...chighlight);
+        draw(cs, ...chighlight);
         `}
     </Diagramatics>
 
@@ -190,7 +189,7 @@
         let l5 = l.strokedasharray([40,10,20,30]);
 
         let lines = distribute_vertical([l0,l1,l2,l3,l4,l5], 0.2);
-        draw(...lines);
+        draw(lines);
         `}
     </Diagramatics>
 
@@ -209,7 +208,7 @@
         let l1 = l.vectoreffect('none').strokewidth(1);
 
         let lines = distribute_vertical([l0,l1], 1.5);
-        draw(...lines);
+        draw(lines);
         `}
     </Diagramatics>
 

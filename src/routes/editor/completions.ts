@@ -182,52 +182,32 @@ const list_shapes = [
 const list_alignment = [
     [
         "align_vertical",
-        "(diagrams : Diagram[], alignment : 'top'|'center'|'bottom') : Diagram[]"
+        "(diagrams : Diagram[], alignment : 'top'|'center'|'bottom') : Diagram"
     ],
     [
         "align_horizontal",
-        "(diagrams : Diagram[], alignment : 'left'|'center'|'right') : Diagram[]"
+        "(diagrams : Diagram[], alignment : 'left'|'center'|'right') : Diagram"
     ],
     [
         "distribute_horizontal",
-        "(diagrams : Diagram[], space : number=0) : Diagram[]"
+        "(diagrams : Diagram[], space : number=0) : Diagram"
     ],
     [
         "distribute_vertical",
-        "(diagrams : Diagram[], space : number=0) : Diagram[]"
+        "(diagrams : Diagram[], space : number=0) : Diagram"
     ],
     [
         "distribute_horizontal_and_align",
-        "(diagrams : Diagram[], horizontal_space : number, alignment : 'top'|'center'|'bottom') : Diagram[]"
+        "(diagrams : Diagram[], horizontal_space : number, alignment : 'top'|'center'|'bottom') : Diagram"
     ],
     [
         "distribute_vertical_and_align",
-        "(diagrams : Diagram[], vertical_space : number, alignment : 'left'|'center'|'right') : Diagram[]"
+        "(diagrams : Diagram[], vertical_space : number, alignment : 'left'|'center'|'right') : Diagram"
     ],
     [
-        "align_vertical_c",
-        "(diagrams : Diagram[], alignment : 'top'|'center'|'bottom') : Diagram[]"
+        "distribute_grid_row",
+        "(diagrams : Diagram[], column_count : number, vertical_space? : number, horizontal_space? : number) : Diagram"
     ],
-    [
-        "align_horizontal_c",
-        "(diagrams : Diagram[], alignment : 'left'|'center'|'right') : Diagram[]"
-    ],
-    [
-        "distribute_horizontal_c",
-        "(diagrams : Diagram[], space : number=0) : Diagram[]"
-    ],
-    [
-        "distribute_vertical_c",
-        "(diagrams : Diagram[], space : number=0) : Diagram[]"
-    ],
-    [
-        "distribute_horizontal_and_align_c",
-        "(diagrams : Diagram[], horizontal_space : number, alignment : 'top'|'center'|'bottom') : Diagram[]"
-    ],
-    [
-        "distribute_vertical_and_align_c",
-        "(diagrams : Diagram[], vertical_space : number, alignment : 'left'|'center'|'right') : Diagram[]"
-    ]
 ]
 const list_utils = [
     [

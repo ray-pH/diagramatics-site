@@ -85,7 +85,7 @@
 
             // diagram1
             let dicelist = range(0,n).map((i) => dice_diagram[dicevalue[i]-1].copy());
-            let dice = distribute_grid_row_c(dicelist, 4, 0.5, 0.5).flatten()
+            let dice = distribute_grid_row(dicelist, 4, 0.5, 0.5).flatten()
                 .move_origin('top-left')
                 .position(subdiagram1.get_anchor('top-left').add(V2(2,-2)));
             // diagram2
@@ -252,11 +252,11 @@
                 let dtop = dice_diagram[vtop-1].copy();
                 let dbot = dice_diagram[vbot-1].copy();
                 let lsum = text(vsum);
-                let pair = distribute_vertical_and_align_c([lsum, dtop, dbot], 1)
+                let pair = distribute_vertical_and_align([lsum, dtop, dbot], 1)
                 let bg   = bgrect.copy().position(pair.origin).translate(V2(0,-4.5));
                 return bg.combine(pair).mut();
             });
-            let dice = distribute_grid_row_c(dicepairlist, 4, 0.5, 0.5).flatten()
+            let dice = distribute_grid_row(dicepairlist, 4, 0.5, 0.5).flatten()
                 .move_origin('top-left')
                 .position(subdiagram1.get_anchor('top-left').add(V2(2,-2)));
             let ddots = n > 7 ? ddots_ : empty(V2(0,0));
@@ -400,11 +400,11 @@
                 let vsum = values.reduce((a,b) => a+b, 0);
                 let lsum = text(vsum).mut();
                 let dicedg = values.map((v) => dice_diagram[v-1].copy());
-                let pair = distribute_vertical_and_align_c([lsum, ...dicedg], 1)
+                let pair = distribute_vertical_and_align([lsum, ...dicedg], 1)
                 let bg   = bgrect.copy().position(pair.get_anchor('top-center')).translate(V2(0,2));
                 return bg.combine(pair).mut();
             });
-            let dice = distribute_horizontal_and_align_c(dicegrouplist, 0.5)
+            let dice = distribute_horizontal_and_align(dicegrouplist, 0.5)
                 .move_origin('top-left').position(margin.get_anchor('top-left').add(V2(2,-2)));
 
             // draw

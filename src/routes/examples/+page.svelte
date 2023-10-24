@@ -118,9 +118,7 @@
         return diagram_combine(outline, pips);
     }
     let dice = [1,2,3,4,5,6].map((n) => generate_dice(n));
-    let dice123 = distribute_vertical_and_align_c(dice.slice(0,3), 1);
-    let dice456 = distribute_vertical_and_align_c(dice.slice(3,6), 1);
-    let diceall = distribute_horizontal_and_align_c([dice123, dice456], 1);
+    let diceall = distribute_grid_row(dice, 2, 1, 1);
     draw(diceall);
     `}
 </Diagramatics>
