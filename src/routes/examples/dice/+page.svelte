@@ -572,7 +572,7 @@
 <Header />
 
 <div class="container">
-<h1>Rolling Dice and Central Limit Theorem</h1>
+<h1>Rolling Dice and the Central Limit Theorem</h1>
 
 <p>
     <em>Rolling dice</em> is a classic pastime, whether it's for a board game, gambling, or simply making decisions. The outcomes of these rolls may seem unpredictable at first glance, but there is a fascinating mathematical phenomenon at play. As we explore the results of rolling dice, we will uncover the remarkable relationship between dice rolling and the <em>Central Limit Theorem</em>, a fundamental concept in statistics that reveals the beauty of probability distributions.

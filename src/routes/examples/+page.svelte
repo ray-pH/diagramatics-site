@@ -43,8 +43,8 @@
 
 <h1>Example Articles</h1>
 <a class="article-link" href="./pulley/">Mechanical Advantages of Pulleys</a>
-<br>
-<a class="article-link" href="./dice/">Rolling Dice : Central limit theorem</a>
+<br><br>
+<a class="article-link" href="./dice/">Rolling Dice and the Central limit theorem</a>
 
 <br><br>
 <hr>
