@@ -12,11 +12,8 @@
     import DiagramaticsWithCode from '../../DiagramaticsWithCode.svelte'
     import 'diagramatics/css/diagramatics.css'
     import { base } from '$app/paths';
-    var margin_right = 0;
     var width = 300;
     var height = 300;
-    var width_withcode = 350;
-    var height_withcode = 300;
 
     let dg_single =
         `

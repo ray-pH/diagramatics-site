@@ -13,11 +13,6 @@
     import 'diagramatics/css/diagramatics.css'
     import './extra.css'
     import { base } from '$app/paths';
-    var margin_right = 0;
-    var width = 300;
-    var height = 300;
-    var width_withcode = 350;
-    var height_withcode = 300;
 
     let dg_single_small =
         `
@@ -540,15 +535,6 @@
         padding: 10px;
         max-width: 800px;
         margin: auto;
-    }
-    .r-text {
-        min-width: 400px;
-        flex: 1 0;
-    }
-    .lr-diagram{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
     }
     em {
         color: #1f77b4;
