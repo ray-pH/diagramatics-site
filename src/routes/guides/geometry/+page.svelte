@@ -24,7 +24,7 @@
 
     <h1>Geometry</h1>
     Diagramatics provide tools to calculate geometric properties of diagrams.<br>
-    <i>*There are many more functions that will be added in the future.</i>
+    <i>*many more functions that will be added in the future.</i>
 
     <Diagramatics title="geometry.circle_radius" subtitle="(circle : Diagram) : number" {width} {height}>
         {`
