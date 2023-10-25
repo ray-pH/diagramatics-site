@@ -290,11 +290,11 @@
         font-weight: bold;
     }
     num {
-        font-family: 'lm-math';
+        font-family: 'Latin Modern Math', sans-serif;
         color: #444;
     }
     var {
-        font-family: 'lm-math';
+        font-family: 'Latin Modern Math', sans-serif;
         font-style: italic;
         color: #444;
     }
