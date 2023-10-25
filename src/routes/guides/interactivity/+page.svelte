@@ -140,7 +140,7 @@ int.draw();
     If you don't define the <code>track_diagram</code> parameter, then the locator will be free.
     <!-- public locator(variable_name : string, value : Vector2, radius : number, color : string = 'blue', track_diagram? : Diagram){ -->
     <Diagramatics title="Interactive.locator"
-                  subtitle="(variable_name : string, value : Vector2, radius : number, color? : string, track_diagram? : Diagram)"
+                  subtitle="(variable_name : string, value : Vector2, radius : number, color? : string,<br>, track_diagram? : Diagram, blink? : boolean)"
                   {width} {height} subtitle_newline={true}>
         {`
         // create the draw_function that will be run each time the interactive control is changed

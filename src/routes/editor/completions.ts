@@ -15,11 +15,12 @@ export const dg_completions = [
 ];
 
 function dg_completions_func(context : any) {
+    let cl_modules    = generate_completions_list(list_modules, "namespace", "modules");
     let cl_shapes    = generate_completions_list(list_shapes, "function", "shapes");
     let cl_alignment = generate_completions_list(list_alignment, "function", "alignment");
     let cl_utils     = generate_completions_list(list_utils, "function", "utils");
     let cl_plot      = generate_completions_list(list_plot, "function", "plot");
-    let completions_list = cl_shapes.concat(cl_alignment).concat(cl_utils).concat(cl_plot);
+    let completions_list = cl_modules.concat(cl_shapes).concat(cl_alignment).concat(cl_utils).concat(cl_plot);
     let before = context.matchBefore(/\w+/)
     let is_method = context.matchBefore(/[\w\(\)]+\.(\w+)$/)
     // If completion wasn't explicitly started and there
@@ -106,6 +107,12 @@ function dg_completions_annot(context : any) {
 }
 
 
+const list_modules = [
+    [ "annotation", "" ],
+    [ "mod", "" ],
+    [ "bar", "" ],
+    [ "geometry", "" ],
+]
 const list_shapes = [
     [
         "polygon",
@@ -455,7 +462,7 @@ const list_interactive = [
     ],
     [
         "locator",
-        "(variable_name : string, value : Vector2, radius : number, color? : string, track_diagram? : Diagram)"
+        "(variable_name : string, value : Vector2, radius : number, color? : string, track_diagram? : Diagram, blink? : boolean)"
     ],
     [
         "label",
