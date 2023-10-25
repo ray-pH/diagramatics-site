@@ -12,8 +12,17 @@
     import DiagramaticsWithCode from '../../DiagramaticsWithCode.svelte'
     import 'diagramatics/css/diagramatics.css'
     import { base } from '$app/paths';
+    import { str_to_mathematical_italic } from 'diagramatics';
+    import { onMount } from 'svelte';
     var width = 300;
     var height = 300;
+
+    onMount(() => {
+        // convert all var tags to mathematical italic
+        document.querySelectorAll('var').forEach((elem) => {
+            elem.innerHTML = str_to_mathematical_italic(elem.innerHTML);
+        });
+    });
 
     let dg_single =
         `
@@ -292,7 +301,7 @@
     }
     var {
         font-family: 'Latin Modern Math', sans-serif;
-        font-style: italic;
+        font-style: normal;
         color: #444;
     }
 </style>
@@ -344,7 +353,7 @@
 
 <div class="r-text">
     <em>Mechanical Advantage = 2<sup>n</sup></em><br>
-    <p>Combining multiple pulleys like in the diagram above, we can increase the mechanical advantage. For a system with mechanical advantage <var>μ</var>, the force required to pull an object with weight <var>W</var> is <var>F = W / μ</var>. But the tradeoff is that to lift a load by some distance <var>x</var>, we have to pull the rope by the distance <var>μx</var>.
+    <p>Combining multiple pulleys like in the diagram above, we can increase the mechanical advantage. For a system with mechanical advantage <var>μ</var>, the force required to pull an object with weight <var>W</var> is <var>F = W/μ</var> . But the tradeoff is that to lift a load by some distance <var>x</var>, we have to pull the rope by the distance <var>μx</var>.
     </p>
     <p>This concept highlights the principle of conservation of energy, where the work done remains the same, and a decrease in effort force results in an increase in the distance over which that force is applied.</p>
 </div>
