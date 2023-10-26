@@ -9,6 +9,7 @@
         draw_to_svg,
         default_diagram_style, default_text_diagram_style, default_textdata,
         _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
+        reset_default_styles,
         rectangle, square, regular_polygon, regular_polygon_side, circle, arc,
         arrow, arrow1, arrow2, textvar, rectangle_corner,
         str_to_mathematical_italic,
@@ -43,6 +44,7 @@
         draw_to_svg,
         default_diagram_style, default_text_diagram_style, default_textdata,
         _init_default_diagram_style, _init_default_text_diagram_style, _init_default_textdata,
+        reset_default_styles,
         rectangle, square, regular_polygon, regular_polygon_side, circle, arc,
         arrow, arrow1, arrow2, textvar, rectangle_corner,
         str_to_mathematical_italic,
@@ -101,12 +103,7 @@
     const eval_diagram = (str : string) => {
 
         // reset default styles
-        for (let s in default_diagram_style) 
-            (default_diagram_style as any)[s] = (_init_default_diagram_style as any)[s];
-        for (let s in default_text_diagram_style)
-            (default_text_diagram_style as any)[s] = (_init_default_text_diagram_style as any)[s];
-        for (let s in default_textdata)
-            (default_textdata as any)[s] = (_init_default_textdata as any)[s];
+        reset_default_styles();
 
         let success = true;
         if (control_div) control_div.innerHTML = '';
