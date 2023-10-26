@@ -83,6 +83,9 @@
     .cdn-url {
         display: inline-block;
     }
+    .cdn-table-container {
+        overflow-x: auto;
+    }
     .cdn-table {
         display: grid;
         grid-template-columns: 100px 20px 1fr;
@@ -108,6 +111,7 @@
         border-radius: 10px;
     }
     .code-playground-card{
+        display: inline-block;
         border: 1px solid #1f77b4;
         border-radius: 10px;
         padding: 10px 15px;
@@ -159,11 +163,13 @@
     <h1>Install</h1>
     <h2>CDN</h2>
     The simplest way of using Diagramatics is to import it from a CDN like unpkg.<br>
-    <div class="cdn-table">
-        <span>javascript</span>&nbsp:
-        <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/dist/index.js</pre></div>
-        <span>css</span>&nbsp:
-        <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/css/diagramatics.css</pre></div>
+    <div class="cdn-table-container">
+        <div class="cdn-table">
+            <span>javascript</span>&nbsp:
+            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/dist/index.js</pre></div>
+            <span>css</span>&nbsp:
+            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/css/diagramatics.css</pre></div>
+        </div>
     </div>
     <span style="color:gray; font-style:italic;">
         *css is only required to style the interactive controls.

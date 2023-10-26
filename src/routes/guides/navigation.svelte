@@ -34,6 +34,7 @@
     color: #aaa
 }
 .navigation-link{
+    flex-grow: 1;
     background: #1f77b4;
     color: white;
     text-decoration: none;

@@ -47,7 +47,6 @@
     In the <code>html</code> file, what you need to have is a div to hold the interactive controls, and also to link the css to style the control elements.
     <br><br><i>*In the example below, we import Diagramatics as a package. But you can also import it from the 
         <a href="{base}/guides/usage">CDN</a></i>
-    <br><code>{`<link href="https://unpkg.com/diagramatics@latest/css/diagramatics.css" rel="stylesheet">`}</code>
     <div class="code-snippet">
         <span class="code-filename">index.html</span>
         <pre><code class="code-html">
