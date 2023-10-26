@@ -31,7 +31,7 @@
 		"@codemirror/lang-javascript": "^6.2.1",
 		"@codemirror/view": "^6.20.2",
 		"codemirror": "^6.0.1",
-		"diagramatics": "^0.0.3-alpha.36",
+		"diagramatics": "^0.0.3-alpha.40",
 		"highlight.js": "^11.8.0",
 		"thememirror": "^2.0.1"
 	}
