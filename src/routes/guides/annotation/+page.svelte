@@ -43,8 +43,10 @@
         // you can change the position of the text using \`text_offset\`
 
         let sq    = square(10);
-        let vann1 = annotation.vector(V2(0,-8), "mg", V2(1.5,0)   , 0.4).fill('black');
-        let vann2 = annotation.vector(V2(3, 0), "F" , V2(-0.5,1.5), 0.4).fill('black')
+        let vann1 = annotation.vector(V2(0,-8), "mg", V2(1.5,0)   , 0.4)
+            .stroke('blue').fill('blue');
+        let vann2 = annotation.vector(V2(3, 0), "F" , V2(-0.5,1.5), 0.4)
+            .stroke('blue').fill('blue')
             .position(sq.get_anchor('center-right'));
         draw(sq, vann1, vann2)
         `}
