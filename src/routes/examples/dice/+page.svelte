@@ -5,8 +5,9 @@
     <link href="{base}/fonts/ubuntu.css" rel="stylesheet">
     <link href="{base}/fonts/lm-math.css" rel="stylesheet">
 </svelte:head>
+<svelte:window bind:innerWidth={screenWidth} />
 
-<script>
+<script lang="ts">
     import Header from '../../Header.svelte'
     import Diagramatics from '../../Diagramatics.svelte'
     import DiagramaticsWithCode from '../../DiagramaticsWithCode.svelte'
@@ -14,6 +15,7 @@
     import './extra.css'
     import { base } from '$app/paths';
 
+    let screenWidth : number | undefined = undefined;
     let dg_single_small =
         `
         let pip_positions = {
@@ -75,6 +77,8 @@
             .textangle(to_radian(-90));
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.088";
+
             let n = inp['n'];
             countbin(n);
 
@@ -90,7 +94,8 @@
             draw(
                 diagram_bg, dice, 
                 bars, xax, yax, xlabel, ylabel,
-        );
+            );
+            reset_default_styles();
         }
 
         int.slider('n', 1, 20, 10, 1);
@@ -125,6 +130,8 @@
         // ============================= diagram
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.088";
+
             let l = inp['log(n)'];
             let n = Math.pow(10,l);
             int.set('n', n);
@@ -152,6 +159,8 @@
                 margin, 
                 bars, xax, yax, xlabel, ylabel,
             );
+
+            reset_default_styles();
         }
 
         const italic_n = str_to_mathematical_italic('n');
@@ -236,6 +245,8 @@
             .fill('lightblue').stroke('none').mut();
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.11";
+
             let n = inp['n'];
             countbin(n);
 
@@ -264,7 +275,9 @@
                 diagram_bg, dice, 
                 ddots,
                 bars, xax, yax, xlabel, ylabel,
-        );
+            );
+
+            reset_default_styles();
         }
 
         int.slider('n', 1, 20, 10, 1);
@@ -302,6 +315,8 @@
         // ============================= diagram
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.11";
+
             let l = inp['log(n)'];
             let n = Math.pow(10,l);
             int.set('n', n);
@@ -329,6 +344,8 @@
                 margin,
                 bars, xax, yax, xlabel, ylabel,
             );
+
+            reset_default_styles();
         }
 
         const italic_n = str_to_mathematical_italic('n');
@@ -383,6 +400,8 @@
         let margin = rectangle(69,32).stroke('grey').strokedasharray([5]);
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.13";
+
             let m = inp['m'];
             let n = inp['n'];
 
@@ -404,6 +423,8 @@
 
             // draw
             draw(margin, dice);
+
+            reset_default_styles();
         }
 
         int.slider('m', 1, 5, 5, 1);
@@ -461,6 +482,8 @@
         // ============================= diagram
 
         int.draw_function = (inp) => {
+            default_textdata["font-scale"] = "0.11";
+
             let l = inp['log(n)'];
             let m = inp['m'];
             let n = Math.pow(10,l);
@@ -507,6 +530,8 @@
                 bars, xax, yax, xlabel, ylabel,
                 graph_f,
             );
+
+            reset_default_styles();
         }
 
         const italic_n = str_to_mathematical_italic('n');
@@ -584,9 +609,15 @@
 </p>
 
 <center>
-    <Diagramatics width={500} height={310}>
-        {dg_single_small}
-    </Diagramatics>
+    <!-- <Diagramatics width={500} height={310}> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(500, screenWidth-40)} 
+            height={Math.min(500, screenWidth-40)*310/500}
+        >
+            {dg_single_small}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_single">Re-roll</button>
     </div>
@@ -597,9 +628,17 @@ As you roll the die more times, you'll notice that the distribution starts to re
 </p>
 
 <center>
-    <Diagramatics width={500} height={280}>
-        {dg_single_big}
-    </Diagramatics>
+    <!-- <Diagramatics width={500} height={280}> -->
+        <!-- {dg_single_big} -->
+    <!-- </Diagramatics> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(500, screenWidth-40)} 
+            height={Math.min(500, screenWidth-40)*280/500}
+        >
+            {dg_single_big}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_single_big">Re-roll</button>
     </div>
@@ -611,9 +650,17 @@ As you roll the die more times, you'll notice that the distribution starts to re
 </p>
 
 <center>
-    <Diagramatics width={600} height={310}>
-        {dg_double_small}
-    </Diagramatics>
+    <!-- <Diagramatics width={600} height={310}> -->
+    <!--     {dg_double_small} -->
+    <!-- </Diagramatics> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(600, screenWidth-40)} 
+            height={Math.min(600, screenWidth-40)*310/600}
+        >
+            {dg_double_small}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_double">Re-roll</button>
     </div>
@@ -624,9 +671,17 @@ As you roll the die more times, you'll notice that the distribution starts to re
 </p>
 
 <center>
-    <Diagramatics width={500} height={310}>
-        {dg_double_big}
-    </Diagramatics>
+    <!-- <Diagramatics width={500} height={310}> -->
+    <!--     {dg_double_big} -->
+    <!-- </Diagramatics> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(500, screenWidth-40)} 
+            height={Math.min(500, screenWidth-40)*310/500}
+        >
+            {dg_double_big}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_double_big">Re-roll</button>
     </div>
@@ -643,9 +698,17 @@ It's important to note that the Central Limit Theorem is typically stated for me
 </p>
 
 <center>
-    <Diagramatics width={500} height={260}>
-        {dg_m_small}
-    </Diagramatics>
+    <!-- <Diagramatics width={500} height={260}> -->
+    <!--     {dg_m_small} -->
+    <!-- </Diagramatics> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(500, screenWidth-40)} 
+            height={Math.min(500, screenWidth-40)*260/500}
+        >
+            {dg_m_small}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_m_small">Re-roll</button>
     </div>
@@ -656,9 +719,17 @@ It's important to note that the Central Limit Theorem is typically stated for me
 </p>
 
 <center>
-    <Diagramatics width={500} height={310}>
-        {dg_m_big}
-    </Diagramatics>
+    <!-- <Diagramatics width={500} height={310}> -->
+    <!--     {dg_m_big} -->
+    <!-- </Diagramatics> -->
+    {#if screenWidth}
+        <Diagramatics 
+            width ={Math.min(500, screenWidth-40)} 
+            height={Math.min(500, screenWidth-40)*310/500}
+        >
+            {dg_m_big}
+        </Diagramatics>
+    {/if}
     <div class="btn-container">
         <button class="btn" id="roll_m_big">Re-roll</button>
     </div>
