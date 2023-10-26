@@ -4,7 +4,7 @@
     var pages : string[] = [
         'usage', 'shapes', 'transformation', 'style', 
         'points', 'alignment', 'interactivity', 'modifier',
-        'utilities', 'geometry', 'annotation', 'plot',
+        'utilities', 'geometry', 'annotation', 'plot', 'bar',
         'technical',
     ];
 </script>
@@ -28,6 +28,10 @@
     align-items: center;
     margin: 10px 0px;
 }
+.navigation::after {
+  content: '';
+  flex-grow: 1000;
+}
 .navigation-title{
     font-weight: 600;
     font-size: 1.2em;
@@ -35,6 +39,7 @@
 }
 .navigation-link{
     flex-grow: 1;
+    text-align: center;
     background: #1f77b4;
     color: white;
     text-decoration: none;

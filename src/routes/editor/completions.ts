@@ -106,6 +106,20 @@ function dg_completions_annot(context : any) {
     }
 }
 
+function dg_completions_bar(context : any) {
+    let completions_list = generate_completions_list(list_bar, "method", "bar");
+    let before = context.matchBefore(/\w+/)
+    let is_bar_method = context.matchBefore(/bar\.\w+$/)
+    // If completion wasn't explicitly started and there
+    // is no word before the cursor, don't open completions.
+    if (!context.explicit && !is_bar_method) return null
+    return {
+        from: before ? before.from : context.pos,
+        options: completions_list,
+        validFor: /^\w*$/
+    }
+}
+
 
 const list_modules = [
     [ "annotation", "" ],
@@ -535,6 +549,21 @@ const list_technical = [
     [
         "copy",
         "() : Diagram"
+    ]
+]
+
+const list_bar = [
+    [
+        "bar.plot",
+        "(datavalues : number[], bar_options? : Partial<bar_options>) : Diagram"
+    ],
+    [
+        "bar.xaxes",
+        "(datanames : string[], bar_options? : Partial<bar_options>) : Diagram"
+    ],
+    [
+        "bar.yaxes",
+        "(datavalues : number[], bar_options? : Partial<bar_options>) : Diagram"
     ]
 ]
 

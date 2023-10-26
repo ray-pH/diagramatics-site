@@ -23,6 +23,8 @@
 <div class="guides-container">
     <Navigation page="plot"/>
 
+    <h1>Axes Options</h1>
+    All the plotting function can be configured by passing in <code>axes_options</code>, which is an object with the following properties:
     <pre style="
         background: #f8f8f8;
         border-radius: 10px;
