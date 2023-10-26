@@ -50,7 +50,7 @@
         ">
     stroke           : string,
     fill             : string,
-    opacity          : string,
+    opacity          : number,
     stroke-width     : number,
     stroke-linecap   : string,
     stroke-dasharray : number[],
@@ -386,6 +386,47 @@
         draw(p3,p4,p5,p6);
         `}
     </Diagramatics>
+
+    <!-- for (let s in default_diagram_style)  -->
+    <!-- for (let s in default_text_diagram_style) -->
+    <!-- for (let s in default_textdata) -->
+    This also works for <code>default_text_diagram_style</code> and <code>default_textdata</code>.
+    <Diagramatics title="default_text_diagram_style" {width} height={10}>
+        {`
+        // "fill"             : string,
+        // "stroke"           : string,
+        // "stroke-width"     : number,
+        // "stroke-linecap"   : string,
+        // "stroke-dasharray" : number[],
+        // "stroke-linejoin"  : string,
+        // "vector-effect"    : string,
+        // "opacity"          : number,
+        `}
+    </Diagramatics>
+    <!-- "text"             : "", -->
+    <!-- "font-family"      : "Latin Modern Math, sans-serif", -->
+    <!-- "font-size"        : "18", -->
+    <!-- "font-weight"      : "normal", -->
+    <!-- "text-anchor"      : "middle", -->
+    <!-- "dominant-baseline": "middle", -->
+    <!-- "angle"            : "0", -->
+    <!-- "font-style"       : "normal", -->
+    <!-- "font-scale"       : "auto", -->
+    <Diagramatics title="default_textdata" {width} height={10}>
+        {`
+        // "text"              : string,
+        // "font-family"       : string,
+        // "font-size"         : number,
+        // "font-weight"       : string,
+        // "text-anchor"       : string,
+        // "dominant-baseline" : string,
+        // "angle"             : number,
+        // "font-style"        : string,
+        // "font-scale"        : number,
+        `}
+    </Diagramatics>
+
+    You can reset the default style by calling <code>reset_default_styles()</code>.
 
 </div>
 
