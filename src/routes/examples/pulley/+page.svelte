@@ -282,7 +282,7 @@
         margin: auto;
     }
     .r-text {
-        min-width: 400px;
+        /* min-width: 400px;*/
         flex: 1 0;
     }
     .lr-diagram{
