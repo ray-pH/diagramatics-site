@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 let docsbase = 'https://photon-ray.xyz/diagramatics'
 
-export let known_dg_object = [ 'mod', 'geometry', 'annotation', 'bar'];
+export let known_dg_object = [ 'mod', 'geometry', 'annotation',  'int', 'bar'];
 export function generate_guiderefs() : {[key : string] : string} {
     const guiderefs : {[key : string] : string} = {
         'draw'    : `${base}/guides/usage#draw`,
@@ -72,8 +72,9 @@ export function generate_guiderefs() : {[key : string] : string} {
         'slider', 'locator', 'label'
     ]
     for (let interactivity of m_interactivity) {
-        guiderefs[interactivity] = `${base}/guides/interactivity#Interactive.${interactivity}`;
+        guiderefs[`int.${interactivity}`] = `${base}/guides/interactivity#Interactive.${interactivity}`;
     }
+        guiderefs['int.locator_draw'] = `${base}/guides/interactivity#Interactive.locator`;
 
     let m_modifier = [
         'subdivide', 'resample', 'round_corner'
