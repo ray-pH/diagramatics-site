@@ -389,6 +389,10 @@ const list_style = [
         "(fontsize : number) : Diagram"
     ],
     [
+        "fontscale",
+        "(fontscale : 'auto' | number) : Diagram"
+    ],
+    [
         "fontweight",
         "(fontweight : 'normal'|'bold'|'bolder'|'lighter'|number) : Diagram"
     ],

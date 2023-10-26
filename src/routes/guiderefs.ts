@@ -34,6 +34,7 @@ export function generate_guiderefs() : {[key : string] : string} {
         // 'apply' defined in modifier
         'fontfamily', 'fontsize', 'fontweight', 'move_origin_text', 'textangle',
         'text_totext', 'text_tovar', 'textfill', 'textstroke', 'textstrokewidth',
+        'fontscale',
     ]
     for (let style of m_style) {
         guiderefs[style] = `${base}/guides/style#Diagram.${style}`;

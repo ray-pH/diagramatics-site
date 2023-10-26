@@ -250,10 +250,33 @@
     </Diagramatics>
     <Diagramatics title="Diagram.textangle" subtitle="(angle : number) : Diagram" {width} {height}>
         {`
-        // anchors can be :
         let sq  = square(10).stroke('lightgrey');
         let tx = text('hello').textangle(to_radian(45));
         draw(sq, tx);
+        `}
+    </Diagramatics>
+    <Diagramatics title="Diagram.fontscale" subtitle="(fontscale : 'auto' | number) : Diagram" {width} {height}>
+        {`
+        // just like stroke's vectoreffect property
+        // texts can also be automatically scaled to the screen
+        // or scaled relative to the coordinate system of the diagram by putting in a number
+
+        let sq = square(10).stroke('lightgrey');
+        let txa = text('auto').fontsize(24).fontscale('auto')   .translate(V2(0,1));
+        let txb = text('absolute').fontsize(24).fontscale(0.1).translate(V2(0,-1));
+        draw(sq, txa, txb);
+        `}
+    </Diagramatics>
+    <Diagramatics {width} {height}>
+        {`
+        // the square here is 2 times bigger than the previous example
+        // notice that the 'absolute' text stays the same size 
+        // relative to the coordinate system of the diagram
+
+        let sq = square(20).stroke('lightgrey');
+        let txa = text('auto').fontsize(24).fontscale('auto')   .translate(V2(0,2));
+        let txb = text('absolute').fontsize(24).fontscale(0.1).translate(V2(0,-2));
+        draw(sq, txa, txb);
         `}
     </Diagramatics>
     <Diagramatics title="Diagram.textfill" subtitle="(color : string) : Diagram" {width} {height}>
