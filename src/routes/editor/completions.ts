@@ -15,7 +15,7 @@ export const dg_completions = [
 ];
 
 function dg_completions_func(context : any) {
-    let cl_modules    = generate_completions_list(list_modules, "namespace", "modules");
+    let cl_modules   = generate_completions_list(list_modules, "namespace", "modules");
     let cl_shapes    = generate_completions_list(list_shapes, "function", "shapes");
     let cl_alignment = generate_completions_list(list_alignment, "function", "alignment");
     let cl_utils     = generate_completions_list(list_utils, "function", "utils");
@@ -50,76 +50,35 @@ function dg_completions_Diagram_method(context : any) {
     }
 }
 
+function dg_gen_completions_method(context : any, list : string[][], type : string, section : string, regex : RegExp) {
+    let completions_list = generate_completions_list(list, type, section);
+    let before = context.matchBefore(/\w+/)
+    let is_method = context.matchBefore(regex)
+    // If completion wasn't explicitly started and there
+    // is no word before the cursor, don't open completions.
+    if (!context.explicit && !is_method) return null
+    return {
+        from: before ? before.from : context.pos,
+        options: completions_list,
+        validFor: /^\w*$/
+    }
+}
+
 function dg_completions_int(context : any) {
-    let completions_list = generate_completions_list(list_interactive, "method", "interactive");
-    let before = context.matchBefore(/\w+/)
-    let is_int_method = context.matchBefore(/int\.\w+$/)
-    // If completion wasn't explicitly started and there
-    // is no word before the cursor, don't open completions.
-    if (!context.explicit && !is_int_method) return null
-    return {
-        from: before ? before.from : context.pos,
-        options: completions_list,
-        validFor: /^\w*$/
-    }
+    return dg_gen_completions_method(context, list_interactive, "method", "interactive", /int\.\w+$/);
 }
-
 function dg_completions_mod(context : any) {
-    let completions_list = generate_completions_list(list_mod, "method", "modifier");
-    let before = context.matchBefore(/\w+/)
-    let is_mod_method = context.matchBefore(/mod\.\w+$/)
-    // If completion wasn't explicitly started and there
-    // is no word before the cursor, don't open completions.
-    if (!context.explicit && !is_mod_method) return null
-    return {
-        from: before ? before.from : context.pos,
-        options: completions_list,
-        validFor: /^\w*$/
-    }
+    return dg_gen_completions_method(context, list_mod, "method", "modifier", /mod\.\w+$/);
 }
-
 function dg_completions_geom(context : any) {
-    let completions_list = generate_completions_list(list_geom, "method", "geometry");
-    let before = context.matchBefore(/\w+/)
-    let is_geom_method = context.matchBefore(/geometry\.\w+$/)
-    // If completion wasn't explicitly started and there
-    // is no word before the cursor, don't open completions.
-    if (!context.explicit && !is_geom_method) return null
-    return {
-        from: before ? before.from : context.pos,
-        options: completions_list,
-        validFor: /^\w*$/
-    }
+    return dg_gen_completions_method(context, list_geom, "method", "geometry", /geometry\.\w+$/);
 }
-
 function dg_completions_annot(context : any) {
-    let completions_list = generate_completions_list(list_annot, "method", "annotation");
-    let before = context.matchBefore(/\w+/)
-    let is_annot_method = context.matchBefore(/annotation\.\w+$/)
-    // If completion wasn't explicitly started and there
-    // is no word before the cursor, don't open completions.
-    if (!context.explicit && !is_annot_method) return null
-    return {
-        from: before ? before.from : context.pos,
-        options: completions_list,
-        validFor: /^\w*$/
-    }
+    return dg_gen_completions_method(context, list_annot, "method", "annotation", /annotation\.\w+$/);
 }
-
 function dg_completions_bar(context : any) {
-    let completions_list = generate_completions_list(list_bar, "method", "bar");
-    let before = context.matchBefore(/\w+/)
-    let is_bar_method = context.matchBefore(/bar\.\w+$/)
-    // If completion wasn't explicitly started and there
-    // is no word before the cursor, don't open completions.
-    if (!context.explicit && !is_bar_method) return null
-    return {
-        from: before ? before.from : context.pos,
-        options: completions_list,
-        validFor: /^\w*$/
-    }
+    return dg_gen_completions_method(context, list_bar, "method", "bar", /bar\.\w+$/);
 }
-
 
 const list_modules = [
     [ "annotation", "" ],
