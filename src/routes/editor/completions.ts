@@ -11,7 +11,7 @@ function generate_completions_list(list : string[][], type : string, section : s
 export const dg_completions = [
     dg_completions_Diagram_method, dg_completions_func, 
     dg_completions_int, dg_completions_mod, dg_completions_geom,
-    dg_completions_annot
+    dg_completions_annot, dg_completions_bar,
 ];
 
 function dg_completions_func(context : any) {
@@ -38,7 +38,7 @@ function dg_completions_Diagram_method(context : any) {
     let cl_style     = generate_completions_list(list_style, "method", "style");
     let cl_points    = generate_completions_list(list_points, "method", "points");
     let cl_technical = generate_completions_list(list_technical, "method", "technical");
-    let completions_list = cl_transform.concat(cl_style).concat(cl_points);
+    let completions_list = cl_transform.concat(cl_style).concat(cl_points).concat(cl_technical);
     let before = context.matchBefore(/\w+/)
     // let is_method = context.matchBefore(/\w+\.(\w+)$/)
     let is_method = context.matchBefore(/[\w\(\)]+\.(\w+)$/)
