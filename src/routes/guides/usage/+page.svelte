@@ -166,15 +166,17 @@
     <div class="cdn-table-container">
         <div class="cdn-table">
             <span>javascript</span>&nbsp:
-            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/dist/index.js</pre></div>
+            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/dist/index.js</pre></div>
             <span>css</span>&nbsp:
-            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@latest/css/diagramatics.css</pre></div>
+            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/css/diagramatics.css</pre></div>
         </div>
     </div>
     <span style="color:gray; font-style:italic;">
+        *you can change "1.x.x" into the version you want to use, or use "latest" to always use the latest version.
+    </span><br>
+    <span style="color:gray; font-style:italic;">
         *css is only required to style the interactive controls.
     </span><br><br>
-    <h2>Font</h2>
     The default font used in Diagramatics is <b>Latin Modern Math</b>. You can link it from CDN, download it, or any other way you want.
     <div class="cdn-table-container">
         <div class="cdn-table">
