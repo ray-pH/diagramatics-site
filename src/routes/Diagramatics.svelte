@@ -74,6 +74,7 @@
     export let width  : number = 300;
     export let height : number = 300;
     export let margin_right : number = 20;
+    export let control_margin_left : number = 20;
     export let hidden_code  : string  = "";
 
     // ======================== code
@@ -123,7 +124,7 @@
 <div class="example-diagram">
     <svg bind:this={diagram_svg} class="svg-diagram" 
              style="width: {width}px; height: {height}px; margin-right: {margin_right}px"></svg>
-    <div bind:this={control_container} class="control-container"> </div>
+    <div bind:this={control_container} class="control-container" style="margin-left : {control_margin_left}px"> </div>
 </div>
 <div bind:this={content_div} style="display:none"> 
     <slot/>
@@ -131,9 +132,6 @@
 
 
 <style>
-.control-container {
-    margin-left: 20px;
-}
 .example-diagram {
     display: inline-block;
     vertical-align: top;

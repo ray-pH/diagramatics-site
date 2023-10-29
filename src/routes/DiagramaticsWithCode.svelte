@@ -13,6 +13,7 @@
     export let width  : number = 300;
     export let height : number = 300;
     export let margin_right : number = 20;
+    export let control_margin_left : number = 20;
     export let title  : string = "";
     export let subtitle : string = "";
     export let subtitle_is_args : boolean = true;
@@ -118,7 +119,7 @@
 
 <div class="example">
     {#if width != 0 && height != 0}
-        <Diagramatics {width} {height} {margin_right} {hidden_code}>
+        <Diagramatics {width} {height} {margin_right} {hidden_code} {control_margin_left}>
             <slot/>
         </Diagramatics>
     {/if}
