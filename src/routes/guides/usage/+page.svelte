@@ -153,7 +153,7 @@
         Edit in JSFiddle
     </a>
     <a class="code-playground-card" 
-        href="https://jsitor.com/bfkx-gnfxz" target="_blank">
+        href="https://jsitor.com/Bfkx-GNFxz" target="_blank">
         <img src="{base}/assets/jsitor.png" alt="jsitor_logo">
         Edit in JSitor
     </a>
@@ -174,6 +174,16 @@
     <span style="color:gray; font-style:italic;">
         *css is only required to style the interactive controls.
     </span><br><br>
+    <h2>Font</h2>
+    The default font used in Diagramatics is <b>Latin Modern Math</b>. You can link it from CDN, download it, or any other way you want.
+    <div class="cdn-table-container">
+        <div class="cdn-table">
+            <span>font</span>&nbsp:
+            <div class="cdn-url"><pre>https://fonts.cdnfonts.com/css/latin-modern-math</pre></div>
+        </div>
+    </div>
+    <br><br>
+
     The minimal example below shows how to draw a red square on an SVG element.
     <div class="code-snippet">
         <span class="code-filename">index.html</span>
@@ -232,6 +242,8 @@ $ npm install diagramatics
 {`<!DOCTYPE html>
 <html>
     <head>
+        <!-- css for 'Latin Modern Math' font -->
+        <link href="https://fonts.cdnfonts.com/css/latin-modern-math" rel="stylesheet">
         <!-- optional css for interactive controls -->
         <link href="diagramatics/css/diagramatics.css" rel="stylesheet">
     </head>
