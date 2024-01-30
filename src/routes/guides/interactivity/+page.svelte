@@ -276,11 +276,73 @@ int.draw();
         `}
     </Diagramatics>
 
+    <h2>Toggle Button</h2>
+    <i>*introduced in v1.2.0</i>
+
+    <Diagramatics title="Interactive.button_toggle" subtitle="(name : string, diagram_on : Diagram, diagram_off : Diagram, state : boolean = false)" {width} {height} subtitle_newline={true}>
+        {`
+        let sq = square(40);
+        let button_off = square(10).fill('lightgrey');
+        let button_on  = square(10).fill('blue');
+
+        // example, binary (boolean) data to decimal string
+        function bin_to_decstr(x2,x1,x0){
+            let val = 0;
+            if (x2) val += 4;
+            if (x1) val += 2;
+            if (x0) val += 1;
+            return String(val);
+        }
+
+        int.draw_function = (inp) => {
+            let b0 = inp['b0'];
+            let b1 = inp['b1'];
+            let b2 = inp['b2'];
+
+            let decstr = bin_to_decstr(b2,b1,b0);
+            let text = textvar(decstr).fontsize(100).translate(V2(0,5));
+
+            draw(sq, text);
+        }
+
+        let p0 = V2( 12, -12);
+        let p1 = V2(  0, -12);
+        let p2 = V2(-12, -12);
+        int.button_toggle('b0', button_on.position(p0), button_off.position(p0), false);
+        int.button_toggle('b1', button_on.position(p1), button_off.position(p1), false);
+        int.button_toggle('b2', button_on.position(p2), button_off.position(p2), false);
+        int.draw();
+        `}
+    </Diagramatics>
+
+    <h2>Click Button</h2>
+    <i>*introduced in v1.2.0</i>
+
+    <Diagramatics title="Interactive.button_click" subtitle="(name : string, diagram : Diagram, diagram_pressed : Diagram, callback : () => any)" {width} {height} subtitle_newline={true}>
+        {`
+        // click button doesn't have a state, so it can't be accessed 
+        // using \`int.get()\` or \`inp[name]\` inside \`int.draw_function\`
+        
+        let sq = square(40);
+        let button = square(10).fill('lightgrey');
+        let button_pressed = square(10).fill('blue');
+
+        draw(sq);
+
+        const callback = () => {
+            alert('button clicked');
+        }
+        int.button_click('b', button, button_pressed, callback);
+        int.draw();
+        `}
+    </Diagramatics>
+
+
     <h2>Drag and Drop</h2>
+    <i>*introduced in v1.2.0</i>
 
     <Diagramatics title="Interactive.dnd_container" subtitle="(name : string, diagram : Diagram)" {width} height={1}>
         {`
-        // *introduced in v1.2.0
         // create a Drag and Drop container object
         // need to be used in conjunction with \`int.dnd_draggable\`
         `}
