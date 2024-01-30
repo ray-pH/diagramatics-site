@@ -337,6 +337,39 @@ int.draw();
         `}
     </Diagramatics>
 
+    <h2>Custom SVG Object</h2>
+    <i>*introduced in v1.2.0</i>
+
+    <Diagramatics title="Interactive.custom_object" subtitle="(id : string, classlist : string[], diagram : Diagram) : SVGSVGElement" {width} {height} subtitle_newline={true}>
+        {`
+        // prepare the diagram
+        let sq   = square(20);
+        let circ = circle(5).fill('blue').stroke('white');
+        let obj  = circ.combine(circ.translate(V2(3,0)))
+                        .move_origin('center-center').position(V2(0,0));
+        draw(sq);
+
+        // \`int.custom_object\` returns the html SVGSVGElement
+        let elem = int.custom_object('cust_obj_id', ['random_class'], obj);
+
+        // the id and classlist will be added to the element
+        // you can then modify the element using the usual javascript DOM manipulation
+        elem.style.cursor = 'pointer';
+        elem.onclick = () => {
+            alert('hi');
+        }
+        elem.onmouseenter = () => {
+            elem.style.fillOpacity = 0.5;
+        }
+        elem.onmouseleave = () => {
+            elem.style.fillOpacity = 1;
+        }
+
+        // don't forget to draw
+        int.draw()
+        `}
+    </Diagramatics>
+
 
     <h2>Drag and Drop</h2>
     <i>*introduced in v1.2.0</i>

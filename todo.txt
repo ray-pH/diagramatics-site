@@ -5,4 +5,4 @@ yaxis          x
 numberline     x
 DnD            x          x
 button         x          x
-custom_int     x
+custom_int     x          x
