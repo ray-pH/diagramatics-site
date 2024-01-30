@@ -1,3 +1,8 @@
-tex handler
-xaxis
-yaxis
+               import     guide      autocomplete    redirection
+tex handler    x
+xaxis          x
+yaxis          x
+numberline     x
+DnD            x
+button         x
+custom_int     x
