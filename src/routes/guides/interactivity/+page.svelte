@@ -150,14 +150,13 @@ int.draw();
             let big_sq   = square(40);
             let small_sq = square(10).fill('lightgray').position(p);
             draw(big_sq, small_sq);
-            int.locator_draw(); // draw the locator
-            // make sure you draw the locator only after drawing the diagram
         }
 
         // create the locator
         int.locator('p', V2(0, 0), 2, 'blue');
         // do the initial draw
         int.draw();
+        int.locator_initial_draw();
         `}
     </Diagramatics>
 
@@ -177,14 +176,13 @@ int.draw();
             let big_sq   = square(40).strokedasharray([5]);
             let small_sq = square(5).fill('lightgray').position(p);
             draw(big_sq, pent, small_sq);
-            int.locator_draw(); // draw the locator
-            // make sure you draw the locator only after drawing the diagram
         }
 
         // create the locator
         int.locator('p', V2(0, 0), 2, 'blue', pent);
         // do the initial draw
         int.draw();
+        int.locator_initial_draw();
         `}
     </Diagramatics>
 
@@ -205,14 +203,13 @@ int.draw();
             let big_sq   = square(40).strokedasharray([5]);
             let small_sq = square(5).fill('lightgray').position(p);
             draw(big_sq, pent, small_sq);
-            int.locator_draw(); // draw the locator
-            // make sure you draw the locator only after drawing the diagram
         }
 
         // create the locator
         int.locator('p', V2(0, 0), 2, 'blue', pent);
         // do the initial draw
         int.draw();
+        int.locator_initial_draw();
         `}
     </Diagramatics>
 
@@ -233,12 +230,12 @@ int.draw();
             int.set('A', area);
 
             draw(sq, circ);
-            int.locator_draw();
         }
 
         int.label('A',0);
         int.locator('p', Vdir(to_radian(30)).scale(0.3), 0.1, 'blue');
         int.draw();
+        int.locator_draw();
         `}
     </Diagramatics>
 
