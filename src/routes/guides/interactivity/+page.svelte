@@ -239,7 +239,7 @@ int.draw();
         `}
     </Diagramatics>
 
-    <h2>Custom external interaction</h2>
+    <h2 id="custom_external">Custom external interaction</h2>
     You can also create your own interactive object and interact with Diagramatics using <code>int.set()</code> and <code>int.get()</code>.<br>
     For example, you can create a custom button.
 

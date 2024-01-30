@@ -69,12 +69,19 @@ export function generate_guiderefs() : {[key : string] : string} {
     }
 
     let m_interactivity = [
-        'slider', 'locator', 'label'
+        'slider', 'locator', 'label', 'button_toggle', 'button_click', 'custom_object',
+        'dnd_container', 'dnd_draggable', 'get_dnd_data'
+
     ]
     for (let interactivity of m_interactivity) {
         guiderefs[`int.${interactivity}`] = `${base}/guides/interactivity#Interactive.${interactivity}`;
     }
         guiderefs['int.locator_draw'] = `${base}/guides/interactivity#Interactive.locator`;
+        guiderefs['int.locator_initial_draw'] = `${base}/guides/interactivity#Interactive.locator`;
+        guiderefs['int.drag_and_drop_initial_draw'] = `${base}/guides/interactivity#Interactive.dnd_container`;
+        guiderefs['int.dnd_initial_draw'] = `${base}/guides/interactivity#Interactive.dnd_container`;
+        guiderefs['int.set'] = `${base}/guides/interactivity#custom_external`;
+        guiderefs['int.get'] = `${base}/guides/interactivity#custom_external`;
 
     let m_modifier = [
         'subdivide', 'resample', 'round_corner'
