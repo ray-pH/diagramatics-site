@@ -276,6 +276,87 @@ int.draw();
         `}
     </Diagramatics>
 
+    <h2>Drag and Drop</h2>
+
+    <Diagramatics title="Interactive.dnd_container" subtitle="(name : string, diagram : Diagram)" {width} height={1}>
+        {`
+        // *introduced in v1.2.0
+        // create a Drag and Drop container object
+        // need to be used in conjunction with \`int.dnd_draggable\`
+        `}
+    </Diagramatics>
+    <Diagramatics title="Interactive.dnd_draggable" subtitle="(name : string, diagram : Diagram, container_diagram? : Diagram)" {width} {height}>
+        {`
+        // create a Drag and Drop draggable object
+
+        // prepare the diagrams
+        let target_box = square(5).fill('lightgrey');
+        let target0 = target_box.position(V2(-6,0));
+        let target1 = target_box.position(V2(0,0));
+        let target2 = target_box.position(V2(6,0));
+
+        let texta   = text('a')
+        let bga     = circle(2).fill('blue');
+        let sourcea = diagram_combine(texta, bga).position(V2(-3,-6));
+
+        let textb   = text('b')
+        let bgb     = circle(2).fill('blue');
+        let sourceb = diagram_combine(textb, bgb).position(V2(3,-6));
+
+        // create a bounding box rectangle object so that we know the size of the diagram
+        // if the DnD objects is contained within another diagram, you can simply draw that diagram instead
+        //        without the need to create a bounding box
+        let dnd_objects = diagram_combine(sourcea, sourceb, target0, target1, target2);
+        let dnd_rect = rectangle_corner(...dnd_objects.bounding_box()).stroke('none').fill('none');
+        draw(dnd_rect);
+
+        int.dnd_container('t0', target0)
+        int.dnd_container('t1', target1)
+        int.dnd_container('t2', target2)
+        int.dnd_draggable('a', sourcea, sourcea.fill('lightgrey'))
+        int.dnd_draggable('b', sourceb, sourceb.fill('lightgrey'))
+        int.drag_and_drop_initial_draw();
+        `}
+    </Diagramatics>
+
+    You can access the draggable position by using it's name inside <code>int.draw_function</code>.<br><br>
+    NOTE: it's not possible to <code>int.set()</code> the draggable position.
+    <Diagramatics {width} {height}>
+        {`
+        let sq = square(40);
+        let containerbox = square(10).fill('lightgrey');
+        let cont0 = containerbox.position(V2(-10,-10));
+        let cont1 = containerbox.position(V2(10,10));
+        let cont2 = containerbox.position(V2(10,-10));
+        let cont3 = containerbox.position(V2(-10,10));
+        let obj   = circle(4).fill('blue').position(cont3.origin);
+
+        int.draw_function = (inp) => {
+            let a = inp['a'];
+            let l = line(V2(0,0), a);
+            draw(sq, l)
+        }
+
+        int.dnd_container('c0', cont0);
+        int.dnd_container('c1', cont1);
+        int.dnd_container('c2', cont2);
+        int.dnd_draggable('a', obj, cont3);
+        int.draw();
+        int.drag_and_drop_initial_draw();
+        `}
+    </Diagramatics>
+
+
+    <!-- TODO: validation -->
+    <Diagramatics title="Interactive.get_dnd_data" subtitle="() : &lbrace;container\:string, content\:string[]&rbrace;[]" {width} height={1}>
+        {`
+        // retrieve the state data from the DnD objects
+
+        // TODO: write example for this
+        `}
+    </Diagramatics>
+
+
     <hr>
     <h1>Display Format</h1>
     By default, the <code>label</code> and <code>slider</code> will display the value as <code>`italic_name` = `value`</code>. You can change the display format by passing in a function to the <code>display_format_func</code> parameter.

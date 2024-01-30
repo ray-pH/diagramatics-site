@@ -3,6 +3,6 @@ tex handler    x
 xaxis          x
 yaxis          x
 numberline     x
-DnD            x
+DnD            x          x
 button         x
 custom_int     x
