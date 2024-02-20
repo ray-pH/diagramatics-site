@@ -6,3 +6,9 @@ numberline     x
 DnD            x          x                           x
 button         x          x                           x
 custom_int     x          x                           x
+get_SVGPos_from_event,
+clientPos_to_svgPos,
+int.get_diagram_svg
+get_tagged_svg_element,
+
+Alignment and Distribution # opetional argument in guide
