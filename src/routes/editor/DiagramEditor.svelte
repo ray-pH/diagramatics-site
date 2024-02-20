@@ -100,6 +100,12 @@
     const draw = (...diagrams : Diagram[]) => {
         if (diagram_svg == null) return;
         draw_to_svg(diagram_svg, diagram_combine(...diagrams));
+        // HACK: temporary solution: 
+        //       draw twice to make sure the scaing is correct
+        //       when the svg is resized
+        setTimeout(() => {
+            draw_to_svg(diagram_svg, diagram_combine(...diagrams));
+        }, 10);
     };
     let int : Interactive; 
     onMount(() => {
