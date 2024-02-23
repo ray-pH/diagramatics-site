@@ -10,5 +10,15 @@ get_SVGPos_from_event,
 clientPos_to_svgPos,
 int.get_diagram_svg
 get_tagged_svg_element,
+tables,
+multiline,
+dnd_draggable callback
+utils.transpose()
+boxplot
+annotation.congruence_mark
+geometry.line_points
+dnd container capacity
+Interactive.add_draggable_to_container
+
 
 Alignment and Distribution # opetional argument in guide
