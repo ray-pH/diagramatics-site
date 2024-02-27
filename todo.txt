@@ -19,6 +19,14 @@ annotation.congruence_mark
 geometry.line_points
 dnd container capacity
 Interactive.add_draggable_to_container
+interactive button edit
+tree
+annotation.parallel_mark
+annotation.right_angle
+geometry.line_intersection
+cubic_spline
+geometry.curve_dd_arrow
+xycorneraxes_xbreak
 
 
 Alignment and Distribution # opetional argument in guide

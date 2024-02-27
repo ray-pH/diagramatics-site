@@ -26,6 +26,7 @@
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
         distribute_grid_row,
+        cubic_spline,
 
         geometry,
         annotation,
@@ -69,6 +70,7 @@
         distribute_horizontal, distribute_vertical,
         distribute_horizontal_and_align, distribute_vertical_and_align, 
         distribute_grid_row,
+        cubic_spline,
 
         geometry,
         annotation,
