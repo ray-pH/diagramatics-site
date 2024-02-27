@@ -28,6 +28,7 @@
         distribute_grid_row,
         cubic_spline,
 
+        graph,
         geometry,
         annotation,
         mechanics,
@@ -72,6 +73,7 @@
         distribute_grid_row,
         cubic_spline,
 
+        graph,
         geometry,
         annotation,
         mechanics,
