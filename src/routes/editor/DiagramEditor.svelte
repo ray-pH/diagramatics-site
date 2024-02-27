@@ -2,6 +2,7 @@
     import {     
         download_svg_as_png, download_svg_as_svg,
         Diagram, polygon, line, curve, empty, text, image, diagram_combine,
+        multiline, multiline_bb,
         Vector2, V2, Vdir,
         to_degree, to_radian, linspace, range, array_repeat,
         linspace_exc, range_inc,
@@ -45,6 +46,7 @@
         dgtext,
 
         Diagram, polygon, line, curve, empty, text, image, diagram_combine,
+        multiline, multiline_bb,
         Vector2, V2, Vdir,
         to_degree, to_radian, linspace, range, array_repeat,
         linspace_exc, range_inc,
