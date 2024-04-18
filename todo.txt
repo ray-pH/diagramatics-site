@@ -1,11 +1,11 @@
-               import     guide      autocomplete    redirection
-tex handler    x
-xaxis          x
-yaxis          x
-numberline     x
-DnD            x          x                           x
-button         x          x                           x
-custom_int     x          x                           x
+                          guide  redirection     autocomplete    
+tex handler                                                      
+xaxis                                                            
+yaxis                                                            
+numberline                                                       
+DnD                       x       x                              
+button                    x       x                              
+custom_int                x       x                              
 get_SVGPos_from_event,
 clientPos_to_svgPos,
 int.get_diagram_svg
@@ -25,10 +25,19 @@ annotation.parallel_mark
 annotation.right_angle
 geometry.line_intersection
 cubic_spline
-geometry.curve_dd_arrow
 xycorneraxes_xbreak
 geometry.line_intersection_x, line_intersection_y
 Diagram.fontstyle
 
 
 Alignment and Distribution # opetional argument in guide
+geo_constuct
+custom_locator
+utils namespace
+scaletext
+apply_recursive          x       x
+tree
+distribute_variable_row
+background & padding
+tag
+arrow modifier           x       x

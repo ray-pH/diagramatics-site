@@ -35,32 +35,10 @@
         `}
     </Diagramatics>
 
-    <hr>
+    * <code>Diagram.apply</code> only apply the function to the outermost diagram. If you want to apply the function recursively, you can use <code><a href="#Diagram.apply_recursive">Diagram.apply_recursive</a></code>.<br>
+    <br>
 
-<!-- /** -->
-<!--  * Resample a diagram so that it has `n` points -->
-<!--  * @param n number of points -->
-<!--  * @returns function that modifies a diagram -->
-<!--  */ -->
-<!-- export function resample(n : number) : modifierFunction{ -->
-<!-- /** -->
-<!--  * Subdivide each segment of a diagram into n segments -->
-<!--  * @param n number of segments to subdivide each segment into -->
-<!--  * @returns function that modifies a diagram -->
-<!--  */ -->
-<!-- export function subdivide(n : number = 100) : modifierFunction { -->
-<!-- /** -->
-<!--  * Create a function that modifies a diagram by rounding the corners of a polygon or curve -->
-<!--  * @param radius radius of the corner -->
-<!--  * @param point_indices indices of the points to be rounded -->
-<!--  * @returns function that modifies a diagram -->
-<!--  * -->
-<!--  * @example -->
-<!--  * ```javascript -->
-<!--  * let s = square(5).apply(mod.round_corner(2, [0,2])) -->
-<!--  * ``` -->
-<!--  */ -->
-<!-- export function round_corner(radius : number | number[] =  1, point_indices? : number[]) : modifierFunction { -->
+    <hr>
 
     <Diagramatics title="mod.subdivide" subtitle="(n : number) : modifierFunction" {width} {height}>
         {`
@@ -117,6 +95,59 @@
         let sq  = square(5).apply(mod.round_corner(2, [0,2]));
 
         draw(sq);
+        `}
+    </Diagramatics>
+
+    <hr>
+
+    <Diagramatics title="mod.add_arrow" subtitle="(headsize : number, flip? : boolean = false) : modifierFunction" {width} {height}>
+        {`
+        // Add an arrow to the end of a curve
+        // Make sure the diagram this modifier is applied to is a curve
+        // \`headsize\` : size of the arrow head
+        // \`flip\` : flip the arrow position
+
+        let curve = graph.plotf(x => Math.sin(x));
+        let with_arrow = curve.apply(mod.add_arrow(0.2)).fill('blue');
+        draw(with_arrow);
+        `}
+    </Diagramatics>
+
+    <hr>
+
+    <Diagramatics title="mod.arrowhead_replace" subtitle="(new_arrowhead : Diagram) : modifierFunction" {width} {height}>
+        {`
+        // Replace arrowhead inside a diagram with another diagram
+        // The arrow will be rotated automatically
+        // The default direction is to the right (+x) with the tip at the origin
+
+        let diamond = regular_polygon(4).move_origin('center-right').fill('blue');
+        let arr  = arrow(V2(10,0)).apply(mod.arrowhead_replace(diamond));
+        draw(arr);
+        `}
+    </Diagramatics>
+
+    <Diagramatics {width} {height}>
+        {`
+        let d  = square(0.4).skewX(1).move_origin('bottom-right').fill('blue');
+        let ax = axes_empty().apply(mod.arrowhead_replace(d));
+        draw(ax);
+        `}
+    </Diagramatics>
+
+    <hr>
+
+    <h1>Apply recursively</h1>
+
+    <Diagramatics title="Diagram.apply_recursive" subtitle="(modifier_function : (d : Diagram) => Diagram) : Diagram" {width} {height}>
+        {`
+        let p3 = regular_polygon(3);
+        let p4 = regular_polygon(4);
+        let p5 = regular_polygon(5);
+        let p6 = regular_polygon(6);
+        let group = distribute_grid_row([p3,p4,p5,p6], 2, 1, 1);
+        let rounded_group = group.apply_recursive(mod.round_corner(0.1))
+        draw(rounded_group);
         `}
     </Diagramatics>
 

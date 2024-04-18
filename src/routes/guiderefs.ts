@@ -84,7 +84,7 @@ export function generate_guiderefs() : {[key : string] : string} {
         guiderefs['int.get'] = `${base}/guides/interactivity#custom_external`;
 
     let m_modifier = [
-        'subdivide', 'resample', 'round_corner'
+        'subdivide', 'resample', 'round_corner', 'add_arrow', 'arrowhead_replace'
     ]
     for (let modifier of m_modifier) {
         guiderefs[`mod.${modifier}`] = `${base}/guides/modifier#mod.${modifier}`;
