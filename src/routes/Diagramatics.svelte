@@ -31,7 +31,7 @@
         try {
             if (hidden_code) content = hidden_code + '\n' + content;
             const declarations = Object.keys(dg).map(key => `const ${key} = dg.${key};`).join('\n'); //expose all the functions in the library for the eval context
-            const functionBody = `${declarations}\n${content};`; // concatenate the dg exposed functions with the user's code
+            const functionBody = `${declarations}\n{\n${content};\n}`; // concatenate the dg exposed functions with the user's code
             eval(functionBody);
         } catch (e) {
             diagram_svg.outerHTML = (e as Error).toString();

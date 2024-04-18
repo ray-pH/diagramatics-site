@@ -49,7 +49,7 @@
         if (control_div) control_div.innerHTML = '';
         try {
             const declarations = Object.keys(dg).map(key => `const ${key} = dg.${key};`).join('\n'); //expose all the functions in the library for the eval context
-            const functionBody = `${declarations}\n${str};`; // concatenate the dg exposed functions with the user's code
+            const functionBody = `${declarations}\n{\n${str};\n};`; // concatenate the dg exposed functions with the user's code
             eval(functionBody);
         } catch (e) {
             // wait first to see if user is still typing
