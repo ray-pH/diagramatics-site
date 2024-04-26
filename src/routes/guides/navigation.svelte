@@ -3,7 +3,7 @@
     export let page : string = "";
     var pages : string[] = [
         'usage', 'shapes', 'transformation', 'style', 
-        'points', 'alignment', 'interactivity', 'modifier',
+        'points', 'alignment', 'table', 'interactivity', 'modifier',
         'utilities', 'geometry', 'annotation', 'plot', 'bar',
         'technical', 'TeX'
     ];

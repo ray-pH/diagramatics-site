@@ -1,5 +1,8 @@
 module.exports = {
 	root: true,
+	rules: {
+        'prefer-const': 'off'
+	},
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',

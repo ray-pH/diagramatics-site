@@ -10,7 +10,7 @@ get_SVGPos_from_event,
 clientPos_to_svgPos,
 int.get_diagram_svg
 get_tagged_svg_element,
-tables,
+tables,                   x       x
 multiline,
 dnd_draggable callback
 utils.transpose()
