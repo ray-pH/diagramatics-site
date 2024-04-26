@@ -32,7 +32,7 @@ export function generate_guiderefs() : {[key : string] : string} {
         'fill', 'stroke', 'opacity', 'strokewidth',
         'strokelinecap', 'strokelinejoin', 'strokedasharray', 'vectoreffect',
         // 'apply' defined in modifier
-        'fontfamily', 'fontsize', 'fontweight', 'move_origin_text', 'textangle',
+        'fontfamily', 'fontsize', 'fontweight', 'fontstyle', 'move_origin_text', 'textangle',
         'text_totext', 'text_tovar', 'textfill', 'textstroke', 'textstrokewidth',
         'fontscale',
     ]

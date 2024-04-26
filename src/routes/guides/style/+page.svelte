@@ -235,6 +235,13 @@
         draw(sq, tx);
         `}
     </Diagramatics>
+    <Diagramatics title="Diagram.fontstyle" subtitle="(fontstyle : 'normal' | 'italic') : Diagram" {width} {height}>
+        {`
+        let sq = square(10).stroke('lightgrey');
+        let tx = text('hello').fontstyle('italic');
+        draw(sq, tx);
+        `}
+    </Diagramatics>
     <Diagramatics title="Diagram.move_origin_text" subtitle="(anchor : string) : Diagram" {width} {height}>
         {`
         // anchors can be :
@@ -429,4 +436,3 @@
     You can reset the default style by calling <code>reset_default_styles()</code>.
 
 </div>
-

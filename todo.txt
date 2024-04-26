@@ -27,7 +27,7 @@ geometry.line_intersection
 cubic_spline
 xycorneraxes_xbreak
 geometry.line_intersection_x, line_intersection_y
-Diagram.fontstyle
+Diagram.fontstyle         x       x
 
 
 Alignment and Distribution # opetional argument in guide
