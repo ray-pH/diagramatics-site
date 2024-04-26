@@ -1,5 +1,5 @@
                           guide  redirection     autocomplete    
-tex handler                                                      
+tex handler               x                                      
 xaxis                                                            
 yaxis                                                            
 numberline                                                       
