@@ -88,7 +88,7 @@
     }
     .cdn-table {
         display: grid;
-        grid-template-columns: 100px 20px 1fr;
+        grid-template-columns: 150px 20px 1fr;
         margin: 10px;
     }
     .cdn-table>span {
@@ -162,13 +162,19 @@
     <hr>
     <h1>Install</h1>
     <h2>CDN</h2>
-    The simplest way of using Diagramatics is to import it from a CDN like unpkg.<br>
+    The simplest way of using Diagramatics is to import it from a CDN. <br>
     <div class="cdn-table-container">
         <div class="cdn-table">
-            <span>javascript</span>&nbsp:
+            <!-- <span>javascript</span>&nbsp:
             <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/dist/index.js</pre></div>
             <span>css</span>&nbsp:
-            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/css/diagramatics.css</pre></div>
+            <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/css/diagramatics.css</pre></div> -->
+            <span>javascript</span>&nbsp:
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.js</pre></div>
+            <span>javascript (min)</span>&nbsp:
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.min.js</pre></div>
+            <span>css</span>&nbsp:
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/css/diagramatics.css</pre></div>
         </div>
     </div>
     <span style="color:gray; font-style:italic;">
@@ -196,7 +202,7 @@
         <svg id="mysvg"></svg>
     </body>
     <script` + ` type="module">
-        import {square, draw_to_svg} from 'https://unpkg.com/diagramatics@latest/dist/index.js'
+        import {square, draw_to_svg} from 'https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.min.js'
         let mysvg = document.getElementById('mysvg');
         let sq = square(10).fill('red');
         draw_to_svg(mysvg, sq);
