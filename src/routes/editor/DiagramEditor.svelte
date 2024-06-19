@@ -6,7 +6,7 @@
 
     let diagram_svg : SVGSVGElement;
     let control_div : HTMLDivElement;
-    let prev_valid_str = "";
+    // let prev_valid_str = "";
     let curr_str = "";
     let width  = 300;
     let height = 300;
@@ -62,7 +62,7 @@
             }, 500);
         } finally {
             if(success){
-                prev_valid_str = str;
+                // prev_valid_str = str;
                 eval_status.set('success');
                 if (typing_timeout) clearTimeout(typing_timeout);
                 typing_timeout = undefined;
