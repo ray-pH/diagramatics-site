@@ -170,11 +170,11 @@
             <span>css</span>&nbsp:
             <div class="cdn-url"><pre>https://unpkg.com/diagramatics@1.x.x/css/diagramatics.css</pre></div> -->
             <span>javascript</span>&nbsp:
-            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.js</pre></div>
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.5/dist/diagramatics.js</pre></div>
             <span>javascript (min)</span>&nbsp:
-            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.min.js</pre></div>
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.5/dist/diagramatics.min.js</pre></div>
             <span>css</span>&nbsp:
-            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.4/css/diagramatics.css</pre></div>
+            <div class="cdn-url"><pre>https://cdn.jsdelivr.net/npm/diagramatics@1.5/css/diagramatics.css</pre></div>
         </div>
     </div>
     <span style="color:gray; font-style:italic;">
@@ -202,7 +202,7 @@
         <svg id="mysvg"></svg>
     </body>
     <script` + ` type="module">
-        import {square, draw_to_svg} from 'https://cdn.jsdelivr.net/npm/diagramatics@1.4/dist/diagramatics.min.js'
+        import {square, draw_to_svg} from 'https://cdn.jsdelivr.net/npm/diagramatics@1.5/dist/diagramatics.min.js'
         let mysvg = document.getElementById('mysvg');
         let sq = square(10).fill('red');
         draw_to_svg(mysvg, sq);
