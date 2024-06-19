@@ -25,7 +25,7 @@
 
     <h1>Table</h1>
     
-    <Diagramatics title="Table.table" {width} {height} 
+    <Diagramatics title="table.table" {width} {height} 
         subtitle_newline={true}
         subtitle="(diagrams : Diagram[][], padding : number = 0, orientation : 'rows'|'column' = 'rows', 
             <br>,
