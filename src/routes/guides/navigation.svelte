@@ -2,7 +2,7 @@
     import { base } from '$app/paths';
     export let page : string = "";
     var pages : string[] = [
-        'usage', 'shapes', 'transformation', 'style', 
+        'usage', 'shapes', 'transformation', 'style', 'boolean',
         'points', 'alignment', 'table', 'interactivity', 'modifier',
         'utilities', 'geometry', 'annotation', 'plot', 'bar',
         'technical', 'TeX'

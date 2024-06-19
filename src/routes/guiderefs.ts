@@ -1,7 +1,7 @@
 import { base } from '$app/paths';
 let docsbase = 'https://photon-ray.xyz/diagramatics'
 
-export let known_dg_object = [ 'mod', 'geometry', 'annotation',  'int', 'bar', 'table'];
+export let known_dg_object = [ 'mod', 'geometry', 'annotation',  'int', 'bar', 'table', 'boolean'];
 export function generate_guiderefs() : {[key : string] : string} {
     const guiderefs : {[key : string] : string} = {
         'draw'    : `${base}/guides/usage#draw`,
@@ -134,6 +134,13 @@ export function generate_guiderefs() : {[key : string] : string} {
     ]
     for (let table of m_table) {
         guiderefs[`table.${table}`] = `${base}/guides/table#table.${table}`;
+    }
+    
+    let m_boolean = [
+        'union', 'difference', 'intersect', 'xor'
+    ]
+    for (let boolean of m_boolean) {
+        guiderefs[`boolean.${boolean}`] = `${base}/guides/boolean#boolean.${boolean}`;
     }
 
     return guiderefs;
