@@ -19,13 +19,13 @@
     var height = 200;
     
     const hidden_tex_code = `
-    let handletex = (str, conf) => {
-        return MathJax.tex2svg(str, conf).innerHTML;
-    };
-    let draw_tex = (...diagrams) => {
-        draw_to_svg_element(diagram_svg, diagram_combine(...diagrams));
-        handle_tex_in_svg(diagram_svg, handletex);
-    };
+    // let handletex = (str, conf) => {
+    //     return MathJax.tex2svg(str, conf).innerHTML;
+    // };
+    // let draw_tex = (...diagrams) => {
+    //     draw_to_svg_element(diagram_svg, diagram_combine(...diagrams));
+    //     handle_tex_in_svg(diagram_svg, handletex);
+    // };
         `
 </script>
 
@@ -63,7 +63,7 @@
     
     <Diagramatics title="draw_tex" {width} height={10}>
         {`
-        // you can locad MathJax from CDN
+        // you can load MathJax from CDN
         // If you don't want to load the whole MathJax, you can load only the tex-svg.js module
         // <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"><`+`/script>
         

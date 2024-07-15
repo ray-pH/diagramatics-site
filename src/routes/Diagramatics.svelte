@@ -21,6 +21,35 @@
         let draw = (...diagrams : dg.Diagram[]) => {
             dg.draw_to_svg_element(diagram_svg, dg.diagram_combine(...diagrams));
         };
+        const draw_tex = (...diagrams : dg.Diagram[]) => {
+            loadMathJax().then(() => {
+                let handletex = (str: string, conf: any) => {
+                    let mj = (window as any)['MathJax']; 
+                    return mj.tex2svg(str, conf).innerHTML;
+                };
+                dg.draw_to_svg_element(diagram_svg, dg.diagram_combine(...diagrams));
+                dg.draw_to_svg_element(diagram_svg, dg.diagram_combine(...diagrams));
+                dg.handle_tex_in_svg(diagram_svg, handletex);
+            })
+        };
+        
+        let loadMathJax = async () : Promise<void> => new Promise((resolve, reject) =>{
+            if (document.getElementById("MathJax-script")) {
+              resolve();
+              return;
+            }
+            
+            let script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+            script.id = "MathJax-script";
+            script.async = true;
+            script.onload = () => {
+                console.log("MathJax loaded");
+                resolve();
+            }
+            script.onerror = () => reject(`Failed to load the script at url`);
+            document.head.appendChild(script);
+        });
 
         let int = new dg.Interactive(control_container, diagram_svg);
 
@@ -48,7 +77,7 @@
         // hack to make svelte not remove the unused variables
         // because we're using `eval` here
         let x = Math.random();
-        if (x+1 == x) console.log(draw, int, dg);
+        if (x+1 == x) console.log(draw, int, dg, draw_tex);
         // =================== hack
     });
 </script>
@@ -69,4 +98,3 @@
     vertical-align: top;
 }
 </style>
-
