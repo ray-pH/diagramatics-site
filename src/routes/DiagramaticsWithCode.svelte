@@ -37,7 +37,7 @@
             .replace(/\\,/g, '，')
             .replace(/\\\(/g, '（')
             .replace(/\\\)/g, '）')
-            .replace(/\\\:/g, '⋮');
+            .replace(/\\:/g, '⋮');
         try{
             // (x : type, y : type, ...) : type
             // find the index of last )
