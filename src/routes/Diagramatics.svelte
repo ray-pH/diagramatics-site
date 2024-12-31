@@ -9,6 +9,7 @@
     export let margin_right : number = 20;
     export let control_margin_left : number = 20;
     export let hidden_code  : string  = "";
+    export let no_eval      : boolean = false;
 
     // ======================== code
 
@@ -57,14 +58,16 @@
         dg.reset_default_styles();
 
         let content = parse_content(content_div.innerHTML);
-        try {
-            if (hidden_code) content = hidden_code + '\n' + content;
-            const declarations = Object.keys(dg).map(key => `const ${key} = dg.${key};`).join('\n'); //expose all the functions in the library for the eval context
-            const functionBody = `${declarations}\n{\n${content};\n}`; // concatenate the dg exposed functions with the user's code
-            eval(functionBody);
-        } catch (e) {
-            diagram_svg.outerHTML = (e as Error).toString();
-            console.warn(e);
+        if (!no_eval){ 
+            try {
+                if (hidden_code) content = hidden_code + '\n' + content;
+                const declarations = Object.keys(dg).map(key => `const ${key} = dg.${key};`).join('\n'); //expose all the functions in the library for the eval context
+                const functionBody = `${declarations}\n{\n${content};\n}`; // concatenate the dg exposed functions with the user's code
+                eval(functionBody);
+            } catch (e) {
+                diagram_svg.outerHTML = (e as Error).toString();
+                console.warn(e);
+            }
         }
 
         // delete `control_container` if it's empty

@@ -142,6 +142,14 @@ export function generate_guiderefs() : {[key : string] : string} {
     for (let boolean of m_boolean) {
         guiderefs[`boolean.${boolean}`] = `${base}/guides/boolean#boolean.${boolean}`;
     }
+    
+    let m_tags = [
+        'append_tags',  'remove_tags', 'reset_tags', 'contain_tag', 'contain_all_tags', 
+        'apply_to_tagged_recursive', 'get_tagged_elements'
+    ]
+    for (let tags of m_tags) {
+        guiderefs[tags] = `${base}/guides/tags#Diagram.${tags}`;
+    }
 
     return guiderefs;
 }

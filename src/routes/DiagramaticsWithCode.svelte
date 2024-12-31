@@ -21,6 +21,7 @@
     export let subtitle_newline : boolean = false;
     export let use_guiderefs    : boolean = true;
     export let hidden_code      : string  = "";
+    export let no_eval          : boolean = false;
 
     // ======================== code
 
@@ -119,7 +120,7 @@
 
 <div class="example">
     {#if width != 0 && height != 0}
-        <Diagramatics {width} {height} {margin_right} {hidden_code} {control_margin_left}>
+        <Diagramatics {width} {height} {margin_right} {hidden_code} {control_margin_left} {no_eval}>
             <slot/>
         </Diagramatics>
     {/if}
