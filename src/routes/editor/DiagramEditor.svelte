@@ -147,7 +147,7 @@
         const content = curr_str;
         const file = new Blob([content], { type: "text/plain;charset=utf-8" });
         link.href = URL.createObjectURL(file);
-        link.download = "diagramatics.js";
+        link.download = "diagramatics.txt";
         link.click();
         URL.revokeObjectURL(link.href);
     }
